@@ -1,3 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Avenir Next;
+    src: url('/public/fonts/AvenirNext-Regular.ttf')
+  }
+}
+
+@layer components {
+  /* Header/Navbar */
+  .header {
+    @apply sticky top-0 bg-white dark:bg-stone-800 border-b dark:border-gray-700 shadow-lg z-50;
+  }
+  .nav {
+    @apply flex justify-between items-end py-3 px-8 mx-auto max-w-6xl;
+  }
+  .navLogo {
+    @apply text-4xl font-fancy font-bold  transition-colors transform duration-150 
+    bg-gradient-to-r from-blue-800 to-blue-500 text-transparent bg-clip-text
+    active:brightness-125 hover:text-blue-600 dark:text-transparent dark:active:text-blue-800 
+    dark:hover:text-blue-600;
+  }
+  .navLogoActive {
+    @apply bg-gradient-to-r from-blue-800 to-blue-500 text-transparent bg-clip-text;
+  }
+  .navLink {
+    @apply text-gray-500 font-semibold transition-colors transform duration-150 active:brightness-110
+  hover:text-blue-500 font-fancy text-base dark:text-gray-300 dark:active:text-blue-800 dark:hover:text-blue-500;
+  }
+  .navIcon {
+    @apply h-5 mt-1 navBtn md:hidden cursor-pointer;
+  }
+  .navSunIcon {
+    @apply transition-colors transform duration-150  h-5 cursor-pointer
+    dark:text-gray-300 dark:active:brightness-110 dark:hover:text-yellow-300;
+  }
+  .navMoonIcon {
+    @apply transition-colors transform duration-150 h-5 cursor-pointer 
+    text-gray-500 active:brightness-110 hover:text-blue-500;
+  }
+  .navBtn {
+    @apply from-blue-600 to-blue-900 bg-gradient-to-tl hover:scale-105 
+    transition-all transform duration-150 ease-out hover:brightness-110 ml-5 p-2 px-4 rounded-xl cursor-pointer shadow-xl;
+  }
+  .navTel {
+    @apply from-blue-600 to-blue-900 bg-gradient-to-tl hover:scale-105 absolute  md-tel:relative right-0 md-tel:top-0 
+    top-[170px] sm:top-[180px] md:top-[215px] rounded-l-xl transition-all transform duration-300 ease-out hover:brightness-110 
+    ml-5 p-2 md-tel:rounded-xl cursor-pointer shadow-xl will-change-transform z-0;
+  }
+
+  /* Dropdown */
+  .menuItems {
+    @apply absolute -right-4 sm:-right-8 w-screen h-[450px]  origin-top-right shadow-xl rounded-b-md
+    focus:ring-0 outline-none border-none text-gray-500 bg-white mt-3 flex flex-col items-center 
+    justify-evenly dark:bg-stone-800 dark:text-gray-300 list-none;
+  }
+  .dropdownIcon {
+    @apply w-10 hover:text-blue-600 dark:hover:brightness-125 transition-colors transform duration-150;
+  }
+  .dropdownLinks {
+    @apply text-blue-500 transition-colors transform duration-150 cursor-pointer;
+  }
+
+  /* modal form styles */
+  .inputWrapper {
+    @apply flex flex-col relative;
+  }
+  .formLabel {
+    @apply text-[12px] tracking-tight uppercase font-deca font-bold pb-1;
+  }
+  .formInput {
+    @apply bg-gray-200 p-2 bg-opacity-80 text-gray-700 font-medium focus:ring-sky-600 focus:ring-2 outline-none border-none mb-3 rounded-md;
+  }
+  .formInputDark {
+    @apply bg-black p-2 bg-opacity-90 text-gray-200 font-medium focus:ring-sky-600 focus:ring-2 outline-none border-none mb-3 rounded-md;
+  }
+  .formSubmitBtn {
+    @apply text-xl font-deca py-2 text-sky-700 hover:text-white from-blue-600 to-blue-900 
+           hover:bg-gradient-to-tl rounded-xl max-w-full shadow-lg active:scale-95 transition-all
+           transform duration-150 ease-out border-sky-700 border-2;
+  }
+  .formErrorMsg {
+    @apply absolute right-1 text-red-600 font-deca font-black text-[12px] tracking-tight
+  }
+
+  /* Home Page */
+  .benefit_icon {
+    @apply w-20 h-20 bg-white rounded-2xl flex items-center justify-center drop-shadow-2xl shadow-xl mb-5
+  }
+
+  .steps {
+    @apply  transition-transform duration-200 scale-[1.009]
+    ease-in-out group-hover:scale-110 rounded-3xl
+  }
+}

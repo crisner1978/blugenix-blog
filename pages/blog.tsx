@@ -8,14 +8,14 @@ const posts = [
   { title: 'Testosterone', excerpt: 'Test therapy with the doctor' },
 ]
 
-const Home: NextPage = () => {
+const BlogPage: NextPage = () => {
   return (
-    <div className="container mx-auto mb-8 px-10 h-screen">
+    <div className="h-screen">
       <Head>
         <title>Blugenix Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+      <main className="grid grid-cols-1 gap-12 lg:grid-cols-12 max-w-5xl mx-auto px-10">
         {/* Main Feed */}
         <section className="col-span-1 lg:col-span-8">
           {/* Posts */}
@@ -37,4 +37,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default BlogPage
