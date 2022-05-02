@@ -1,18 +1,12 @@
-import Link from "next/link";
+import Link from "next/dist/client/link";
 import { useRouter } from "next/router";
+import React from "react";
 
-interface Props {
-  href: string
-  name: string
-  active: boolean
-  rest?: any
-}
-
-const MyLink = ({ href, name, active, ...rest }: Props) => {
+const MyLink = React.forwardRef(({ href, name, active, ...rest }, ref) => {
   const { asPath } = useRouter();
   return (
-    <Link href={href} passHref>
-      <a
+    <Link href={href} passHref={true} >
+      <a ref={ref}
         {...rest}
         className={` ${
           asPath === href || active
@@ -24,6 +18,6 @@ const MyLink = ({ href, name, active, ...rest }: Props) => {
       </a>
     </Link>
   );
-};
+});
 
 export default MyLink;

@@ -1,7 +1,8 @@
 import { Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Fragment } from 'react'
-import MyLink from './MyLink'
+import MyLink from '../MyLink'
+import { menuItems } from '../../lib/helpers'
 
 export default function Dropdown() {
   return (
@@ -18,6 +19,7 @@ export default function Dropdown() {
             </Menu.Button>
 
             <Transition
+              show={open}
               as={Fragment}
               enter="transition ease-out duration-100"
               enterFrom="transform opacity-0 scale-95"
@@ -27,38 +29,15 @@ export default function Dropdown() {
               leaveTo="transform opacity-0 scale-95"
             >
               <Menu.Items className="menuItems py-5 text-xl tracking-widest">
-                <div>
-                  <Menu.Item>
+                {menuItems.map(({ href, name }, index) => (
+                  <Menu.Item key={index}>
                     {({ active }) => (
-                      <MyLink active={active} href="/" name="home" />
+                      <MyLink active={active} href={href} name={name} />
                     )}
                   </Menu.Item>
-                </div>
-                <div>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <MyLink
-                        active={active}
-                        href="/therapies"
-                        name="therapies"
-                      />
-                    )}
-                  </Menu.Item>
-                </div>
-                <div>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <MyLink active={active} href="/team" name="team" />
-                    )}
-                  </Menu.Item>
-                </div>
-                <div>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <MyLink active={active} href="/forms" name="forms" />
-                    )}
-                  </Menu.Item>
-                </div>
+                ))}
+
+
               </Menu.Items>
             </Transition>
           </>

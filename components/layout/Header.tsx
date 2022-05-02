@@ -1,11 +1,11 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/solid'
-import { modalState } from '../atoms/modalAtom'
+import { modalState } from '../../atoms/modalAtom'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import Dropdown from './Dropdown'
-import FreeButton from './FreeButton'
+import FreeButton from '../FreeButton'
 
 const categories = [
   {name: "Keto-verse", slug: "ketoverse" }, {name: "Testosterone Therapy", slug: "trt" }

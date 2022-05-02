@@ -2,28 +2,25 @@ import { ThemeProvider } from 'next-themes'
 import { useRouter } from 'next/router'
 import React, { ReactNode } from 'react'
 import { RecoilRoot } from 'recoil'
-import BlogHeader from './BlogHeader'
-import Footer from './Footer'
-import Header from './Header'
+import Layout from '../components/layout'
+import { ReactQueryDevtools } from "react-query/devtools"
+import { QueryClient, QueryClientProvider } from "react-query";
 
 interface Props {
   children: ReactNode
 }
 
 const AppProvider = ({ children }: Props) => {
-  const { pathname } = useRouter()
-  console.log(pathname)
+  const queryClient = new QueryClient()
   return (
-    <ThemeProvider attribute="class">
-      <RecoilRoot>
-        <Header />
-        {pathname === "/blog" && (
-          <BlogHeader />
-        )}
-        {children}
-        <Footer />
-      </RecoilRoot>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools />
+      <ThemeProvider attribute="class">
+        <RecoilRoot>
+          <Layout>{children}</Layout>
+        </RecoilRoot>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
 
