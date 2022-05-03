@@ -28,8 +28,6 @@ const Home = ({ hero, homeSections }: Props) => {
   const router = useRouter()
   const { theme } = useTheme()
 
-  console.log('homeSections', homeSections)
-
   return (
     <div className="overflow-hidden">
       <Head>
