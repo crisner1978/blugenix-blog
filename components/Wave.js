@@ -1,6 +1,6 @@
 const Wave = ({ theme }) => {
   return (
-    <div className="hidden md:flex before:absolute md:-mt-36 w-screen overflow-hidden">
+    <div className="hidden md:flex before:absolute md:-mt-28 w-screen overflow-hidden">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"

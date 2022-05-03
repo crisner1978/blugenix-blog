@@ -159,7 +159,7 @@ export const getComments = async (slug) => {
   return results.comments
 }
 
-export const getCategoryPost = async(slug) => {
+export const getCategoryPost = async (slug) => {
   const query = gql`
     query GetCategoryPost($slug: String!) {
       postsConnection(where: { categories_some: { slug: $slug } } ) {
@@ -197,7 +197,7 @@ export const getCategoryPost = async(slug) => {
   return results.postsConnection.edges
 }
 
-export const getFeaturedPosts = async() => {
+export const getFeaturedPosts = async () => {
   const query = gql`
     query GetFeaturedPosts() {
       posts(where: {featuredPost: true}) {
@@ -221,4 +221,72 @@ export const getFeaturedPosts = async() => {
   const results = await request(graphqlAPI, query)
 
   return results.posts;
+}
+
+export const getHero = async () => {
+  const query = gql`
+    query GetHero {
+      heroes {
+        about
+        id
+        info
+        slogan
+        heroImage {
+          url
+        }
+        bgGradient1 {
+          url
+        }
+        bgGradient2 {
+          url
+        }
+      }
+    }
+    `
+
+    const result = await request(graphqlAPI, query)
+
+    return result.heroes
+}
+
+export const getBenefitIcons = async () => {
+  const query = gql`
+    query GetBenefitIcons {
+      benefitIcons {
+        id
+        text
+        title
+        iconImage {
+          url
+        }
+      }
+    }
+  `
+  const results = await request(graphqlAPI, query)
+
+  return results.benefitIcons
+}
+
+export const getHomeSections = async () => {
+  const query = gql`
+    query MyQuery {
+      homeSections {
+        heading
+        id
+        subheading
+        text
+        text2
+        text3
+        buttonText
+        modal
+        sectionImage {
+          url
+        }
+      }
+    }
+  `
+
+  const results = await request(graphqlAPI, query)
+
+  return results.homeSections
 }

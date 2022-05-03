@@ -1,20 +1,19 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler } from 'react'
 
 interface Props {
-  description: string
-  style_1: string
-  style_2: string
+  text: string
+  tw: string
   onClick: MouseEventHandler
 }
 
-const FreeButton = ({description, style_1, style_2, onClick}: Props) => {
+const FreeButton = ({ text, tw, onClick }: Props) => {
   return (
-    <div className={style_1}>
-      <button className={style_2} onClick={onClick}>
-        {description}
+    <div className={tw}>
+      <button className="page__btn" onClick={onClick}>
+        {text}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default FreeButton;
+export default FreeButton

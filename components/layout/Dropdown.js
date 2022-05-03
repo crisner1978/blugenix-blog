@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Fragment } from 'react'
-import MyLink from '../MyLink'
+import MyLink from 'components/MyLink'
 import { menuItems } from '../../lib/helpers'
 
 export default function Dropdown() {

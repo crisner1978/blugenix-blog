@@ -44,3 +44,43 @@ export interface IPost {
   }
   categories: Category[]
 }
+
+export interface IHero {
+  slogan: string
+  about: string
+  info: string
+  id: string
+  bgGradient1: {
+    url: string
+  }
+  bgGradient2: {
+    url: string
+  }
+  heroImage: {
+    url: string
+  }
+}
+
+export interface IHomeSection {
+  id: string
+  subheading: string
+  heading: string
+  text: string
+  text2: string
+  text3: string
+  buttonText: string
+  modal: boolean
+  sectionImage: {
+    url: string
+  }
+}
+
+// heading
+//         id
+//         subheading
+//         text
+//         text2
+//         text3
+//         sectionImage {
+//           url
+//         }

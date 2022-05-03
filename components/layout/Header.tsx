@@ -1,14 +1,14 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/solid'
-import { modalState } from '../../atoms/modalAtom'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
+import { modalState } from '../../atoms/modalAtom'
 import Dropdown from './Dropdown'
-import FreeButton from '../FreeButton'
 
 const categories = [
-  {name: "Keto-verse", slug: "ketoverse" }, {name: "Testosterone Therapy", slug: "trt" }
+  { name: 'Keto-verse', slug: 'ketoverse' },
+  { name: 'Testosterone Therapy', slug: 'trt' },
 ]
 
 const Header = () => {
@@ -29,7 +29,7 @@ const Header = () => {
     <header className="header">
       <nav className="nav">
         {/* Left Side */}
-        <div className='cursor-pointer'>
+        <div className="cursor-pointer">
           <Link href="/">
             <span
               className={`navLogo ${
@@ -43,21 +43,20 @@ const Header = () => {
 
         {/* Right Side */}
         <div className="flex items-end justify-evenly">
-
           {/* Mobile */}
           <div className="flex items-center space-x-3 md:hidden">
             {theme === 'dark' ? (
               <SunIcon
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                 className="navSunIcon mt-1 animate-pulse"
               />
             ) : (
               <MoonIcon
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                 className="navMoonIcon mt-1 animate-pulse"
               />
             )}
-            
+
             <Dropdown />
           </div>
 
@@ -65,12 +64,12 @@ const Header = () => {
           <ul className="hidden items-center space-x-5 md:flex">
             {theme === 'dark' ? (
               <SunIcon
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                 className="navSunIcon hidden animate-pulse md:flex"
               />
             ) : (
               <MoonIcon
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                 className="navMoonIcon hidden animate-pulse md:flex"
               />
             )}{' '}
@@ -111,13 +110,11 @@ const Header = () => {
           >
             561-777-6077
           </a>
-
-          <FreeButton
-            description="Free Consultation"
-            style_1="navBtn hidden md:inline-block"
-            style_2="text-gray-100"
-            onClick={() => setOpen(true)}
-          />
+          <div className="navBtn hidden md:inline-block">
+            <button className="text-gray-100" onClick={() => setOpen(true)}>
+              Free Consultation
+            </button>
+          </div>
         </div>
       </nav>
     </header>

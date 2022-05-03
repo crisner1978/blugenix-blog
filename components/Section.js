@@ -1,4 +1,5 @@
 const Section = ({
+  itemKey,
   style_section,
   heading,
   subheading,
@@ -9,7 +10,7 @@ const Section = ({
   component,
 }) => {
   return (
-    <div>
+    <div key={itemKey}>
       <section className={style_section}>
         <div className="md:max-w-md lg:max-w-xl xl:max-w-2xl">
           {heading && (
@@ -23,7 +24,7 @@ const Section = ({
             </h2>
           )}
 
-          <div className="text-lg font-normal dark:text-gray-200 text-gray-700">
+          <div className="sm:text-lg dark:text-gray-300 text-gray-700">
             <p className="mt-8">
               {para_1}
             </p>

@@ -52,8 +52,8 @@ const Footer = () => {
               </a>
             </span>
           </div>
-          <div className='absolute bottom-4 w-full left-0 right-0 max-w-5xl px-10 mx-auto'>
-            <p className="text-[10px]">
+          <div className='absolute bottom-4 w-full left-0 right-0 max-w-5xl px-3 sm:px-10 mx-auto'>
+            <p className="text-[8px] sm:text-[10px] font-fancy">
               THERAPIES CANNOT BE PROVIDED UNLESS ALL REQUIRED DOCUMENTS AND LAB
               WORK ARE COMPLETED SHOWING A CLINICAL NEED. ONLY THE PRESCRIBING
               PHYSICIAN CAN DETERMINE IF YOU QUALIFY FOR TREATMENT THE CONTENT

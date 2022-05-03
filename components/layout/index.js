@@ -1,8 +1,7 @@
-import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import BlogHeader from './BlogHeader'
-import Modal from '../Modal'
+import Modal from './Modal'
 import { useRouter } from 'next/router'
 
 const Layout = ({ children }) => {
@@ -10,11 +9,11 @@ const Layout = ({ children }) => {
 
   return (
     <div className='font-deca'>
-    <Header />
-        {pathname === '/blog' && <BlogHeader />}
-    {children}
-    <Footer />
-    <Modal />
+      <Header />
+      {pathname === '/blog' && <BlogHeader />}
+      {children}
+      <Footer />
+      <Modal />
     </div>
   )
 }
