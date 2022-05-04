@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { ReactNode } from 'react'
 import { IHero } from 'typings'
 
@@ -31,9 +32,13 @@ const fadeInDown = {
 const HeroSection = ({ hero, children }: Props) => {
   return (
     <section className="relative h-[400px] text-white dark:text-gray-100 sm:h-[450px] md:h-[500px] lg:h-[575px] xl:h-[650px]">
-      <img
+      <Image
+        layout="fill"
+        objectFit="cover"
         src={hero.heroImage.url}
         className="hero__image"
+        placeholder='blur'
+        blurDataURL='https://res.cloudinary.com/dtram9qiy/image/upload/v1641961381/my-uploads/k01tmcqcnvqgwmjhvy7h.jpg'
         alt="Blugenix Hero"
       />
       <img
