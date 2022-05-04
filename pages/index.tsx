@@ -45,10 +45,6 @@ const Home = ({ hero, homeSections }: Props) => {
 
   return (
     <div className="overflow-hidden">
-      <Head>
-        <title>Blugenix Hormone Replacement</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <HeroSection hero={hero}>
         <FreeButton
           text="Speak with the team today"
