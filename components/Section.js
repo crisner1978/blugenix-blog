@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
+import useFadeInDown from '../hooks/useFadeInDown';
+
 const Section = ({
-  itemKey,
   style_section,
   heading,
   subheading,
@@ -9,10 +11,12 @@ const Section = ({
   children,
   component,
 }) => {
+  const [ref, ctrls, fadeInDown] = useFadeInDown()
+
   return (
-    <div key={itemKey}>
+    <div>
       <section className={style_section}>
-        <div className="md:max-w-md lg:max-w-xl xl:max-w-2xl">
+        <motion.div initial="hidden" ref={ref} aria-hidden="true" animate={ctrls} variants={fadeInDown} className="md:max-w-md lg:max-w-xl xl:max-w-2xl">
           {heading && (
             <header className="inline-block uppercase font-medium xl:text-lg tracking-wide text-gray-500 dark:text-gray-300 w-full">
               {heading}
@@ -36,7 +40,7 @@ const Section = ({
             )}
             {component}
           </div>
-        </div>
+        </motion.div>
         <div className="rounded-xl flex items-center justify-center mb-[50px] md:mb-0 md:max-w-xl relative">
           {children}
         </div>

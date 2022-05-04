@@ -1,9 +1,10 @@
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import { useQuery } from 'react-query'
 import { getFeaturedPosts } from 'services/queries'
-import Carousel from 'react-multi-carousel'
-import "react-multi-carousel/lib/styles.css"
 import FeaturedPostCard from './FeaturedPostCard'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
+import LeftArrow from './LeftArrow'
+import RightArrow from './RightArrow'
 
 const responsive = {
   superLarge: {
@@ -21,31 +22,31 @@ const responsive = {
   mobile: {
     breakpoint: { max: 640, min: 0 },
     items: 1,
-  }
+  },
 }
 
 const FeaturedPosts = () => {
-  const { data: featuredPosts, isSuccess } = useQuery('featured', () => getFeaturedPosts().then((result) => result))
-
-  const leftarrow = (
-    <div className='absolute transition-all duration-300 ease w-12 hover:scale-110 left-0 flex justify-center py-3 cursor-pointer bg-pink-600 rounded-full'>
-      <ChevronLeftIcon className='h-6 w-6 text-white' />
-    </div>
+  const { data: featuredPosts, isSuccess } = useQuery('featured', () =>
+    getFeaturedPosts().then((result) => result)
   )
 
-  const rightarrow = (
-    <div className='absolute transition-all duration-300 ease w-12 hover:scale-110 right-0 flex justify-center py-3 cursor-pointer bg-pink-600 rounded-full'>
-      <ChevronRightIcon className='w-6 h-6 text-white' />
+  return (
+    <div className="mx-auto mb-8 max-w-5xl px-6">
+      <Carousel
+        infinite
+        customLeftArrow={<LeftArrow />}
+        customRightArrow={<RightArrow />}
+        responsive={responsive}
+        carouselstate
+        itemClass="px-4"
+      >
+        {isSuccess &&
+          featuredPosts.map((post) => (
+            <FeaturedPostCard key={post.id} post={post} />
+          ))}
+      </Carousel>
     </div>
   )
-  
-  return <div className="mx-auto mb-8 max-w-5xl px-6">
-    <Carousel infinite customLeftArrow={leftarrow} customRightArrow={rightarrow} responsive={responsive} arrows={[ChevronLeftIcon, ChevronRightIcon]} itemClass="px-4">
-      {isSuccess && featuredPosts.map((post) => (
-        <FeaturedPostCard key={post.id} post={post} />
-      ))}
-    </Carousel>
-  </div>
 }
 
 export default FeaturedPosts

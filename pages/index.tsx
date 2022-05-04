@@ -23,6 +23,21 @@ interface Props {
   homeSections: [IHomeSection]
 }
 
+const fadeInUp = {
+  initial: {
+    y: -60,
+    opacity: 0
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8, 
+      ease: "easeOut"
+    }
+  }
+}
+
 const Home = ({ hero, homeSections }: Props) => {
   const [open, setOpen] = useRecoilState(modalState)
   const router = useRouter()
@@ -45,7 +60,6 @@ const Home = ({ hero, homeSections }: Props) => {
       {homeSections.map((item, index) => (
         <div key={item.id}>
           <Section
-            itemKey={item.id}
             style_section={`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-20 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
             heading={item.heading}
             subheading={item.subheading}
