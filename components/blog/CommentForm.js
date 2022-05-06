@@ -79,14 +79,14 @@ const CommentForm = ({ slug, id }) => {
           <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <input
               ref={nameRef}
-              className="w-full rounded-lg bg-gray-100 py-2 px-4 text-gray-700 outline-none focus:ring-2 focus:ring-blue-600/50 dark:bg-black/20 dark:text-gray-200 dark:placeholder:text-gray-400/60"
+              className="singleLineInput"
               type="text"
               placeholder="Leave your name"
               name="name"
             />
             <input
               ref={emailRef}
-              className="w-full rounded-lg bg-gray-100 py-2 px-4 text-gray-700 outline-none focus:ring-2 focus:ring-blue-600/50 dark:bg-black/20 dark:text-gray-200 dark:placeholder:text-gray-400/60"
+              className="singleLineInput"
               type="text"
               placeholder="Provide your email"
               name="email"
@@ -98,9 +98,9 @@ const CommentForm = ({ slug, id }) => {
               <label className="text-gray-500 dark:text-gray-200 cursor-pointer ml-4" htmlFor='storeData'>Save my e-mail and name for the next time I leave a comment</label>
             </div>
           </div>
-          <div className="flex flex-col p-4">
+          <div className="flex flex-col p-4 relative">
             {error && (
-              <span className="text-red-500">
+              <span className="text-red-600 text-xs font-deca font-black tracking-tight uppercase">
                 - All Fields are required
               </span>
             )}

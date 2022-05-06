@@ -66,28 +66,34 @@
     @apply text-blue-500 transition-colors transform duration-150 cursor-pointer;
   }
 
-  /* modal form styles */
+  /* FORM Styles */
   .inputWrapper {
-    @apply flex flex-col relative;
+    @apply flex flex-col relative text-gray-700 dark:text-gray-300;
   }
   .formLabel {
     @apply text-[12px] tracking-tight uppercase font-deca font-bold pb-1;
   }
-  .formInput {
-    @apply bg-gray-200 p-2 bg-opacity-80 text-gray-700 font-medium focus:ring-sky-600 focus:ring-2 outline-none border-none mb-3 rounded-md;
+  .dateInput {
+    @apply ml-4 rounded-lg text-center bg-gray-100 py-2 w-36 text-gray-700 dark:bg-black/20 dark:text-gray-200
   }
-  .formInputDark {
-    @apply bg-black p-2 bg-opacity-90 text-gray-200 font-medium focus:ring-sky-600 focus:ring-2 outline-none border-none mb-3 rounded-md;
+  .dateFormLabel {
+    @apply text-lg sm:text-xl tracking-tight capitalize font-deca font-semibold;
+  }
+  .singleLineInput {
+    @apply w-full rounded-lg bg-gray-100 py-2 px-4 mb-3 text-gray-700 outline-none 
+    focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-600/50 dark:bg-black/20 
+    dark:text-gray-200 dark:placeholder:text-gray-400/60 font-deca
   }
   .formSubmitBtn {
-    @apply text-xl font-deca py-2 text-sky-700 hover:text-white from-blue-600 to-blue-900 
+    @apply text-xl font-deca py-2 text-blue-700/70 hover:text-white from-blue-600 to-blue-900 
            hover:bg-gradient-to-tl rounded-xl max-w-full shadow-lg active:scale-95 transition-all
-           transform duration-150 ease-out border-sky-700 border-2;
+           transform duration-150 ease-out border-blue-700/70 border-2;
   }
   .formErrorMsg {
-    @apply absolute right-1 text-red-600 font-deca font-black text-[12px] tracking-tight
+    @apply absolute right-0 text-red-600 font-deca font-black text-[12px] tracking-tight cursor-default
   }
 
+  
   /* Home Page */
   .benefit_icon {
     @apply w-20 h-20 bg-white rounded-2xl flex items-center justify-center drop-shadow-2xl shadow-xl mb-5

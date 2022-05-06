@@ -4,19 +4,36 @@ import { recoilPersist } from "recoil-persist"
 
 const { persistAtom } = recoilPersist();
 
-export const formState = atom({
-  key: "formState",
+export const isFormStartedState = atom({
+  key: "isFormStartedState",
   default: false,
   effects_UNSTABLE: [persistAtom]
 })
 
-export function useFormState() {
+export function useFormStart() {
   const [isInitial, setIsInitial] = useState(true);
-  const [formStarted, setFormStarted] = useRecoilState(formState);
+  const [formStart, setFormStart] = useRecoilState(isFormStartedState);
 
   useEffect(() => {
     setIsInitial(false);
   }, [])
 
-  return [isInitial === true ? false : formStarted, setFormStarted]
+  return [isInitial === true ? false : formStart, setFormStart]
+}
+
+export const formValueState = atom({
+  key: "formValueState",
+  default: null,
+  effects_UNSTABLE: [persistAtom]
+})
+
+export function useFormValueState() {
+  const [isInitial, setIsInitial] = useState(true);
+  const [formValues, setFormValues] = useRecoilState(formValueState);
+
+  useEffect(() => {
+    setIsInitial(false)
+  }, [])
+
+  return [isInitial === true ? false : formValues, setFormValues]
 }

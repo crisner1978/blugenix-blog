@@ -1,16 +1,15 @@
 import { modalState } from 'atoms/modalAtom'
 import { Banner, FreeButton, PageDivider, Section } from 'components'
-import { FormCard, FormWidget } from 'components/medicalForm'
+import { FormCard, FormWidget, PatientInfo } from 'components/medicalForm'
 import Head from 'next/head'
-import Image from 'next/image'
 import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { useFormState } from "../atoms/formAtom"
+import { useFormStart } from "../atoms/formAtom"
 
 const FormsPage = () => {
   const [open, setOpen] = useRecoilState(modalState)
   const [formStep, setFormStep] = useState(0)
-  const [formStarted, setFormStarted] = useFormState()
+  const [formStart, setFormStart] = useFormStart()
 
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
@@ -67,27 +66,16 @@ const FormsPage = () => {
       <PageDivider />
       <main
         className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 lg:gap-12 px-10 lg:grid-cols-3 ${
-          !formStarted && '!max-w-3xl !grid-cols-1'
+          !formStart && '!max-w-3xl !grid-cols-1'
         }`}
       >
         <section className="col-span-1 lg:col-span-2">
-          {formStarted ? (
+          {formStart ? (
             <FormCard prevFormStep={prevFormStep} currStep={formStep}>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Fugiat, ad autem qui dignissimos laudantium quidem ducimus,
-                tempora molestias fugit numquam deleniti suscipit tempore modi
-                ipsa reiciendis cum unde vel quasi rerum voluptatibus
-                voluptates. Ratione earum praesentium molestias itaque, dolore
-                quod ex sed magni minus laboriosam a tempora. Itaque quisquam
-                neque nisi aliquid ipsum, commodi aspernatur provident sint
-                autem repudiandae! Quidem accusamus molestias corporis doloribus
-                amet natus, eos nostrum alias, suscipit accusantium, nihil
-                quibusdam sint officia. Aliquam exercitationem ducimus aperiam
-                itaque necessitatibus harum, dolor porro voluptatibus reiciendis
-                sapiente culpa tenetur voluptatum ut beatae alias quisquam,
-                perferendis possimus iure consequuntur perspiciatis in!
-              </p>
+              {formStep >= 0 && (
+                <PatientInfo nextFormStep={nextFormStep} formStep={formStep} />
+              )}
+              
             </FormCard>
           ) : (
             <div className='bg-white dark:bg-stone-800 p-8 mb-8 shadow-lg rounded-lg pb-12'>
@@ -97,7 +85,7 @@ const FormsPage = () => {
               <div className='flex justify-center mt-8'>
                 <button
                 className="page__btn text-white"
-                onClick={() => setFormStarted(true)}
+                onClick={() => setFormStart(true)}
               >
                 Click To Begin
               </button>
@@ -107,11 +95,11 @@ const FormsPage = () => {
           )}
           {/* Start Form Here */}
         </section>
-        {formStarted && (
+        {formStart && (
           <section className="col-span-1 lg:col-span-1">
             <div className="relative lg:sticky lg:top-[70px] lg:mb-8">
               {/* Form Status Box */}
-              <FormWidget setFormStarted={setFormStarted} prevFormStep={prevFormStep} currStep={formStep} />
+              <FormWidget setFormStart={setFormStart} prevFormStep={prevFormStep} currStep={formStep} />
             </div>
           </section>
         )}

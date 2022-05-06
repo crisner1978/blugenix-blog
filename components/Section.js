@@ -41,7 +41,7 @@ const Section = ({
             {component}
           </div>
         </motion.div>
-        <div className="rounded-3xl flex items-center justify-center mb-[50px] md:mb-0 md:max-w-lg relative">
+        <div className="rounded-3xl flex items-center justify-center mb-[50px] md:mb-0 md:max-w-md relative">
           {children}
         </div>
       </section>

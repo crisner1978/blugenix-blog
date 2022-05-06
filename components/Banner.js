@@ -3,6 +3,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { fadeInDown } from 'lib/animationVariants'
 
+
+// Hook up to GraphCMS and pass info
 const Banner = ({ children }) => {
   return (
     <section className="relative h-[400px] text-white dark:text-gray-100 sm:h-[450px] md:h-[500px] lg:h-[575px]">
@@ -20,15 +22,14 @@ const Banner = ({ children }) => {
         src="https://res.cloudinary.com/dtram9qiy/image/upload/v1640819429/malamutes/heros/cellgradianttop.png"
         layout="fill"
         objectfit="cover"
-        priority="true"
-        as="image"
+        lazy="true"
         alt="background gradiant"
       />
       <Image
         src="https://res.cloudinary.com/dtram9qiy/image/upload/v1640819418/malamutes/heros/cellgradiantbottom.png"
         layout="fill"
         objectfit="cover"
-        priority="true"
+        lazy="true"
         alt="background gradiant"
       />
       <div className='h-full bg-gradient-to-r from-transparent to-black/50 absolute w-full bottom-0 right-0' />

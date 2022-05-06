@@ -3,16 +3,14 @@ import { modalState } from "atoms/modalAtom";
 import { isPossiblePhoneNumber } from "libphonenumber-js/min";
 import { Fragment } from "react";
 import { useForm } from "react-hook-form";
+import { formatPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input/react-hook-form-input";
 import "react-phone-number-input/style.css";
-import { useRecoilState } from "recoil";
 import { useMutation } from "react-query";
-import { formatPhoneNumber } from "react-phone-number-input";
-import { useTheme } from "next-themes";
+import { useRecoilState } from "recoil";
 
 const Modal = () => {
   const [open, setOpen] = useRecoilState(modalState);
-  const { theme, setTheme } = useTheme()
   const {
     register,
     handleSubmit,
@@ -92,16 +90,13 @@ const Modal = () => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div
-              className={`${
-                theme === "dark"
-                  ? "bg-stone-900 text-gray-400"
-                  : "bg-white text-gray-500"
-              } font-fancy inline-block align-middle rounded-xl
-                            px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all my-8 sm:max-w-sm sm:w-full sm:p-6`}
+              className="dark:bg-stone-800 bg-white text-gray-700 dark:text-gray-200
+              font-fancy inline-block align-middle rounded-xl px-4 pt-5 pb-4 text-left overflow-hidden 
+              shadow-xl transform transition-all my-8 sm:max-w-sm sm:w-full sm:p-6"
             >
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-col space-y-1"
+                className="flex flex-col space-y-1 "
               >
                 <div className="inputWrapper">
                   <label className="formLabel" htmlFor="firstName">
@@ -120,9 +115,7 @@ const Modal = () => {
                       },
                     })}
                     placeholder="John"
-                    className={`${
-                      theme === "dark" ? "formInputDark" : "formInput"
-                    }`}
+                    className="singleLineInput"
                     type="text"
                     name="firstName"
                     id="firstName"
@@ -146,9 +139,7 @@ const Modal = () => {
                       },
                     })}
                     placeholder="Doe"
-                    className={`${
-                      theme === "dark" ? "formInputDark" : "formInput"
-                    }`}
+                    className="singleLineInput"
                     type="text"
                     name="lastName"
                     id="lastName"
@@ -161,9 +152,7 @@ const Modal = () => {
                   </label>
                   <PhoneInput
                     placeholder="(555) 555-5555"
-                    className={`${
-                      theme === "dark" ? "formInputDark" : "formInput"
-                    }`}
+                    className="singleLineInput"
                     name="phone"
                     control={control}
                     rules={{
@@ -190,9 +179,7 @@ const Modal = () => {
                       },
                     })}
                     placeholder="johndoe@example.com"
-                    className={`${
-                      theme === "dark" ? "formInputDark" : "formInput"
-                    }`}
+                    className="singleLineInput"
                     type="text"
                     name="email"
                     id="email"
@@ -206,9 +193,7 @@ const Modal = () => {
                   <textarea
                     {...register("message")}
                     placeholder="How do I get started on Testosterone and HGH therapy?"
-                    className={`${
-                      theme === "dark" ? "formInputDark" : "formInput"
-                    }`}
+                    className="singleLineInput"
                     name="message"
                     id="message"
                     cols="30"
