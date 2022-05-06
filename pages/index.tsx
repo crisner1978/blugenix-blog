@@ -6,13 +6,11 @@ import {
   BenefitSection,
   HeroSection,
   MapSection,
-  StepsSection,
+  StepsSection
 } from 'components/sections'
 import Wave from 'components/Wave'
-import { menuItems } from 'lib/helpers'
 import type { GetStaticProps } from 'next'
 import { useTheme } from 'next-themes'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import { getHero, getHomeSections } from 'services/queries'
@@ -92,7 +90,7 @@ const Home = ({ hero, homeSections }: Props) => {
         }
       />
       <PageDivider />
-      <StepsSection />
+      <StepsSection setOpen={setOpen} />
     </div>
   )
 }

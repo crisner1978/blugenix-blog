@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import Image from 'next/image'
 import {
   PostCard,
   PostWidget,
@@ -23,7 +22,7 @@ const BlogPage = ({ posts }: Props) => {
       </Head>
       {/* Featured Posts */}
       <FeaturedPosts />
-      <main className="mx-auto max-w-5xl grid grid-cols-1 gap-12 px-10 lg:grid-cols-12">
+      <main className="mx-auto max-w-5xl grid grid-cols-1 lg:gap-12 px-10 lg:grid-cols-12">
         
         {/* Main Feed */}
         <section className="col-span-1 lg:col-span-8">
@@ -48,7 +47,7 @@ const BlogPage = ({ posts }: Props) => {
 
 export default BlogPage
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = (await getPosts()) || []
 
   return {

@@ -1,6 +1,6 @@
 import { Section, FreeButton } from "../../components"
 
-const StepsSection = () => {
+const StepsSection = ({ setOpen }) => {
   return (
     <>
       <Section

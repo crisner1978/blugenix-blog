@@ -96,6 +96,9 @@
   .hero__image {
     @apply absolute h-[400px] sm:h-[450px] md:h-[500px] lg:h-[575px] xl:h-[650px] object-cover object-top w-screen
   }
+  .hero__center {
+    @apply absolute h-[400px] sm:h-[450px] md:h-[500px] lg:h-[575px] xl:h-[650px] object-cover object-top w-screen
+  }
 
   .page__btn {
     @apply sm:text-xl py-3 capitalize from-blue-600 to-blue-900 bg-gradient-to-tl hover:scale-105 
