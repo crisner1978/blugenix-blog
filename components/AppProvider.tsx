@@ -1,10 +1,9 @@
 import { ThemeProvider } from 'next-themes'
-import { useRouter } from 'next/router'
 import React, { ReactNode } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { RecoilRoot } from 'recoil'
 import Layout from '../components/layout'
-import { ReactQueryDevtools } from "react-query/devtools"
-import { QueryClient, QueryClientProvider } from "react-query";
 
 interface Props {
   children: ReactNode
@@ -12,6 +11,7 @@ interface Props {
 
 const AppProvider = ({ children }: Props) => {
   const queryClient = new QueryClient()
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />

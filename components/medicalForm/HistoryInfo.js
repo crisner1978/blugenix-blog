@@ -17,20 +17,11 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
   const onSubmit = (data) => {
     console.log('data', data)
     nextFormStep()
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   }
-
-  const RequiredCheckBox = ({ name, label }) => (
-    <div>
-      <label htmlFor={label}>
-        <input
-          className="mr-1"
-          {...register(name, { required: 'REQUIRED' })}
-          type="checkbox"
-        />{' '}
-        {label}
-      </label>
-    </div>
-  )
 
   const CheckBox = ({ name, label }) => (
     <div className="mb-3 flex w-full items-center py-2">
@@ -123,7 +114,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
   )
 
   return (
-    <form
+    <form id="history-info"
       onSubmit={handleSubmit(onSubmit)}
       className={`${
         formStep === 1 ? 'mb-8 text-gray-700  dark:text-gray-200' : 'hidden'

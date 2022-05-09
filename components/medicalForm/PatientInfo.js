@@ -1,20 +1,17 @@
-import { useForm } from 'react-hook-form'
-import { isPossiblePhoneNumber } from 'libphonenumber-js/min'
-import { formatPhoneNumber } from 'react-phone-number-input'
-import PhoneInput from 'react-phone-number-input/react-hook-form-input'
-import 'react-phone-number-input/style.css'
-import React, { useState } from 'react'
-import { category } from 'lib/helpers'
 import {
   DateInput,
   Input,
   PhoneNumber,
   RequiredPhoneNumber,
-  SelectField,
+  SelectField
 } from 'components/shared'
+import { category } from 'lib/helpers'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import 'react-phone-number-input/style.css'
+
 
 const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
-  const [date, setDate] = useState(new Date())
   const {
     register,
     handleSubmit,
@@ -40,22 +37,6 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
         />{' '}
         {label}
       </label>
-    </div>
-  )
-
-  const TextArea = ({ name, label, placeholder }) => (
-    <div className="inputWrapper">
-      <label className="formLabel" htmlFor={name}>
-        {label}
-      </label>
-      <textarea
-        {...register(name)}
-        className="singleLineInput"
-        placeholder={placeholder}
-        name={name}
-        cols="30"
-        rows="3"
-      ></textarea>
     </div>
   )
 
@@ -175,17 +156,20 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
   const onSubmit = (data) => {
     setFormValues(data)
     nextFormStep()
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   }
 
   console.log('Recoil formValues', formValues)
   console.log('formStep', formStep)
 
   return (
-    <form
+    <form id='patient-info'
       onSubmit={handleSubmit(onSubmit)}
-      className={`${
-        formStep === 0 ? 'mb-8 text-gray-700  dark:text-gray-200' : 'hidden'
-      }`}
+      className={`${formStep === 0 ? 'mb-8 text-gray-700  dark:text-gray-200' : 'hidden'
+        }`}
     >
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
         <h3 className="text-xl font-semibold sm:text-2xl">
