@@ -1,12 +1,37 @@
-import { ChevronLeftIcon } from '@heroicons/react/solid'
-import React from 'react'
+const FormWidget = ({
+  setFormStart,
+  setFormStep,
+  setFormValues,
+  prevFormStep,
+  currStep,
+}) => {
+  const handleReset = () => {
+    setFormStart(false)
+    setFormStep(0)
+    setFormValues(null)
+  }
 
-const FormWidget = ({ setFormStart, prevFormStep, currStep }) => {
   return (
-    <div className="bg-white dark:bg-stone-800 p-8 mb-8 shadow-lg rounded-lg">
-      <h3 className='text-xl mb-8 font-semibold border-b pb-4'>Form Status</h3>
-        <span className='widgets'>Part {currStep + 1} of 5</span>
-        <button className='widgets' onClick={() => setFormStart(false)}>Cancel/Reset</button>
+    <div className="mb-8 rounded-lg bg-white p-8 shadow-lg dark:bg-stone-800">
+      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">Form Status</h3>
+      <p
+        className="mb-4 w-full transform cursor-pointer transition-colors duration-150 
+        dark:text-gray-100"
+      >
+        Working on{' '}
+        <span className="animate-pulse text-blue-500 hover:animate-none hover:text-blue-600 ">
+          Section {currStep + 1}{' '}
+        </span>
+        of 5
+      </p>
+      {currStep > 0 && (
+        <button className="widgets" onClick={prevFormStep}>
+          Go Back
+        </button>
+      )}
+      <button className="widgets" onClick={handleReset}>
+        Cancel/Reset
+      </button>
     </div>
   )
 }

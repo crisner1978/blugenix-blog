@@ -1,15 +1,24 @@
 import { modalState } from 'atoms/modalAtom'
 import { Banner, FreeButton, PageDivider, Section } from 'components'
-import { FormCard, FormWidget, PatientInfo } from 'components/medicalForm'
+import {
+  DetailedInfo,
+  FormCard,
+  FormWidget,
+  HistoryInfo,
+  PatientInfo,
+} from 'components/medicalForm'
 import Head from 'next/head'
 import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { useFormStart } from "../atoms/formAtom"
+import { useFormStart, useFormValueState } from '../atoms/formAtom'
 
 const FormsPage = () => {
   const [open, setOpen] = useRecoilState(modalState)
   const [formStep, setFormStep] = useState(0)
   const [formStart, setFormStart] = useFormStart()
+  const [formValues, setFormValues] = useFormValueState()
+
+  console.log('formStep', formStep)
 
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
@@ -65,7 +74,7 @@ const FormsPage = () => {
       </Section>
       <PageDivider />
       <main
-        className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 lg:gap-12 px-10 lg:grid-cols-3 ${
+        className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 px-10 lg:grid-cols-3 lg:gap-12 ${
           !formStart && '!max-w-3xl !grid-cols-1'
         }`}
       >
@@ -73,24 +82,43 @@ const FormsPage = () => {
           {formStart ? (
             <FormCard prevFormStep={prevFormStep} currStep={formStep}>
               {formStep >= 0 && (
-                <PatientInfo nextFormStep={nextFormStep} formStep={formStep} />
+                <PatientInfo
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
               )}
-              
+              {formStep >= 1 && (
+                <HistoryInfo
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
+              )}
+              {formStep >= 2 && (
+                <DetailedInfo
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
+              )}
             </FormCard>
           ) : (
-            <div className='bg-white dark:bg-stone-800 p-8 mb-8 shadow-lg rounded-lg pb-12'>
+            <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg dark:bg-stone-800">
               <h3 className="text-center text-lg sm:text-xl md:text-2xl">
                 Ready to complete the Medical History Forms?
               </h3>
-              <div className='flex justify-center mt-8'>
+              <div className="mt-8 flex justify-center">
                 <button
-                className="page__btn text-white"
-                onClick={() => setFormStart(true)}
-              >
-                Click To Begin
-              </button>
+                  className="page__btn text-white"
+                  onClick={() => setFormStart(true)}
+                >
+                  Click To Begin
+                </button>
               </div>
-              
             </div>
           )}
           {/* Start Form Here */}
@@ -99,7 +127,13 @@ const FormsPage = () => {
           <section className="col-span-1 lg:col-span-1">
             <div className="relative lg:sticky lg:top-[70px] lg:mb-8">
               {/* Form Status Box */}
-              <FormWidget setFormStart={setFormStart} prevFormStep={prevFormStep} currStep={formStep} />
+              <FormWidget
+                setFormStep={setFormStep}
+                setFormStart={setFormStart}
+                setFormValues={setFormValues}
+                prevFormStep={prevFormStep}
+                currStep={formStep}
+              />
             </div>
           </section>
         )}

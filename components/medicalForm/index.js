@@ -1,3 +1,5 @@
 export { default as FormCard } from "./FormCard"
 export { default as FormWidget } from "./FormWidget"
 export { default as PatientInfo } from "./PatientInfo"
+export { default as HistoryInfo } from "./HistoryInfo"
+export { default as DetailedInfo } from "./DetailedInfo"
