@@ -14,6 +14,10 @@ const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
   const onSubmit = (data) => {
     console.log('data', data)
     nextFormStep()
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
   }
   return (
     <form id="detail-info" onSubmit={handleSubmit(onSubmit)} className={`${formStep === 2 ? "mb-8 text-gray-700  dark:text-gray-200" : "hidden"}`}>
