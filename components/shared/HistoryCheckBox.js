@@ -17,3 +17,24 @@ const HistoryCheckBox = React.forwardRef(({ name, label, onBlur, onChange }, ref
 ))
 
 export default HistoryCheckBox
+
+// const CheckBox = ({ name, label }) => (
+//   <div>
+//     <label htmlFor={label}>
+//       <input className="mr-1" {...register(name)} type="checkbox" /> {label}
+//     </label>
+//   </div>
+// )
+
+// const RequiredCheckBox = ({ name, label }) => (
+//   <div>
+//     <label htmlFor={label}>
+//       <input
+//         className="mr-1"
+//         {...register(name, { required: 'REQUIRED' })}
+//         type="checkbox"
+//       />{' '}
+//       {label}
+//     </label>
+//   </div>
+// )

@@ -1,10 +1,16 @@
 import moment from "moment"
 import { useState } from "react"
-import DatePicker from 'react-datepicker'
+import DatePicker, { ReactDatePicker } from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { Controller } from "react-hook-form"
+import { Control, Controller, FieldValues } from "react-hook-form"
 
-const DateInput = ({ label, name, control }) => {
+interface Props {
+  label: string
+  name: string
+  control: Control
+}
+
+const DateInput = ({ label, name, control }: Props) => {
   const [date, setDate] = useState(new Date())
 
   return (
@@ -21,6 +27,7 @@ const DateInput = ({ label, name, control }) => {
             className="ml-4 w-36 rounded-lg bg-gray-100 py-2 text-center dark:bg-black/20"
             value={moment(date).format("L")}
             name={name}
+            onChange={() => setDate(date)}
             disabled
           />
         )}

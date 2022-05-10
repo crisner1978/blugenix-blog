@@ -5,7 +5,8 @@ import {
   FormCard,
   FormWidget,
   HistoryInfo,
-  PatientInfo
+  PatientInfo,
+  SymptomsInfo
 } from 'components/medicalForm'
 import Head from 'next/head'
 import React, { useState } from 'react'
@@ -65,6 +66,22 @@ const FormsPage = () => {
               )}
               {formStep >= 2 && (
                 <DetailedInfo
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
+              )}
+              {formStep >= 3 && (
+                <SymptomsInfo
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
+              )}
+              {formStep >= 4 && (
+                <FamilyInfo
                   setFormValues={setFormValues}
                   formValues={formValues}
                   nextFormStep={nextFormStep}

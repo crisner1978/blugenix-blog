@@ -1,4 +1,4 @@
-import { DateInput, HistoryCheckBox, NumberInput, TextArea } from 'components/shared'
+import { DateInput, HistoryCheckBox, QuestionCheckBox, SmallInput, TextArea } from 'components/shared'
 import { useForm } from 'react-hook-form'
 
 const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
@@ -23,20 +23,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
     })
   }
 
-  const CheckBox = ({ name, label }) => (
-    <div className="mb-3 flex w-full items-center py-2">
-      <label className="cursor-pointer" htmlFor={name}>
-        {label}
-      </label>
-      <input
-        className="ml-4 "
-        {...register(name)}
-        type="checkbox"
-        name={name}
-        id={name}
-      />
-    </div>
-  )
+
 
   const SocialHistory = () => (
     <section className="mb-4 text-gray-500 dark:text-gray-200">
@@ -44,11 +31,12 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         Check any box that applies.
       </h3>
       <div className="pb-2 sm:flex">
-        <CheckBox name="drink" label="Do you Drink?" />
+        <QuestionCheckBox {...register("drink")} name="drink" label="Do you Drink?" />
         {watchDriink && (
-          <NumberInput
+          <SmallInput
             {...register('numberDrink', { required: 'REQUIRED' })}
             label="Times per week"
+            type="number"
             name="numberDrink"
             placeholder="3"
             errors={errors}
@@ -56,11 +44,12 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         )}
       </div>
       <div className="items-center justify-between py-2 sm:flex">
-        <CheckBox name="smoke" label="Do you Smoke?" />
+        <QuestionCheckBox {...register("smoke")} name="smoke" label="Do you Smoke?" />
         {watchSmoke && (
-          <NumberInput
+          <SmallInput
             {...register('numberSmoke', { required: 'REQUIRED' })}
             label="Times per day"
+            type="number"
             name="numberSmoke"
             placeholder="12"
             errors={errors}
@@ -68,11 +57,12 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         )}
       </div>
       <div className="py-2 sm:flex">
-        <CheckBox name="exercise" label="Do you Exercise?" />
+        <QuestionCheckBox {...register("exercise")} name="exercise" label="Do you Exercise?" />
         {watchExercise && (
-          <NumberInput
+          <SmallInput
             {...register('numberExercise', { required: 'REQUIRED' })}
             label="Times per week"
+            type="number"
             name="numberExercise"
             placeholder="6"
             errors={errors}
@@ -109,16 +99,42 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         <HistoryCheckBox {...register("cancer")} name="cancer" label="Cancer" />
         <HistoryCheckBox {...register("anemia")} name="anemia" label="Anemia" />
       </div>
-      <TextArea {...register("medicalHistory")} rows={5} name="medicalHistory" label="Explaination of checked boxes" placeholder="If you checked a box, please explain the checked box below:"  />
+      <TextArea {...register("medicalHistory")} rows={5} name="medicalHistory" label="Explaination of checked boxes" placeholder="If you checked a box, please explain the checked box below:" />
+    </section>
+  )
+
+  const FamilyHistory = () => (
+    <section className="mb-7 text-gray-500 dark:text-gray-200">
+      <h3 className="mb-8 text-sm text-blue-700 dark:text-blue-500">
+        Check any box that applies.
+      </h3>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
+        {/* Left Side */}
+        <HistoryCheckBox {...register("stroke")} name="stroke" label="Stroke" />
+        <HistoryCheckBox {...register("heartAttack")} name="heartAttack" label="Heart Attack" />
+        <HistoryCheckBox {...register("heartDisease")} name="heartDisease" label="Heart Disease" />
+        <HistoryCheckBox {...register("highBP")} name="highBP" label="High Blood Pressure" />
+        <HistoryCheckBox {...register("diabetes")} name="diabetes" label="Diabetes" />
+        <HistoryCheckBox {...register("highCholesterol")} name="highCholesterol" label="High Cholesterol" />
+        <HistoryCheckBox {...register("osteoporosis")} name="osteoporosis" label="Osteoporosis" />
+        <HistoryCheckBox {...register("anemia")} name="anemia" label="Anemia" />
+
+        {/* Right Side */}
+        <HistoryCheckBox {...register("thyroidDisease")} name="thyroidDisease" label="Thyroid Disease" />
+        <HistoryCheckBox {...register("cancer")} name="cancer" label="Cancer" />
+        <div className='flex items-center gap-x-2 col-span-2 pt-4'>
+          <label className='py-2 nowrap whitespace-nowrap text-sm' htmlFor="other">Other (specify)</label>
+          <input className='singleLineInput mb-0' type="text" placeholder='Family disease not listed' />
+        </div>
+      </div>
     </section>
   )
 
   return (
     <form id="history-info"
       onSubmit={handleSubmit(onSubmit)}
-      className={`${
-        formStep === 1 ? 'mb-8 text-gray-700  dark:text-gray-200' : 'hidden'
-      }`}
+      className={`${formStep === 1 ? 'mb-8 text-gray-700  dark:text-gray-200' : 'hidden'
+        }`}
     >
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
         <h3 className="text-xl font-semibold sm:text-2xl">Social History</h3>
@@ -129,6 +145,10 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         <h3 className="text-xl font-semibold sm:text-2xl">Medical History</h3>
       </div>
       <MedicalHistory />
+      <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
+        <h3 className="text-xl font-semibold sm:text-2xl">Family History</h3>
+      </div>
+      <FamilyHistory />
       <button className="formSubmitBtn w-full" type="submit">
         Next
       </button>

@@ -4,12 +4,7 @@ import { TextArea } from "components/shared"
 
 
 const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({ defaultValues: formValues })
+  const { register, handleSubmit, control } = useForm({ defaultValues: formValues })
 
   const onSubmit = (data) => {
     console.log('data', data)
@@ -19,6 +14,7 @@ const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
       behavior: "smooth",
     })
   }
+
   return (
     <form id="detail-info" onSubmit={handleSubmit(onSubmit)} className={`${formStep === 2 ? "mb-8 text-gray-700  dark:text-gray-200" : "hidden"}`}>
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">

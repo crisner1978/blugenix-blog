@@ -1,10 +1,10 @@
 import React from 'react'
 
-const NumberInput = React.forwardRef(
-  ({ name, label, placeholder, onChange, onBlur, errors }, ref) => {
+const SmallInput = React.forwardRef(
+  ({ name, label, type, placeholder, onChange, onBlur, errors }, ref) => {
     return (
-    <div className="mb-3 relative sm:w-full text-right">
-      <label className="mr-4" htmlFor={name}>
+    <div className="relative sm:w-full text-right">
+      <label className="mr-4 text-sm" htmlFor={name}>
         {label}
       </label>
       <input
@@ -13,7 +13,7 @@ const NumberInput = React.forwardRef(
         onBlur={onBlur}
         ref={ref}
         className="numberInput"
-        type="number"
+        type={type}
         placeholder={placeholder}
       />
       {errors && <span className="formErrorMsg -top-5">{errors[name]?.message}</span>}
@@ -21,4 +21,4 @@ const NumberInput = React.forwardRef(
   )
 })
 
-export default NumberInput
+export default SmallInput
