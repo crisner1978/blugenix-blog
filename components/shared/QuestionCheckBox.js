@@ -1,7 +1,7 @@
 import React from 'react'
 
 const QuestionCheckBox = React.forwardRef(({ name, label, onChange, onBlur }, ref) => (
-    <div className="mb-2 flex w-full items-center py-2">
+    <div className="flex w-full items-center py-3">
       <label className="cursor-pointer text-sm" htmlFor={name}>
         {label}
       </label>

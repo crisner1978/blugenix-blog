@@ -15,7 +15,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
   const watchExercise = watch('exercise')
 
   const onSubmit = (data) => {
-    console.log('data', data)
+    setFormValues(data)
     nextFormStep()
     window.scrollTo({
       top: 0,
@@ -27,10 +27,10 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
 
   const SocialHistory = () => (
     <section className="mb-4 text-gray-500 dark:text-gray-200">
-      <h3 className="mb-8 text-sm text-blue-700 dark:text-blue-500">
+      <h3 className="mb-1 text-sm text-blue-700 dark:text-blue-500">
         Check any box that applies.
       </h3>
-      <div className="pb-2 sm:flex">
+      <div className="sm:flex items-center">
         <QuestionCheckBox {...register("drink")} name="drink" label="Do you Drink?" />
         {watchDriink && (
           <SmallInput
@@ -43,7 +43,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
           />
         )}
       </div>
-      <div className="items-center justify-between py-2 sm:flex">
+      <div className="items-center sm:flex">
         <QuestionCheckBox {...register("smoke")} name="smoke" label="Do you Smoke?" />
         {watchSmoke && (
           <SmallInput
@@ -56,7 +56,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
           />
         )}
       </div>
-      <div className="py-2 sm:flex">
+      <div className="sm:flex items-center">
         <QuestionCheckBox {...register("exercise")} name="exercise" label="Do you Exercise?" />
         {watchExercise && (
           <SmallInput
@@ -74,7 +74,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
 
   const MedicalHistory = () => (
     <section className="mb-7 text-gray-500 dark:text-gray-200">
-      <h3 className="mb-8 text-sm text-blue-700 dark:text-blue-500">
+      <h3 className="mb-4 text-sm text-blue-700 dark:text-blue-500">
         Diagnosed History of Disease: Do YOU currently have or ever had any of
         the following? If yes, check the box and explain below.
       </h3>
@@ -105,7 +105,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
 
   const FamilyHistory = () => (
     <section className="mb-7 text-gray-500 dark:text-gray-200">
-      <h3 className="mb-8 text-sm text-blue-700 dark:text-blue-500">
+      <h3 className="mb-4 text-sm text-blue-700 dark:text-blue-500">
         Check any box that applies.
       </h3>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
@@ -138,7 +138,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
     >
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
         <h3 className="text-xl font-semibold sm:text-2xl">Social History</h3>
-        <DateInput control={control} name="date" label="Date" />
+        <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
       </div>
       <SocialHistory />
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
@@ -157,58 +157,3 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
 }
 
 export default HistoryInfo
-
-{
-  /* <div className="items-center justify-between sm:flex">
-        <div className="mr-4 w-full">
-          <RequiredInput
-            name="name"
-            label="Patient Name"
-            type="text"
-            placeholder="Enter your full name"
-          />
-        </div>
-        <RequiredInput
-          name="dob"
-          label="DOB"
-          type="text"
-          placeholder="03/15/1970"
-        />
-      </div>
-      <RequiredInput
-        name="address"
-        label="Address"
-        type="text"
-        placeholder="12345 Some Street"
-      />
-      <div className="flex flex-wrap items-center justify-between sm:flex-nowrap">
-        <div className="w-full sm:mr-4">
-          <RequiredInput
-            name="city"
-            label="City"
-            type="text"
-            placeholder="Your City"
-          />
-        </div>
-      </div>
-      <div className="justify-between sm:flex">
-        <div className="w-full sm:ml-2">
-          <RequiredInput
-            name="email"
-            label="Email"
-            placeholder="email@provider.com"
-          />
-        </div>
-      </div>
-      <div className="items-center justify-between sm:flex">
-        <div className="mr-4 w-full">
-          <Input
-            name="physician"
-            label="Primary Doctor Name"
-            type="text"
-            placeholder="Enter your doctor's name"
-          />
-        </div>
-      </div>
-      <Input name="allergies" label="List any Allergies" type="text" placeholder="List any allergies to food, medication, etc. " /> */
-}

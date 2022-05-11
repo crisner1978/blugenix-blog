@@ -2,6 +2,7 @@ import { modalState } from 'atoms/modalAtom'
 import { Banner, FreeButton, PageDivider, Section } from 'components'
 import {
   DetailedInfo,
+  FemaleInfo,
   FormCard,
   FormWidget,
   HistoryInfo,
@@ -80,8 +81,8 @@ const FormsPage = () => {
                   formStep={formStep}
                 />
               )}
-              {formStep >= 4 && (
-                <FamilyInfo
+              {formStep >= 4 && formValues.sex === "female" && (
+                <FemaleInfo
                   setFormValues={setFormValues}
                   formValues={formValues}
                   nextFormStep={nextFormStep}

@@ -5,7 +5,7 @@ import {
   RequiredPhoneNumber,
   SelectField
 } from 'components/shared'
-import { category } from 'lib/helpers'
+import { category, sex } from 'lib/helpers'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import 'react-phone-number-input/style.css'
@@ -32,14 +32,28 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
             placeholder="Enter your full name"
           />
         </div>
-        <Input
-          {...register('dob', { required: 'REQUIRED' })}
-          errors={errors}
-          name="dob"
-          label="DOB"
-          type="text"
-          placeholder="03/15/1970"
-        />
+        <div className='flex w-full'>
+          <div className='w-full'>
+            <Input
+              {...register('dob', { required: 'REQUIRED' })}
+              errors={errors}
+              name="dob"
+              label="DOB"
+              type="text"
+              placeholder="03/15/1970"
+            />
+          </div>
+          <div className='w-full sm:w-40 ml-4'>
+            <SelectField
+              {...register("sex", { required: "REQUIRED" })}
+              errors={errors}
+              name="sex"
+              label="Sex"
+              items={sex}
+              placeholder="Male or Female"
+            />
+          </div>
+        </div>
       </div>
       <Input
         {...register('address', { required: 'REQUIRED' })}
@@ -60,22 +74,26 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
             placeholder="Your City"
           />
         </div>
-        <div className="flex w-full justify-between space-x-4">
-          <SelectField
-            {...register('state', { required: 'REQUIRED' })}
-            errors={errors}
-            name="state"
-            label="State"
-            items={category}
-          />
-          <Input
-            {...register('zipcode', { required: 'REQUIRED' })}
-            errors={errors}
-            name="zipcode"
-            label="Zip"
-            type="text"
-            placeholder="33408"
-          />
+        <div className="flex w-full">
+          <div className='w-full sm:w-40'>
+            <SelectField
+              {...register('state', { required: 'REQUIRED' })}
+              errors={errors}
+              name="state"
+              label="State"
+              items={category}
+            />
+          </div>
+          <div className='ml-4 w-full'>
+            <Input
+              {...register('zipcode', { required: 'REQUIRED' })}
+              errors={errors}
+              name="zipcode"
+              label="Zip"
+              type="text"
+              placeholder="33408"
+            />
+          </div>
         </div>
       </div>
       <div className="justify-between sm:flex">
@@ -154,7 +172,7 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
         <h3 className="text-xl font-semibold sm:text-2xl">
           Patient Information
         </h3>
-        <DateInput control={control} name="date" label="Date" />
+        <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
       </div>
       <PersonalInfo />
       <button className="formSubmitBtn w-full" type="submit">

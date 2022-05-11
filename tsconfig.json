@@ -16,6 +16,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/forms.js", "pages/forms.js", "pages/forms.js", "pages/forms.js", "components/medicalForm/index.js", "components/sections/HeroSection.js", "components/sections/HeroSection.js", "components/sections/HeroSection.jsx", "components/sections/HeroSection.jsx", "components/sections/HeroSection.jsx", "components/CommentForm.js", "components/layout/BlogHeader.js", "components/Categories.js", "components/PostWidget.js", "components/PostWidget.js", "components/PostWidget.js", "components/MyLink.js", "components/Dropdown.js", "services/queries.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/forms.js", "pages/forms.js", "pages/forms.js", "pages/forms.js", "components/medicalForm/index.js", "components/sections/HeroSection.js", "components/sections/HeroSection.js", "components/sections/HeroSection.jsx", "components/sections/HeroSection.jsx", "components/sections/HeroSection.jsx", "components/CommentForm.js", "components/layout/BlogHeader.js", "components/Categories.js", "components/PostWidget.js", "components/PostWidget.js", "components/PostWidget.js", "components/MyLink.js", "components/Dropdown.js", "services/queries.js", "components/shared/DateInput.js"],
   "exclude": ["node_modules"]
 }

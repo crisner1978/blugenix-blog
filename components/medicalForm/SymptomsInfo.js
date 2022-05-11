@@ -6,9 +6,15 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
   const { register, handleSubmit, control, formState: { errors } } = useForm({ defaultValues: formValues, mode: "onBlur" })
 
   const onSubmit = (data) => {
+    setFormValues(data)
     nextFormStep()
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
     console.log("symptom data", data)
   }
+
   return (
     <form id="history-info"
       onSubmit={handleSubmit(onSubmit)}
@@ -17,7 +23,7 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
     >
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
         <h3 className="text-xl font-semibold sm:text-2xl">Symptoms</h3>
-        <DateInput control={control} name="date" label="Date" />
+        <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
       </div>
       <section className="mb-7 text-gray-500 dark:text-gray-200">
         <div className="text-sm mb-8 text-blue-700 dark:text-blue-500">
@@ -50,7 +56,6 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
             <label className='py-2' htmlFor="other">Other?</label>
             <input className='singleLineInput mb-0' type="text" placeholder='symptom not listed' />
           </div>
-
         </div>
       </section>
       <button className="formSubmitBtn w-full" type="submit">

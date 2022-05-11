@@ -6,8 +6,10 @@ import { TextArea } from "components/shared"
 const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
   const { register, handleSubmit, control } = useForm({ defaultValues: formValues })
 
+  console.log("formValues DetailedInfo", formValues)
+
   const onSubmit = (data) => {
-    console.log('data', data)
+    setFormValues(data)
     nextFormStep()
     window.scrollTo({
       top: 0,
@@ -21,7 +23,7 @@ const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
         <h3 className="text-xl font-semibold sm:text-2xl">
           History Details
         </h3>
-        <DateInput control={control} name="date" label="Date" />
+        <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
       </div>
       <div className="mb-7 space-y-4">
         <TextArea {...register("hospitalizations")} name="hospitalizations" label="List ALL hospitalizations/surgeries that you've had performed:" rows={2} />
