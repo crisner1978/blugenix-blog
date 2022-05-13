@@ -46,21 +46,21 @@ const FemaleInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
           <HistoryCheckBox {...register("breastTenderness")} name="breastTenderness" label="Breast Tenderness" />
           <HistoryCheckBox {...register("waterRetention")} name="waterRetention" label="Water Retention" />
         </div>
-        
+
         <QuestionCheckBox {...register("hysterectomySurgery")} name="hysterectomySurgery" label="Have you ever had a Hysterectomy?" />
         {watchHysterectomy && (
-          
-          <div className='flex justify-between items-center'>
-          <DateInput control={control} name="hysterectomy" label="Date" />
-          <SelectField 
-           {...register('hysterectomyType', { required: 'REQUIRED' })}
-           errors={errors}
-           name="hysterectomyType"
-           label="Type"
-           items={[{optionName: "-Select-", value: ""},{optionName: "Partial", value:"partial"}, {optionName:"Full", value:"full"}]}
-          />
+
+          <div className='sm:flex space-y-2 sm:space-y-0  justify-between items-center'>
+            <DateInput control={control} name="hysterectomy" label="Date" />
+            <SelectField
+              {...register('hysterectomyType', { required: 'REQUIRED' })}
+              errors={errors}
+              name="hysterectomyType"
+              label="Type"
+              items={[{ optionName: "-Select-", value: "" }, { optionName: "Partial", value: "partial" }, { optionName: "Full", value: "full" }]}
+            />
           </div>
-          
+
         )}
       </section>
       <button className="formSubmitBtn w-full" type="submit">

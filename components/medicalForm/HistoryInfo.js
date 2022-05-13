@@ -38,7 +38,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
             label="Times per week"
             type="number"
             name="numberDrink"
-            placeholder="3"
+            placeholder="0"
             errors={errors}
           />
         )}
@@ -51,7 +51,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
             label="Times per day"
             type="number"
             name="numberSmoke"
-            placeholder="12"
+            placeholder="0"
             errors={errors}
           />
         )}
@@ -64,7 +64,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
             label="Times per week"
             type="number"
             name="numberExercise"
-            placeholder="6"
+            placeholder="0"
             errors={errors}
           />
         )}
