@@ -25,7 +25,7 @@ const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
         </h3>
         <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
       </div>
-      <div className="mb-7 space-y-4">
+      <div className="mb-7 space-y-2">
         <TextArea {...register("hospitalizations")} name="hospitalizations" label="List ALL hospitalizations/surgeries that you've had performed:" rows={2} />
         <TextArea {...register("medications")} name="medications" label="List ALL medications you are currently taking:" rows={2} />
         <TextArea {...register("vitamins")} name="vitamins" label="List ALL vitamin/mineral supplements(including OTC) you are taking:" rows={2} />

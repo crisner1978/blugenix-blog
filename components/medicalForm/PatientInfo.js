@@ -6,6 +6,7 @@ import {
   SelectField
 } from 'components/shared'
 import { category, sex } from 'lib/helpers'
+import moment from 'moment'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import 'react-phone-number-input/style.css'
@@ -135,7 +136,7 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
         </div>
         <PhoneNumber
           control={control}
-          name="doctorsphone"
+          name="doctorsPhone"
           label="Doctor's Phone"
           placeholder="561-555-1212"
         />
@@ -172,7 +173,7 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
         <h3 className="text-xl font-semibold sm:text-2xl">
           Patient Information
         </h3>
-        <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
+        <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" defaultValue={moment(new Date()).format("L")} />
       </div>
       <PersonalInfo />
       <button className="formSubmitBtn w-full" type="submit">

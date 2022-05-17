@@ -7,7 +7,7 @@ const SelectField = React.forwardRef(({ name, label, items, onChange, onBlur, er
         {label}
       </label>
       <select
-        className="singleLineInput py-[9px]"
+        className="singleLineInput w-32 py-[9px]"
         onChange={onChange}
         onBlur={onBlur}
         name={name}

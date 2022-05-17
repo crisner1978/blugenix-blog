@@ -32,7 +32,6 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
         </div>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
-
           <HistoryCheckBox {...register("decreasedDesire")} name="decreasedDesire" label="Decreased desire and ability to exercise" />
           <HistoryCheckBox {...register("decreasedEnergy")} name="decreasedEnergy" label="Decreased energy or endurance" />
           <HistoryCheckBox {...register("decreasedWellBeing")} name="decreasedWellBeing" label="Decreased sense of well being" />
@@ -53,8 +52,8 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
           <HistoryCheckBox {...register("pregnant")} name="pregnant" label="Currently pregnant" />
           <HistoryCheckBox {...register("hotFlashes")} name="hotFlashes" label="Hot flashes" />
           <div className='text-sm flex items-center space-x-2'>
-            <label className='py-2' htmlFor="other">Other?</label>
-            <input className='singleLineInput mb-0' type="text" placeholder='symptom not listed' />
+            <label className='py-2' htmlFor="otherSymptom">Other?</label>
+            <input {...register("otherSymptom")} className='singleLineInput mb-0' type="text" placeholder='symptom not listed' />
           </div>
         </div>
       </section>

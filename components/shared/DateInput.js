@@ -4,11 +4,11 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Controller } from "react-hook-form"
 
-const DateInput = ({ label, name, control, disabled, labelStyle }) => {
+const DateInput = ({ label, name, control, disabled, labelStyle, defaultValue }) => {
   const [date, setDate] = useState(new Date())
 
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col ">
       <label className={labelStyle} htmlFor={label}>
         {label}
       </label>
@@ -17,10 +17,10 @@ const DateInput = ({ label, name, control, disabled, labelStyle }) => {
         control={control}
         name={name}
         onChange={([selected]) => selected}
-        defaultValue={moment(date).format("L")}
+        defaultValue={defaultValue}
         render={({ field }) => (
           <DatePicker
-            className="ml-4 w-36 rounded-lg bg-gray-100 py-2 text-center  focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-600/50 dark:bg-black/20 
+            className="rounded-lg bg-gray-100 py-2 text-center focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-600/50 dark:bg-black/20 
             dark:text-gray-200 dark:placeholder:text-gray-400/60 font-deca outline-none"
             name={name}
             onChange={(date) => {
@@ -29,7 +29,7 @@ const DateInput = ({ label, name, control, disabled, labelStyle }) => {
             }}
             disabled={disabled}
             dateFormat="MMMM d, yyyy"
-            defaultValue={moment(field.value).format("L")}
+            defaultValue={defaultValue}
             placeholderText={moment(date).format("L")}
           />
         )}

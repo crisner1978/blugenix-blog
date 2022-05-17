@@ -79,7 +79,6 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         the following? If yes, check the box and explain below.
       </h3>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
-        {/* Left Side */}
         <HistoryCheckBox {...register("heart")} name="heart" label="Heart Attack/Heart Failure" />
         <HistoryCheckBox {...register("renal")} name="renal" label="Renal Disease" />
         <HistoryCheckBox {...register("ortho")} name="ortho" label="Orthopedic or muscle disorder including fracture or joint disorder" />
@@ -88,8 +87,6 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         <HistoryCheckBox {...register("back")} name="back" label="Back Problems/Injuries" />
         <HistoryCheckBox {...register("hypertension")} name="hypertension" label="Hypertension" />
         <HistoryCheckBox {...register("cholesterol")} name="cholesterol" label="Cholesterol Problems" />
-
-        {/* Right Side */}
         <HistoryCheckBox {...register("thyroid")} name="thyroid" label="Thyroid Problems" />
         <HistoryCheckBox {...register("liver")} name="liver" label="Liver Disease" />
         <HistoryCheckBox {...register("asthma")} name="asthma" label="Asthma/COPD" />
@@ -109,22 +106,19 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         Check any box that applies.
       </h3>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
-        {/* Left Side */}
-        <HistoryCheckBox {...register("stroke")} name="stroke" label="Stroke" />
-        <HistoryCheckBox {...register("heartAttack")} name="heartAttack" label="Heart Attack" />
-        <HistoryCheckBox {...register("heartDisease")} name="heartDisease" label="Heart Disease" />
-        <HistoryCheckBox {...register("highBP")} name="highBP" label="High Blood Pressure" />
-        <HistoryCheckBox {...register("diabetes")} name="diabetes" label="Diabetes" />
-        <HistoryCheckBox {...register("highCholesterol")} name="highCholesterol" label="High Cholesterol" />
-        <HistoryCheckBox {...register("osteoporosis")} name="osteoporosis" label="Osteoporosis" />
-        <HistoryCheckBox {...register("anemia")} name="anemia" label="Anemia" />
-
-        {/* Right Side */}
-        <HistoryCheckBox {...register("thyroidDisease")} name="thyroidDisease" label="Thyroid Disease" />
-        <HistoryCheckBox {...register("cancer")} name="cancer" label="Cancer" />
+        <HistoryCheckBox {...register("famStroke")} name="famStroke" label="Stroke" />
+        <HistoryCheckBox {...register("famHeartAttack")} name="famHeartAttack" label="Heart Attack" />
+        <HistoryCheckBox {...register("famHeartDisease")} name="famHeartDisease" label="Heart Disease" />
+        <HistoryCheckBox {...register("famHighBP")} name="famHighBP" label="High Blood Pressure" />
+        <HistoryCheckBox {...register("famDiabetes")} name="famDiabetes" label="Diabetes" />
+        <HistoryCheckBox {...register("famHighCholesterol")} name="famHighCholesterol" label="High Cholesterol" />
+        <HistoryCheckBox {...register("famOsteoporosis")} name="famOsteoporosis" label="Osteoporosis" />
+        <HistoryCheckBox {...register("famAnemia")} name="famAnemia" label="Anemia" />
+        <HistoryCheckBox {...register("famThyroidDisease")} name="famThyroidDisease" label="Thyroid Disease" />
+        <HistoryCheckBox {...register("famCancer")} name="famCancer" label="Cancer" />
         <div className='flex items-center gap-x-2 col-span-2 pt-4'>
-          <label className='py-2 nowrap whitespace-nowrap text-sm' htmlFor="other">Other (specify)</label>
-          <input className='singleLineInput mb-0' type="text" placeholder='Family disease not listed' />
+          <label className='py-2 nowrap whitespace-nowrap text-sm' htmlFor="otherHistory">Other (specify)</label>
+          <input {...register("famOtherHistory")} name="otherHistory" className='singleLineInput mb-0' type="text" placeholder='Family disease not listed' />
         </div>
       </div>
     </section>
