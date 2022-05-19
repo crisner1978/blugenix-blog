@@ -134,6 +134,7 @@ const FormsPage = () => {
               <div className="relative lg:sticky lg:top-[70px] lg:mb-8">
                 {/* Form Status Box */}
                 <FormWidget
+                  formValues={formValues}
                   setFormStep={setFormStep}
                   setFormStart={setFormStart}
                   setFormValues={setFormValues}

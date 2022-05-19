@@ -1,4 +1,5 @@
 const FormWidget = ({
+  formValues,
   setFormStart,
   setFormStep,
   setFormValues,
@@ -34,7 +35,7 @@ const FormWidget = ({
         <span className="animate-pulse text-blue-500 hover:animate-none hover:text-blue-600 ">
           Section {currStep + 1}{' '}
         </span>
-        of 8
+        of {formValues?.sex === "female" ? 7 : 6}
       </p>
       {currStep > 0 && (
         <button className="widgets" onClick={handleBack}>
