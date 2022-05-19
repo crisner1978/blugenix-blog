@@ -17,6 +17,7 @@ const Banner = ({ children }) => {
         placeholder='blur'
         blurDataURL='https://res.cloudinary.com/dtram9qiy/image/upload/v1651693992/my-upload/mdtxgdknkx3f00msnj1c.jpg'
         alt="Blugenix Hero"
+        priority
       />
       <Image
         src="https://res.cloudinary.com/dtram9qiy/image/upload/v1640819429/malamutes/heros/cellgradianttop.png"

@@ -29,7 +29,7 @@ const FemaleInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
       </div>
       <section className="mb-7 text-gray-500 dark:text-gray-200">
-        <div className="text-sm mb-8 text-blue-700 dark:text-blue-500">
+        <div className="text-sm mb-8 text-blue-600 dark:text-blue-500">
           <h3>Symptoms/Past Diagnosis: Please check all that apply.</h3>
         </div>
 

@@ -27,7 +27,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
 
   const SocialHistory = () => (
     <section className="mb-4 text-gray-500 dark:text-gray-200">
-      <h3 className="mb-1 text-sm text-blue-700 dark:text-blue-500">
+      <h3 className="mb-1 text-sm text-blue-600 dark:text-blue-500">
         Check any box that applies.
       </h3>
       <div className="sm:flex items-center">
@@ -74,7 +74,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
 
   const MedicalHistory = () => (
     <section className="mb-7 text-gray-500 dark:text-gray-200">
-      <h3 className="mb-4 text-sm text-blue-700 dark:text-blue-500">
+      <h3 className="mb-4 text-sm text-blue-600 dark:text-blue-500">
         Diagnosed History of Disease: Do YOU currently have or ever had any of
         the following? If yes, check the box and explain below.
       </h3>
@@ -102,7 +102,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
 
   const FamilyHistory = () => (
     <section className="mb-7 text-gray-500 dark:text-gray-200">
-      <h3 className="mb-4 text-sm text-blue-700 dark:text-blue-500">
+      <h3 className="mb-4 text-sm text-blue-600 dark:text-blue-500">
         Check any box that applies.
       </h3>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>

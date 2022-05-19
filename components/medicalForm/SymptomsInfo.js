@@ -26,7 +26,7 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
         <DateInput control={control} name="date" label="Date" disabled={true} labelStyle="dateFormLabel" />
       </div>
       <section className="mb-7 text-gray-500 dark:text-gray-200">
-        <div className="text-sm mb-8 text-blue-700 dark:text-blue-500">
+        <div className="text-sm mb-8 text-blue-600 dark:text-blue-500">
           <h3>Please check the symptoms you hope to have improved through hormone replacement therapy (HRT).</h3>
           <h2 className='uppercase font-semibold '>blugenix and its physicians do not treat patients for athletic performance or enhancement</h2>
         </div>

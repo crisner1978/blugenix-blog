@@ -1,11 +1,13 @@
 import { modalState } from 'atoms/modalAtom'
 import { Banner, FreeButton, PageDivider, Section } from 'components'
 import {
+  AgreementInfo,
   DetailedInfo,
   FemaleInfo,
   FormCard,
   FormWidget,
   HistoryInfo,
+  MedReleaseInfo,
   PatientInfo,
   SymptomsInfo
 } from 'components/medicalForm'
@@ -48,7 +50,7 @@ const FormsPage = () => {
         >
           <section className="col-span-1 lg:col-span-2">
 
-            <FormCard prevFormStep={prevFormStep} currStep={formStep}>
+            <FormCard prevFormStep={prevFormStep} currStep={formStep} formValues={formValues}>
               {formStep >= 0 && (
                 <PatientInfo
                   setFormValues={setFormValues}
@@ -81,13 +83,43 @@ const FormsPage = () => {
                   formStep={formStep}
                 />
               )}
-              {formStep >= 4 && formValues.sex === "female" && (
+              {formStep >= 4 && formValues?.sex === "female" ? (
                 <FemaleInfo
                   setFormValues={setFormValues}
                   formValues={formValues}
                   nextFormStep={nextFormStep}
                   formStep={formStep}
                 />
+              ) : (
+                <MedReleaseInfo
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
+              )}
+              {formStep >= 5 && formValues?.sex === "female" ? (
+                <MedReleaseInfo
+                setFormValues={setFormValues}
+                formValues={formValues}
+                nextFormStep={nextFormStep}
+                formStep={formStep}
+              />
+              ) : (
+                <AgreementInfo
+                setFormValues={setFormValues}
+                formValues={formValues}
+                nextFormStep={nextFormStep}
+                formStep={formStep}
+              />
+              )}
+              {formStep >= 6 && formValues?.sex === "female" && (
+                <AgreementInfo
+                setFormValues={setFormValues}
+                formValues={formValues}
+                nextFormStep={nextFormStep}
+                formStep={formStep}
+              />
               )}
             </FormCard>
           </section>

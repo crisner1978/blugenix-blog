@@ -18,7 +18,7 @@ const HeroSection = ({ hero, children }: Props) => {
         src={hero.heroImage.url}
         className="hero__image"
         placeholder='blur'
-        blurDataURL='https://res.cloudinary.com/dtram9qiy/image/upload/v1641961381/my-uploads/k01tmcqcnvqgwmjhvy7h.jpg'
+        blurDataURL={hero.heroImage.url}
         alt="Blugenix Hero"
       />
       <img

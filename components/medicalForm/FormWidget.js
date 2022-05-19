@@ -34,7 +34,7 @@ const FormWidget = ({
         <span className="animate-pulse text-blue-500 hover:animate-none hover:text-blue-600 ">
           Section {currStep + 1}{' '}
         </span>
-        of 5
+        of 8
       </p>
       {currStep > 0 && (
         <button className="widgets" onClick={handleBack}>
