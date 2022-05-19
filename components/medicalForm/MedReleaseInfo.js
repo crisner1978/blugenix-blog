@@ -47,7 +47,7 @@ const MedReleaseInfo = ({
           labelStyle="dateFormLabel"
         />
       </div>
-      <section className="mb-10 space-y-2">
+      <section className="mb-7 space-y-2">
         <div className="mb-8 space-y-8 text-sm text-gray-700 dark:text-gray-500">
           <p>
             Most patients are very anxious to hear the results of their lab
@@ -119,7 +119,7 @@ const MedReleaseInfo = ({
             label="Check the box to consent to the release of your medical information to yourself."
           />
           {watchRelease && (
-            <div className="col-span-2 flex items-center gap-x-2 pt-4">
+            <div className="col-span-2 flex items-center gap-x-2 pt-4 pb-2">
               <label
                 className="nowrap whitespace-nowrap py-2 text-sm"
                 htmlFor="otherHistory"

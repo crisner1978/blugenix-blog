@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { submitComment } from '../../services/queries'
+import SubmittedComment from './SubmittedComment'
 
 const CommentForm = ({ slug, id }) => {
   const [submitted, setSubmitted] = useState(false)
@@ -50,12 +51,7 @@ const CommentForm = ({ slug, id }) => {
   return (
     <>
       {submitted ? (
-        <div className="my-10 mx-auto flex max-w-2xl flex-col bg-gradient-to-tl from-blue-600 to-blue-900 p-10 text-white dark:from-blue-700/90 dark:to-blue-900/90 dark:text-gray-200">
-          <h3 className="text-3xl font-bold">
-            Thank you for submitting your comment!
-          </h3>
-          <p>Once approved, your comment will appear below!</p>
-        </div>
+        <SubmittedComment />
       ) : (
         <form onSubmit={onSubmit} className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg dark:bg-stone-800">
           <h3 className="text-sm text-blue-700 dark:text-blue-500">Enjoyed this article?</h3>

@@ -5,6 +5,7 @@ import {
   DetailedInfo,
   FemaleInfo,
   FormCard,
+  FormCompleted,
   FormWidget,
   HistoryInfo,
   MedReleaseInfo,
@@ -113,13 +114,18 @@ const FormsPage = () => {
                 formStep={formStep}
               />
               )}
-              {formStep >= 6 && formValues?.sex === "female" && (
+              {formStep >= 6 && formValues?.sex === "female" ? (
                 <AgreementInfo
                 setFormValues={setFormValues}
                 formValues={formValues}
                 nextFormStep={nextFormStep}
                 formStep={formStep}
               />
+              ) : formStep >= 6 && (
+                <FormCompleted />
+              )}
+              {formStep > 6 && formValues?.sex === "female" && (
+                <FormCompleted />
               )}
             </FormCard>
           </section>
