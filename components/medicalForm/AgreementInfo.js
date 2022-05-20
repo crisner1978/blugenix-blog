@@ -1,21 +1,40 @@
 import { DateInput, HistoryCheckBox } from 'components/shared'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useMutation } from 'react-query'
 
 const AgreementInfo = ({
   setFormValues,
+  setFormStart,
   formValues,
   nextFormStep,
   formStep,
 }) => {
   const { register, handleSubmit, watch, control } = useForm({ mode: "onBlur" })
   const watchTreatmentAgreement = watch("treatmentAgreement")
+  const router = useRouter()
+
+  const { mutateAsync } = useMutation((formValues) => fetch("/api/mhf", {
+    method: "POST",
+    body: JSON.stringify(formValues),
+  }),
+    {
+      onSuccess: async () => {
+        setFormValues(null)
+        setTimeout(() => {
+          router.push("/").then(() => setFormStart(false))
+
+        }, 5000)
+      }
+    })
 
   const onSubmit = (data) => {
     let info = {
       agreementInfo: data
     }
     setFormValues((oldFormValues) => [...oldFormValues, info])
+    mutateAsync(formValues)
     nextFormStep()
     window.scrollTo({
       top: 0,
@@ -27,13 +46,12 @@ const AgreementInfo = ({
     <form
       id="detail-info"
       onSubmit={handleSubmit(onSubmit)}
-      className={`${
-        formValues?.[0]?.patientInfo.sex === 'female' && formStep === 6
+      className={`${formValues?.[0]?.patientInfo.sex === 'female' && formStep === 6
           ? 'mb-8 text-gray-700  dark:text-gray-200'
           : formStep === 5
-          ? 'mb-8 text-gray-700  dark:text-gray-200'
-          : 'hidden'
-      }`}
+            ? 'mb-8 text-gray-700  dark:text-gray-200'
+            : 'hidden'
+        }`}
     >
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
         <h3 className="text-xl font-semibold sm:text-2xl">
@@ -119,7 +137,7 @@ const AgreementInfo = ({
             to your medical records, please complete the following below.
           </h3>
           <HistoryCheckBox
-            {...register('treatmentAgreement', {required: "Required"})}
+            {...register('treatmentAgreement', { required: "Required" })}
             name="treatmentAgreement"
             label="Confirm your treatment agreement to complete your Medical History."
           />

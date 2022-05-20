@@ -81,7 +81,7 @@ const FormsPage = () => {
                   formStep={formStep}
                 />
               )}
-              {formStep >= 4 && formValues[0]?.patientInfo.sex === "female" ? (
+              {formStep >= 4 && formValues?.[0]?.patientInfo.sex === "female" ? (
                 <FemaleInfo
                   setFormValues={setFormValues}
                   formValues={formValues}
@@ -96,7 +96,7 @@ const FormsPage = () => {
                   formStep={formStep}
                 />
               )}
-              {formStep >= 5 && formValues[0]?.patientInfo.sex === "female" ? (
+              {formStep >= 5 && formValues?.[0]?.patientInfo.sex === "female" ? (
                 <MedReleaseInfo
                   setFormValues={setFormValues}
                   formValues={formValues}
@@ -106,14 +106,16 @@ const FormsPage = () => {
               ) : (
                 <AgreementInfo
                   setFormValues={setFormValues}
+                  setFormStart={setFormStart}
                   formValues={formValues}
                   nextFormStep={nextFormStep}
                   formStep={formStep}
                 />
               )}
-              {formStep >= 6 && formValues[0]?.patientInfo.sex === "female" ? (
+              {formStep >= 6 && formValues?.[0]?.patientInfo.sex === "female" ? (
                 <AgreementInfo
                   setFormValues={setFormValues}
+                  setFormStart={setFormStart}
                   formValues={formValues}
                   nextFormStep={nextFormStep}
                   formStep={formStep}
@@ -121,7 +123,7 @@ const FormsPage = () => {
               ) : formStep >= 6 && (
                 <FormCompleted formValues={formValues} />
               )}
-              {formStep > 6 && formValues[0]?.patientInfo.sex === "female" && (
+              {formStep > 6 && formValues?.[0]?.patientInfo.sex === "female" && (
                 <FormCompleted formValues={formValues} />
               )}
             </FormCard>
@@ -144,7 +146,7 @@ const FormsPage = () => {
         </main>
       ) : (
         <>
-          <Banner component={<FreeButton
+          <Banner formStart={formStart} component={<FreeButton
             text="still have questions?"
             tw="md:ml-auto md:pr-5 mt-2 sm:mt-4 align mr-3 md:mr-0"
             onClick={() => setOpen(true)}

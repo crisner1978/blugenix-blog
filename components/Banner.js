@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInDown } from 'lib/animationVariants'
 
 
 // Hook up to GraphCMS and pass info
-const Banner = ({ component }) => {
+const Banner = ({ component, formStart }) => {
+  if(formStart) return null
+
   return (
     <section className="relative h-[400px] text-white dark:text-gray-100 sm:h-[450px] md:h-[500px] lg:h-[575px]">
       <Image

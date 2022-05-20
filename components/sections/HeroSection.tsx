@@ -20,6 +20,7 @@ const HeroSection = ({ hero, children }: Props) => {
         placeholder='blur'
         blurDataURL={hero.heroImage.url}
         alt="Blugenix Hero"
+        priority
       />
       <img
         src={hero.bgGradient1.url}
