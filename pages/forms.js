@@ -98,26 +98,26 @@ const FormsPage = () => {
               )}
               {formStep >= 5 && formValues[0]?.patientInfo.sex === "female" ? (
                 <MedReleaseInfo
-                setFormValues={setFormValues}
-                formValues={formValues}
-                nextFormStep={nextFormStep}
-                formStep={formStep}
-              />
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
               ) : (
                 <AgreementInfo
-                setFormValues={setFormValues}
-                formValues={formValues}
-                nextFormStep={nextFormStep}
-                formStep={formStep}
-              />
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
               )}
               {formStep >= 6 && formValues[0]?.patientInfo.sex === "female" ? (
                 <AgreementInfo
-                setFormValues={setFormValues}
-                formValues={formValues}
-                nextFormStep={nextFormStep}
-                formStep={formStep}
-              />
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  nextFormStep={nextFormStep}
+                  formStep={formStep}
+                />
               ) : formStep >= 6 && (
                 <FormCompleted formValues={formValues} />
               )}
@@ -144,13 +144,12 @@ const FormsPage = () => {
         </main>
       ) : (
         <>
-          <Banner>
-            <FreeButton
-              text="still have questions?"
-              tw="md:ml-auto md:pr-5 mt-2 sm:mt-4 align mr-3 md:mr-0"
-              onClick={() => setOpen(true)}
-            />
-          </Banner>
+          <Banner component={<FreeButton
+            text="still have questions?"
+            tw="md:ml-auto md:pr-5 mt-2 sm:mt-4 align mr-3 md:mr-0"
+            onClick={() => setOpen(true)}
+          />}
+          />
           <Section
             style_section="py-20 md:flex-row-reverse items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10"
             heading="Medical History Forms"

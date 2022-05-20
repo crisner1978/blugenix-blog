@@ -5,7 +5,7 @@ import { fadeInDown } from 'lib/animationVariants'
 
 
 // Hook up to GraphCMS and pass info
-const Banner = ({ children }) => {
+const Banner = ({ component }) => {
   return (
     <section className="relative h-[400px] text-white dark:text-gray-100 sm:h-[450px] md:h-[500px] lg:h-[575px]">
       <Image
@@ -49,7 +49,7 @@ const Banner = ({ children }) => {
           <h3>Be as thorough as possible when completing your medical history forms.</h3>
           <h3 className='mt-2'>Your forms and lab results will help our doctor create a roadmap for your therapy.</h3>
         </header>
-        {children}
+        {component && component}
       </motion.div>
     </section>
   )
