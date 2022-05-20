@@ -28,7 +28,7 @@ const AgreementInfo = ({
       id="detail-info"
       onSubmit={handleSubmit(onSubmit)}
       className={`${
-        formValues[0]?.patientInfo.sex === 'female' && formStep === 6
+        formValues?.[0]?.patientInfo.sex === 'female' && formStep === 6
           ? 'mb-8 text-gray-700  dark:text-gray-200'
           : formStep === 5
           ? 'mb-8 text-gray-700  dark:text-gray-200'

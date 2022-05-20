@@ -27,7 +27,7 @@ const MedReleaseInfo = ({
     <form
       id="detail-info"
       onSubmit={handleSubmit(onSubmit)}
-      className={`${formValues[0]?.patientInfo.sex === 'female' && formStep === 5
+      className={`${formValues?.[0]?.patientInfo.sex === 'female' && formStep === 5
         ? 'mb-8 text-gray-700  dark:text-gray-200'
         : formStep === 4
           ? 'mb-8 text-gray-700  dark:text-gray-200'
