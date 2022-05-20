@@ -81,7 +81,7 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
         <HistoryCheckBox {...register("heart")} name="heart" label="Heart Attack/Heart Failure" />
         <HistoryCheckBox {...register("renal")} name="renal" label="Renal Disease" />
-        <HistoryCheckBox {...register("ortho")} name="ortho" label="Orthopedic or muscle disorder including fracture or joint disorder" />
+        <HistoryCheckBox {...register("ortho")} name="ortho" label="Orthopedic/muscle disorder including fracture or joint disorder" />
         <HistoryCheckBox {...register("allergies")} name="allergies" label="Allergies to Medications" />
         <HistoryCheckBox {...register("anxiety")} name="anxiety" label="Anxiety" />
         <HistoryCheckBox {...register("back")} name="back" label="Back Problems/Injuries" />
