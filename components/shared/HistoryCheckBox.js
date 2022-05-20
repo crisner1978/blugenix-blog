@@ -1,8 +1,9 @@
 import React from 'react'
 
 const HistoryCheckBox = React.forwardRef(({ name, label, onBlur, onChange }, ref) => (
-  <div className="flex items-center">
+  <div className="flex items-center space-x-4">
     <input
+      
       ref={ref}
       onBlur={onBlur}
       onChange={onChange}
