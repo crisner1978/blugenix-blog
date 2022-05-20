@@ -46,7 +46,7 @@ const FormsPage = () => {
 
       {formStart ? (
         <main
-          className={`mx-auto pt-8 grid max-w-6xl grid-cols-1 px-10 lg:grid-cols-3 lg:gap-12 ${!formStart && '!max-w-3xl !grid-cols-1'
+          className={`mx-auto pt-8 grid max-w-6xl grid-cols-1 px-3 sm:px-10 lg:grid-cols-3 lg:gap-12 ${!formStart && '!max-w-3xl !grid-cols-1'
             }`}
         >
           <section className="col-span-1 lg:col-span-2">
@@ -192,7 +192,7 @@ const FormsPage = () => {
           </Section>
           <PageDivider />
           <section
-            className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 px-10 lg:grid-cols-3 lg:gap-12 ${!formStart && '!max-w-3xl !grid-cols-1'
+            className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 px-3 sm:px-10 lg:grid-cols-3 lg:gap-12 ${!formStart && '!max-w-3xl !grid-cols-1'
               }`}
           >
             <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg dark:bg-stone-800">

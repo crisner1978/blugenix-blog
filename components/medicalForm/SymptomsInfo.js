@@ -44,7 +44,7 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
           <HistoryCheckBox {...register("depression")} name="depression" label="Depression" />
           <HistoryCheckBox {...register("difficultySleeping")} name="difficultySleeping" label="Difficulty sleeping" />
           <HistoryCheckBox {...register("hotFlashes")} name="hotFlashes" label="Hot flashes" />
-          <HistoryCheckBox {...register("increasingFat")} name="increasingFat" label="Increased fat deposits around abdomen and/or thighs" />
+          <HistoryCheckBox {...register("increasingFat")} name="increasingFat" label="Increased fat deposits abdomen and/or thighs" />
           <HistoryCheckBox {...register("muscleLoss")} name="muscleLoss" label="Muscle Loss" />
           <HistoryCheckBox {...register("hairLoss")} name="hairLoss" label="Thinning or loss of hair" />
           <HistoryCheckBox {...register("migraines")} name="migraines" label="Headaches/Migraines" />
