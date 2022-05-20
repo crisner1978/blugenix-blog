@@ -3,19 +3,21 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 const FemaleInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
-  const { register, handleSubmit, watch, control, formState: { errors } } = useForm({ defaultValues: formValues, mode: "onBlur" })
+  const { register, handleSubmit, watch, control, formState: { errors } } = useForm({ mode: "onBlur" })
   const watchHysterectomy = watch("hysterectomySurgery")
   const watchMenstralChange = watch("menstralChange")
   const watchTubalLigation = watch("tubalLigation")
 
   const onSubmit = (data) => {
-    setFormValues(data)
+    let info = {
+      femaleInfo: data
+    }
+    setFormValues((oldFormValues) => [...oldFormValues, info])
     nextFormStep()
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     })
-    console.log("female info", data)
   }
 
   return (

@@ -8,14 +8,14 @@ const AgreementInfo = ({
   nextFormStep,
   formStep,
 }) => {
-  const { register, handleSubmit, watch, control } = useForm({
-    defaultValues: formValues,
-  })
+  const { register, handleSubmit, watch, control } = useForm({ mode: "onBlur" })
   const watchTreatmentAgreement = watch("treatmentAgreement")
-  console.log('formValues DetailedInfo', formValues)
 
   const onSubmit = (data) => {
-    setFormValues(data)
+    let info = {
+      agreementInfo: data
+    }
+    setFormValues((oldFormValues) => [...oldFormValues, info])
     nextFormStep()
     window.scrollTo({
       top: 0,
@@ -28,7 +28,7 @@ const AgreementInfo = ({
       id="detail-info"
       onSubmit={handleSubmit(onSubmit)}
       className={`${
-        formValues?.sex === 'female' && formStep === 6
+        formValues[0]?.patientInfo.sex === 'female' && formStep === 6
           ? 'mb-8 text-gray-700  dark:text-gray-200'
           : formStep === 5
           ? 'mb-8 text-gray-700  dark:text-gray-200'

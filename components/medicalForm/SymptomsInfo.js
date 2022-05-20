@@ -1,18 +1,20 @@
-import { DateInput, HistoryCheckBox, QuestionCheckBox, SmallInput } from 'components/shared'
+import { DateInput, HistoryCheckBox } from 'components/shared'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
 const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
-  const { register, handleSubmit, control, formState: { errors } } = useForm({ defaultValues: formValues, mode: "onBlur" })
+  const { register, handleSubmit, control, formState: { errors } } = useForm({ mode: "onBlur" })
 
   const onSubmit = (data) => {
-    setFormValues(data)
+    let info = {
+      symptomInfo: data
+    }
+    setFormValues((oldFormValues) => [...oldFormValues, info])
     nextFormStep()
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     })
-    console.log("symptom data", data)
   }
 
   return (

@@ -21,7 +21,7 @@ export function useFormStart() {
 
 const formDataState = atom({
   key: "formDataState",
-  default: null,
+  default: [],
   effects_UNSTABLE: [persistAtom]
 })
 

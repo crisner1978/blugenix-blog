@@ -23,9 +23,6 @@ const FormsPage = () => {
   const [formStart, setFormStart] = useFormStart()
   const [formValues, setFormValues] = useFormValueState()
 
-
-  console.log('formStep', formStep)
-
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
 
@@ -84,7 +81,7 @@ const FormsPage = () => {
                   formStep={formStep}
                 />
               )}
-              {formStep >= 4 && formValues?.sex === "female" ? (
+              {formStep >= 4 && formValues[0]?.patientInfo.sex === "female" ? (
                 <FemaleInfo
                   setFormValues={setFormValues}
                   formValues={formValues}
@@ -99,7 +96,7 @@ const FormsPage = () => {
                   formStep={formStep}
                 />
               )}
-              {formStep >= 5 && formValues?.sex === "female" ? (
+              {formStep >= 5 && formValues[0]?.patientInfo.sex === "female" ? (
                 <MedReleaseInfo
                 setFormValues={setFormValues}
                 formValues={formValues}
@@ -114,7 +111,7 @@ const FormsPage = () => {
                 formStep={formStep}
               />
               )}
-              {formStep >= 6 && formValues?.sex === "female" ? (
+              {formStep >= 6 && formValues[0]?.patientInfo.sex === "female" ? (
                 <AgreementInfo
                 setFormValues={setFormValues}
                 formValues={formValues}
@@ -122,10 +119,10 @@ const FormsPage = () => {
                 formStep={formStep}
               />
               ) : formStep >= 6 && (
-                <FormCompleted />
+                <FormCompleted formValues={formValues} />
               )}
-              {formStep > 6 && formValues?.sex === "female" && (
-                <FormCompleted />
+              {formStep > 6 && formValues[0]?.patientInfo.sex === "female" && (
+                <FormCompleted formValues={formValues} />
               )}
             </FormCard>
           </section>

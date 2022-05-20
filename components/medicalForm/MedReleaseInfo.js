@@ -1,4 +1,4 @@
-import { DateInput, HistoryCheckBox, TextArea } from 'components/shared'
+import { DateInput, HistoryCheckBox } from 'components/shared'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -8,14 +8,14 @@ const MedReleaseInfo = ({
   nextFormStep,
   formStep,
 }) => {
-  const { register, handleSubmit, watch, control } = useForm({
-    defaultValues: formValues,
-  })
+  const { register, handleSubmit, watch, control } = useForm({ mode: "onBlur" })
   const watchRelease = watch('medicalRelease')
-  console.log('formValues DetailedInfo', formValues)
 
   const onSubmit = (data) => {
-    setFormValues(data)
+    let info = {
+      medicalRelease: data
+    }
+    setFormValues((oldFormValues) => [...oldFormValues, info])
     nextFormStep()
     window.scrollTo({
       top: 0,
@@ -27,13 +27,12 @@ const MedReleaseInfo = ({
     <form
       id="detail-info"
       onSubmit={handleSubmit(onSubmit)}
-      className={`${
-        formValues?.sex === 'female' && formStep === 5
-          ? 'mb-8 text-gray-700  dark:text-gray-200'
-          : formStep === 4
+      className={`${formValues[0]?.patientInfo.sex === 'female' && formStep === 5
+        ? 'mb-8 text-gray-700  dark:text-gray-200'
+        : formStep === 4
           ? 'mb-8 text-gray-700  dark:text-gray-200'
           : 'hidden'
-      }`}
+        }`}
     >
       <div className="mb-8 items-center justify-between space-y-1 border-b pb-4 sm:flex sm:space-y-0">
         <h3 className="text-xl font-semibold sm:text-2xl">

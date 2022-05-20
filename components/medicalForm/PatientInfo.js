@@ -152,16 +152,16 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
   )
 
   const onSubmit = (data) => {
-    setFormValues(data)
+   let info = {
+     patientInfo: data
+   }
+    setFormValues([info])
     nextFormStep()
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     })
   }
-
-  console.log('Recoil formValues', formValues)
-  console.log('formStep', formStep)
 
   return (
     <form id='patient-info'

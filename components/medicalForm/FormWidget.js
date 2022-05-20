@@ -7,6 +7,7 @@ const FormWidget = ({
   currStep,
 }) => {
 
+  console.log("formValues", formValues)
   const handleReset = () => {
     setFormStart(false)
     setFormStep(0)
@@ -27,7 +28,7 @@ const FormWidget = ({
   return (
     <div className="mb-8 rounded-lg bg-white p-8 shadow-lg dark:bg-stone-800">
       <h3 className="mb-8 border-b pb-4 text-xl font-semibold">Form Status</h3>
-      {formValues?.sex === "female" && currStep + 1 < 8 ? (
+      {formValues[0]?.patientInfo.sex === "female" && currStep + 1 < 8 ? (
         <p
         className="mb-4 w-full transform cursor-pointer transition-colors duration-150 
         dark:text-gray-100"
@@ -36,7 +37,7 @@ const FormWidget = ({
         <span className="animate-pulse text-blue-500 hover:animate-none hover:text-blue-600 ">
           Section {currStep + 1}{' '}
         </span>
-        of {formValues?.sex === "female" ? 7 : 6}
+        of {formValues[0]?.patientInfo.sex === "female" ? 7 : 6}
       </p>
       ) : currStep + 1 < 7 ? (
         <p
@@ -47,7 +48,7 @@ const FormWidget = ({
         <span className="animate-pulse text-blue-500 hover:animate-none hover:text-blue-600 ">
           Section {currStep + 1}{' '}
         </span>
-        of {formValues?.sex === "female" ? 7 : 6}
+        of {formValues[0]?.patientInfo.sex === "female" ? 7 : 6}
       </p>
       ) : (
         null

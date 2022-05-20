@@ -4,12 +4,13 @@ import { TextArea } from "components/shared"
 
 
 const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
-  const { register, handleSubmit, control } = useForm({ defaultValues: formValues })
-
-  console.log("formValues DetailedInfo", formValues)
+  const { register, handleSubmit, control } = useForm({ mode: "onBlur" })
 
   const onSubmit = (data) => {
-    setFormValues(data)
+    let info = {
+      detailedInfo: data
+    }
+    setFormValues((oldFormValues) => [...oldFormValues, info])
     nextFormStep()
     window.scrollTo({
       top: 0,

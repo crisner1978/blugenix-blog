@@ -8,14 +8,17 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
     watch,
     control,
     formState: { errors },
-  } = useForm({ defaultValues: formValues, mode: 'onBlur' })
+  } = useForm({ mode: 'onBlur' })
 
   const watchSmoke = watch('smoke')
   const watchDriink = watch('drink')
   const watchExercise = watch('exercise')
 
   const onSubmit = (data) => {
-    setFormValues(data)
+    let info = {
+      historyInfo: data
+    }
+    setFormValues((oldFormValues) => [...oldFormValues, info])
     nextFormStep()
     window.scrollTo({
       top: 0,
