@@ -105,17 +105,20 @@ const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
       <h3 className="mb-4 text-sm text-blue-600 dark:text-blue-500">
         Check any box that applies.
       </h3>
-      <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-y-2 mb-8'>
         <HistoryCheckBox {...register("famStroke")} name="famStroke" label="Stroke" />
         <HistoryCheckBox {...register("famHeartAttack")} name="famHeartAttack" label="Heart Attack" />
-        <HistoryCheckBox {...register("famHeartDisease")} name="famHeartDisease" label="Heart Disease" />
+        <HistoryCheckBox {...register("famAnemia")} name="famAnemia" label="Anemia" />
+
         <HistoryCheckBox {...register("famHighBP")} name="famHighBP" label="High Blood Pressure" />
         <HistoryCheckBox {...register("famDiabetes")} name="famDiabetes" label="Diabetes" />
         <HistoryCheckBox {...register("famHighCholesterol")} name="famHighCholesterol" label="High Cholesterol" />
-        <HistoryCheckBox {...register("famOsteoporosis")} name="famOsteoporosis" label="Osteoporosis" />
-        <HistoryCheckBox {...register("famAnemia")} name="famAnemia" label="Anemia" />
-        <HistoryCheckBox {...register("famThyroidDisease")} name="famThyroidDisease" label="Thyroid Disease" />
         <HistoryCheckBox {...register("famCancer")} name="famCancer" label="Cancer" />
+        <HistoryCheckBox {...register("famHeartDisease")} name="famHeartDisease" label="Heart Disease" />
+
+        <HistoryCheckBox {...register("famThyroidDisease")} name="famThyroidDisease" label="Thyroid Disease" />
+        
+        <HistoryCheckBox {...register("famOsteoporosis")} name="famOsteoporosis" label="Osteoporosis" />
         <div className='flex items-center gap-x-2 col-span-2 pt-4'>
           <label className='py-2 nowrap whitespace-nowrap text-sm' htmlFor="otherHistory">Other (specify)</label>
           <input {...register("famOtherHistory")} name="otherHistory" className='singleLineInput mb-0' type="text" placeholder='Family disease not listed' />

@@ -3,7 +3,6 @@ import React from 'react'
 const HistoryCheckBox = React.forwardRef(({ name, label, onBlur, onChange }, ref) => (
   <div className="flex items-center">
     <input
-      className='mr-3'
       ref={ref}
       onBlur={onBlur}
       onChange={onChange}
