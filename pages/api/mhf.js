@@ -6,6 +6,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const body = JSON.parse(req.body)
     const { patientInfo, historyInfo, detailedInfo, symptomInfo, femaleInfo, medicalRelease, agreementInfo } = arrayToObject(body)
+    
     const maleHistory = `
     <h3>PATIENT INFORMATION</h3>\r\n
     Date: ${patientInfo.date}\r\n
