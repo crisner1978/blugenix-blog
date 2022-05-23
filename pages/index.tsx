@@ -21,20 +21,20 @@ interface Props {
   homeSections: [IHomeSection]
 }
 
-const fadeInUp = {
-  initial: {
-    y: -60,
-    opacity: 0
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.8, 
-      ease: "easeOut"
-    }
-  }
-}
+// const fadeInUp = {
+//   initial: {
+//     y: -60,
+//     opacity: 0
+//   },
+//   animate: {
+//     y: 0,
+//     opacity: 1,
+//     transition: {
+//       duration: 0.8, 
+//       ease: "easeOut"
+//     }
+//   }
+// }
 
 const Home = ({ hero, homeSections }: Props) => {
   const [open, setOpen] = useRecoilState(modalState)
