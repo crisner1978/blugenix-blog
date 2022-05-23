@@ -47,12 +47,11 @@ const SymptomsInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => 
           <HistoryCheckBox {...register("difficultySleeping")} name="difficultySleeping" label="Difficulty sleeping" />
           <HistoryCheckBox {...register("hotFlashes")} name="hotFlashes" label="Hot flashes" />
           <HistoryCheckBox {...register("increasingFat")} name="increasingFat" label="Increased fat deposits abdomen and/or thighs" />
-          <HistoryCheckBox {...register("muscleLoss")} name="muscleLoss" label="Muscle Loss" />
+          <HistoryCheckBox {...register("muscleLoss")} name="muscleLoss" label="Muscle loss" />
           <HistoryCheckBox {...register("hairLoss")} name="hairLoss" label="Thinning or loss of hair" />
           <HistoryCheckBox {...register("migraines")} name="migraines" label="Headaches/Migraines" />
           <HistoryCheckBox {...register("unexplainedWeightLoss")} name="unexplainedWeightLoss" label="Weight loss - unexplained" />
           <HistoryCheckBox {...register("pregnant")} name="pregnant" label="Currently pregnant" />
-          <HistoryCheckBox {...register("hotFlashes")} name="hotFlashes" label="Hot flashes" />
           <div className='text-sm flex items-center space-x-2'>
             <label className='py-2' htmlFor="otherSymptom">Other?</label>
             <input {...register("otherSymptom")} className='singleLineInput mb-0' type="text" placeholder='symptom not listed' />

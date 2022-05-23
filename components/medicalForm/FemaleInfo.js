@@ -36,19 +36,19 @@ const FemaleInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         </div>
 
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 mb-8'>
-          <HistoryCheckBox {...register("fibromyalgia")} name="fibromyalgia" label="Fibromyalgia" />
-          <HistoryCheckBox {...register("migraines")} name="migraines" label="Migraines" />
-          <HistoryCheckBox {...register("ovarianCysts")} name="ovarianCysts" label="Ovarian Cysts" />
-          <HistoryCheckBox {...register("osteoporosis/osteopenia")} name="osteoporosis/osteopenia" label="Osteoporosis/Osteopenia" />
-          <HistoryCheckBox {...register("uterineFibroids")} name="uterineFibroids" label="Uterine Fibroids" />
-          <HistoryCheckBox {...register("hotFlashes")} name="hotFlashes" label="Hot Flashes" />
-          <HistoryCheckBox {...register("nightSweats")} name="nightSweats" label="Night Sweats" />
-          <HistoryCheckBox {...register("vaginalDryness")} name="vaginalDryness" label="Vaginal Dryness" />
-          <HistoryCheckBox {...register("drySkin")} name="drySkin" label="Dry Skin" />
-          <HistoryCheckBox {...register("dryHair")} name="dryHair" label="Dry Hair" />
-          <HistoryCheckBox {...register("moodSwings")} name="moodSwings" label="Mood Swings" />
-          <HistoryCheckBox {...register("breastTenderness")} name="breastTenderness" label="Breast Tenderness" />
-          <HistoryCheckBox {...register("waterRetention")} name="waterRetention" label="Water Retention" />
+          <HistoryCheckBox {...register("femFibromyalgia")} name="femFibromyalgia" label="Fibromyalgia" />
+          <HistoryCheckBox {...register("femMigraines")} name="femMigraines" label="Migraines" />
+          <HistoryCheckBox {...register("femOvarianCysts")} name="femOvarianCysts" label="Ovarian Cysts" />
+          <HistoryCheckBox {...register("femOsteoporosis")} name="femOsteoporosis" label="Osteoporosis/Osteopenia" />
+          <HistoryCheckBox {...register("femUterineFibroids")} name="femUterineFibroids" label="Uterine Fibroids" />
+          <HistoryCheckBox {...register("femHotFlashes")} name="femHotFlashes" label="Hot Flashes" />
+          <HistoryCheckBox {...register("femNightSweats")} name="femNightSweats" label="Night Sweats" />
+          <HistoryCheckBox {...register("femVaginalDryness")} name="femVaginalDryness" label="Vaginal Dryness" />
+          <HistoryCheckBox {...register("femDrySkin")} name="femDrySkin" label="Dry Skin" />
+          <HistoryCheckBox {...register("femDryHair")} name="femDryHair" label="Dry Hair" />
+          <HistoryCheckBox {...register("femMoodSwings")} name="femMoodSwings" label="Mood Swings" />
+          <HistoryCheckBox {...register("femBreastTenderness")} name="femBreastTenderness" label="Breast Tenderness" />
+          <HistoryCheckBox {...register("femWaterRetention")} name="femWaterRetention" label="Water Retention" />
         </div>
 
         <QuestionCheckBox {...register("hysterectomySurgery")} name="hysterectomySurgery" label="Have you ever had a Hysterectomy?" />
@@ -70,7 +70,7 @@ const FemaleInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
         ) : (
           <>
             <div className='sm:flex items-end justify-between gap-x-4 col-span-2 pt-2'>
-              <p className='pb-4  text-sm' htmlFor="other">If no, give date of your last menstral period</p>
+              <p className='pb-4  text-sm' htmlFor="other">If no, give date of your last menstral period.</p>
               <DateInput control={control} name="menstralCycleDate" label="Date" labelStyle="formLabel" />
             </div>
             <div className='py-4'>
@@ -78,7 +78,7 @@ const FemaleInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
               {watchMenstralChange && (
                 <div className='space-y-2 col-span-2 pt-4'>
                   <label className='py-2 nowrap text-sm' htmlFor="menstralChangedHow">How has it changed? (Ex. Heavier, lighter, longer, shorter)</label>
-                  <input {...register("menstralChangedHow")} name="menstralChangedHow" className='singleLineInput mb-0' type="text" placeholder='Family disease not listed...' />
+                  <input {...register("menstralChangedHow")} name="menstralChangedHow" className='singleLineInput mb-0' type="text" placeholder='lighter, shorter, erratic...' />
                 </div>
               )}
             </div>
@@ -120,16 +120,18 @@ const FemaleInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {
             />
           </div>
         </div>
-        <div className="w-full">
-          <Input
-            {...register('currentlyPregnant')}
-            errors={errors}
-            name="currentlyPregnant"
-            type="text"
-            label="Are you currently pregnant?"
-            placeholder="yes or no..."
-          />
-        </div>
+        {!watchHysterectomy && (
+          <div className="w-full">
+            <Input
+              {...register('currentlyPregnant')}
+              errors={errors}
+              name="currentlyPregnant"
+              type="text"
+              label="Are you currently pregnant?"
+              placeholder="yes or no..."
+            />
+          </div>
+        )}
         <div className="w-full">
           <Input
             {...register('anythingElseFemale')}

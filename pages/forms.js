@@ -34,6 +34,7 @@ const FormsPage = () => {
     })
   }
 
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-slate-900">
       <Head>

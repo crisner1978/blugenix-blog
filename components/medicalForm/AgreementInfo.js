@@ -33,8 +33,7 @@ const AgreementInfo = ({
     let info = {
       agreementInfo: data
     }
-    setFormValues((oldFormValues) => [...oldFormValues, info])
-    mutateAsync(formValues)
+    mutateAsync(formValues.concat(info))
     nextFormStep()
     window.scrollTo({
       top: 0,
