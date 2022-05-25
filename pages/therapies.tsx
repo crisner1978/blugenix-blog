@@ -57,7 +57,7 @@ const TherapiesPage = ({ hero }: Props) => {
       ))} */}
 
       {/* <BenefitSection /> */}
-      <Wave theme={theme} />
+      
       {/* <MapSection
         component={
           <FreeButton
@@ -67,7 +67,7 @@ const TherapiesPage = ({ hero }: Props) => {
           />
         }
       /> */}
-      <PageDivider />
+      {/* <PageDivider /><Wave theme={theme} /> */}
       {/* <StepsSection setOpen={setOpen} /> */}
     </div>
   )
