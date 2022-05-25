@@ -23,7 +23,7 @@ const TherapiesPage = ({ hero }: Props) => {
         formStart={null}
         component={
           <FreeButton
-            text="Have questions?"
+            text="Start your therapy today"
             tw="md:ml-auto md:pr-5 mt-2 sm:mt-4 align mr-3 md:mr-0"
             onClick={() => setOpen(true)}
           />
