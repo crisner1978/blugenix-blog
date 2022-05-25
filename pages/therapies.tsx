@@ -1,6 +1,5 @@
 import { modalState } from 'atoms/modalAtom'
-import { Banner, FreeButton, PageDivider, Section, Wave } from 'components'
-import { HeroSection } from 'components/sections'
+import { Banner, FreeButton, PageDivider, Wave } from 'components'
 import { GetStaticProps } from 'next'
 import { useTheme } from 'next-themes'
 import React from 'react'
