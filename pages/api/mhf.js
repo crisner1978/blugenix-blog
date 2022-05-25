@@ -1,24 +1,12 @@
+import { arrayToObject } from "../../lib/helpers"
 import sgMail from "@sendgrid/mail"
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-const arrayToObject = (array) => {
-  let resultObj = {}
-
-  for (let i = 0; i < array.length; i++) {
-    let keys = Object.keys(array[i])
-    let values = Object.values(array[i])
-
-    for (let x in values) {
-      resultObj[keys] = values[x]
-    }
-  }
-  return resultObj
-}
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const body = JSON.parse(req.body)
-    const { patientInfo, historyInfo, detailedInfo, symptomInfo, femaleInfo, medicalRelease, agreementInfo } = arrayToObject(body)
+    const body = arrayToObject(JSON.parse(req.body))
+    const { patientInfo, historyInfo, detailedInfo, symptomInfo, femaleInfo, medicalRelease, agreementInfo } = body
     
     const maleHistory = `
     <h3>PATIENT INFORMATION</h3>\r\n

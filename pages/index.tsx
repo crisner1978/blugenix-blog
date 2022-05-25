@@ -21,28 +21,13 @@ interface Props {
   homeSections: [IHomeSection]
 }
 
-// const fadeInUp = {
-//   initial: {
-//     y: -60,
-//     opacity: 0
-//   },
-//   animate: {
-//     y: 0,
-//     opacity: 1,
-//     transition: {
-//       duration: 0.8, 
-//       ease: "easeOut"
-//     }
-//   }
-// }
-
 const Home = ({ hero, homeSections }: Props) => {
   const [open, setOpen] = useRecoilState(modalState)
   const router = useRouter()
   const { theme } = useTheme()
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-slate-900">
       <HeroSection hero={hero}>
         <FreeButton
           text="Speak with the team today"

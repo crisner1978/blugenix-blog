@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     await dbConnect()
 
     const body = req.body
-    let fullName = body.firstName + body.lastName
+    let fullName = body.firstName + " " + body.lastName
 
     const message = `
     Name: ${fullName}\r\n
@@ -42,16 +42,16 @@ export default async function handler(req, res) {
       html: thanks.replace(/\r\n/g, "<br>"),
     }]
 
-    // await mail.send(data).then(() => {
-    //   console.log("emails sent successfully");
-    // }).catch((error) => {
-    //   console.log(error);
-    // })
+    
 
 
     try {
       await Consult.create(body)
-      await sgMail.send(data)
+      await sgMail.send(data).then(() => {
+        console.log("emails sent successfully");
+      }).catch((error) => {
+        console.log(error);
+      })
 
       return res.status(200).json({ message: "Consult has been requested", success: true })
     } catch (error) {

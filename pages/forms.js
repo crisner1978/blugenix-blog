@@ -15,9 +15,10 @@ import {
 import Head from 'next/head'
 import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
+import { getFormHero, getFormSections } from 'services/queries'
 import { useFormStart, useFormValueState } from '../atoms/formAtom'
 
-const FormsPage = () => {
+const FormsPage = ({ data, formSections }) => {
   const [open, setOpen] = useRecoilState(modalState)
   const [formStep, setFormStep] = useState(0)
   const [formStart, setFormStart] = useFormStart()
@@ -34,7 +35,7 @@ const FormsPage = () => {
     })
   }
 
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-slate-900">
       <Head>
@@ -147,49 +148,54 @@ const FormsPage = () => {
         </main>
       ) : (
         <>
-          <Banner formStart={formStart} component={<FreeButton
-            text="still have questions?"
-            tw="md:ml-auto md:pr-5 mt-2 sm:mt-4 align mr-3 md:mr-0"
-            onClick={() => setOpen(true)}
-          />}
+          <Banner
+            data={data}
+            formStart={formStart}
+            component={<FreeButton
+              text="still have questions?"
+              tw="md:ml-auto md:pr-5 mt-2 sm:mt-4 align mr-3 md:mr-0"
+              onClick={() => setOpen(true)}
+            />}
           />
-          <Section
-            style_section="py-20 md:flex-row-reverse items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10"
-            heading="Medical History Forms"
-            subheading="In order to be considered for therapy, please complete the Medical
-            History Forms below."
-            para_1="These forms in conjunction with your laboratory
-            results will help our doctor determine your optimal therapy program."
-            para_2="Answer all questions to the best of your ability. If you have questions, please be sure to ask your counselor."
-            para_3={
-              <span>
-                All Private Health Information is protected by{' '}
-                <a
-                  className="text-blue-600"
-                  href="https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  HIPAA
-                </a>
-                .
-              </span>
-            }
-            component={
-              <FreeButton
-                text="Ready for Labs?"
-                tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
-                onClick={() => setOpen(true)}
-              />
-            }
-          >
-            <img
-              className="rounded-3xl"
-              src="https://res.cloudinary.com/dtram9qiy/image/upload/v1651754360/my-upload/fc97gfgls84msuhcgkg6.jpg"
-              alt="online medical history forms"
-            />
-          </Section>
-          <PageDivider />
+          {formSections.map((item, index) => (
+            <div key={item.id}>
+              <Section
+                style_section={`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-20 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
+                heading={item.heading}
+                subheading={item.subheading}
+                para_1={item.text}
+                para_2={item.text2}
+                para_3={
+                  <span>
+                    All Private Health Information is protected by{' '}
+                    <a
+                      className="text-blue-600"
+                      href="https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      HIPAA
+                    </a>
+                    .
+                  </span>
+                }
+                component={
+                  <FreeButton
+                    tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+                    text={item.buttonText}
+                    onClick={() => item.modal === true ? setOpen(true) : router.push("/therapies")}
+                  />
+                }
+              >
+                <img
+                  className="rounded-3xl"
+                  src={item.sectionImage.url}
+                  alt={item.heading}
+                />
+              </Section>
+              <PageDivider />
+            </div>
+          ))}
           <section
             className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 px-3 sm:px-10 lg:grid-cols-3 lg:gap-12 ${!formStart && '!max-w-3xl !grid-cols-1'
               }`}
@@ -210,28 +216,20 @@ const FormsPage = () => {
           </section>
         </>
       )}
-
-
-
-
-
-
-      {/* Start Form Here */}
-
-
-
-      {/* Flag if Female and provide extra form, if not proceed */}
-
-      {/* Submit Form */}
-
-      {/* Completed Screen */}
-
-      {/* Then push to Blog or Home Page */}
-
-      {/* Send to Api, Sendgrid Email, Store in MongoDB */}
-
     </div>
   )
 }
 
 export default FormsPage
+
+export const getStaticProps = async () => {
+  const hero = await getFormHero() || []
+  const formSections = await getFormSections() || []
+console.log("hero", hero)
+  return {
+    props: {
+      data: hero[0],
+      formSections
+    }
+  }
+}

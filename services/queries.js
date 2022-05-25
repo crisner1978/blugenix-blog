@@ -226,7 +226,7 @@ export const getFeaturedPosts = async () => {
 export const getHero = async () => {
   const query = gql`
     query GetHero {
-      heroes {
+      homeHeroes {
         about
         id
         info
@@ -246,7 +246,59 @@ export const getHero = async () => {
 
     const result = await request(graphqlAPI, query)
 
-    return result.heroes
+    return result.homeHeroes
+}
+
+export const getFormHero = async () => {
+  const query = gql`
+    query GetFormHero {
+      formHeroes {
+        about
+        bannerTitle
+        id
+        info
+        slogan
+        heroImage {
+          url
+        }
+        bgGradient1 {
+          url
+        }
+        bgGradient2 {
+          url
+        }
+      }
+    }
+    `
+    const result = await request(graphqlAPI, query)
+
+    return result.formHeroes
+}
+
+export const getTherapyHero = async () => {
+  const query = gql`
+    query GetTherapyHero {
+      therapyHeroes {
+        about
+        heroImage {
+          url
+        }
+        bgGradient1 {
+          url
+        }
+        bgGradient2 {
+          url
+        }
+        id
+        info
+        slogan
+        bannerTitle
+      }
+    }
+    `
+    const result = await request(graphqlAPI, query)
+
+    return result.therapyHeroes
 }
 
 export const getBenefitIcons = async () => {
@@ -289,4 +341,27 @@ export const getHomeSections = async () => {
   const results = await request(graphqlAPI, query)
 
   return results.homeSections
+}
+
+export const getFormSections = async () => {
+  const query = gql`
+    query MyQuery {
+      formSections {
+        buttonText
+        heading
+        id
+        modal
+        subheading
+        text
+        text2
+        sectionImage {
+          url
+        }
+      }
+    }
+  `
+
+  const results = await request(graphqlAPI, query)
+
+  return results.formSections
 }

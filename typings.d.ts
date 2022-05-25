@@ -47,6 +47,7 @@ export interface IPost {
 
 export interface IHero {
   slogan: string
+  bannerTitle?: string
   about: string
   info: string
   id: string

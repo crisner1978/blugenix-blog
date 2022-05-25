@@ -6,7 +6,7 @@ import { fadeInDown } from "../../lib/animationVariants"
 
 interface Props {
   children: ReactNode
-  hero: IHero
+  hero: IHero 
 }
 
 const HeroSection = ({ hero, children }: Props) => {
@@ -40,7 +40,8 @@ const HeroSection = ({ hero, children }: Props) => {
         className="absolute top-5 w-full text-center capitalize md:top-10 md:text-right lg:top-20 xl:top-32"
       >
         <header className="ml-auto max-w-3xl px-5 text-2xl sm:px-16 sm:text-4xl md:px-0 md:pr-5 md:text-5xl">
-          {hero.slogan}
+          <h1>{hero.slogan}</h1>
+          {hero.bannerTitle && <h2>{hero.bannerTitle}</h2>}
         </header>
         <header className="mx-auto mt-20 max-w-lg px-2 sm:mt-16 sm:px-10 sm:text-lg md:mx-0 md:ml-auto md:pr-5 md:text-xl">
           {hero.about}
