@@ -37,7 +37,7 @@ const FormsPage = ({ data, formSections }) => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-slate-900">
+    <div className="min-h-screen">
       <Head>
         <title>Blugenix Medical History Forms</title>
         <link rel="icon" href="/favicon.ico" />
@@ -225,7 +225,7 @@ export default FormsPage
 export const getStaticProps = async () => {
   const hero = await getFormHero() || []
   const formSections = await getFormSections() || []
-console.log("hero", hero)
+
   return {
     props: {
       data: hero[0],

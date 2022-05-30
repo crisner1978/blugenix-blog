@@ -17,8 +17,8 @@ const CategoryPage = ({ posts }: Props) => {
     }
 
     return (
-      <div className='bg-gradient-to-b from-white  to-gray-100 dark:from-black dark:to-slate-900 dark:text-gray-200 text-gray-700'>
-      <BlogHeader />
+      <div className='dark:text-gray-200 text-gray-700'>
+      <BlogHeader title="The Blog" therapy={false} />
       <div className="mx-auto max-w-5xl px-10 min-h-screen">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="col-span-1 lg:col-span-8">

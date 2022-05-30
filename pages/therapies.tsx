@@ -1,5 +1,6 @@
 import { modalState } from 'atoms/modalAtom'
-import { Banner, FreeButton, PageDivider, Wave } from 'components'
+import { Banner, FreeButton, PageDivider, Section, Wave } from 'components'
+import BlogHeader from 'components/layout/BlogHeader'
 import { GetStaticProps } from 'next'
 import { useTheme } from 'next-themes'
 import React from 'react'
@@ -16,7 +17,7 @@ const TherapiesPage = ({ hero }: Props) => {
   const { theme } = useTheme()
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-slate-900">
+    <div className="min-h-screen">
       <Banner
         data={hero}
         formStart={null}
@@ -28,36 +29,38 @@ const TherapiesPage = ({ hero }: Props) => {
           />
         }
       />
+      <BlogHeader title="The Therapies" therapy />
+      <Section
+        style_section={`md:flex-row pb-20 items-center flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
+        heading="Bio-Identical Hormone Therapy"
+        subheading="Blugenix utilizes bio-identical hormones with restorative medicine to treat people with low or unbalanced hormones."
+        para_1="It's a tested and proven method of beating many issues associated with aging from low libido, to decreased energy levels, muscle loss, and increased fat deposits."
+        para_2="Bio-identical hormone therapy is also called natural hormone therapy. Why? Because it uses only naturally-occurring hormones already found in your body. Age and other factors can lead these natural hormones to decrease. This leads to the problems mentioned above."
+        para_3="But, you can turn back the clock to the way you felt in your 20's with Blugenix."
+        component={
+          <FreeButton
+            tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+            text="Let's get started"
+            onClick={() => setOpen(true)}
+          />
+        }
+      >
+        <img
+          className="rounded-3xl"
+          src="https://res.cloudinary.com/dtram9qiy/image/upload/v1653755506/my-upload/njtqswdds7sxuddazjlu.jpg"
+          alt=""
+        />
+      </Section>
+      <PageDivider />
 
       {/* {homeSections.map((item, index) => (
         <div key={item.id}>
-          <Section
-            style_section={`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-20 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
-            heading={item.heading}
-            subheading={item.subheading}
-            para_1={item.text}
-            para_2={item.text2}
-            para_3={item.text3}
-            component={
-              <FreeButton
-                tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
-                text={item.buttonText}
-                onClick={() => item.modal === true ?  setOpen(true) : router.push("/therapies")}
-              />
-            }
-          >
-            <img
-              className="rounded-3xl"
-              src={item.sectionImage.url}
-              alt={item.heading}
-            />
-          </Section>
-          <PageDivider />
+          
         </div>
       ))} */}
 
       {/* <BenefitSection /> */}
-      
+
       {/* <MapSection
         component={
           <FreeButton

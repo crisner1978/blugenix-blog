@@ -15,14 +15,14 @@ interface Props {
 
 const BlogPage = ({ posts }: Props) => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white  to-gray-100 text-gray-700 dark:from-black dark:to-slate-900 dark:text-gray-200">
+    <div className="min-h-screen">
       <Head>
         <title>Blugenix Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Featured Posts */}
       <FeaturedPosts />
-      <main className="mx-auto max-w-5xl grid grid-cols-1 lg:gap-12 px-10 lg:grid-cols-12">
+      <main className="mx-auto max-w-6xl grid grid-cols-1 lg:gap-12 px-10 lg:grid-cols-12">
         
         {/* Main Feed */}
         <section className="col-span-1 lg:col-span-8">

@@ -2,14 +2,16 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ReactNode } from 'react'
 import { IHero } from 'typings'
-import { fadeInDown } from "../../lib/animationVariants"
+import { fadeInDown } from '../../lib/animationVariants'
 
 interface Props {
   children: ReactNode
-  hero: IHero 
+  hero: IHero
 }
 
 const HeroSection = ({ hero, children }: Props) => {
+  if(!hero) return null
+  
   return (
     <section className="relative h-[400px] text-white dark:text-gray-100 sm:h-[450px] md:h-[500px] lg:h-[575px] xl:h-[650px]">
       <Image
@@ -17,7 +19,7 @@ const HeroSection = ({ hero, children }: Props) => {
         objectFit="cover"
         src={hero.heroImage.url}
         className="hero__image"
-        placeholder='blur'
+        placeholder="blur"
         blurDataURL={hero.heroImage.url}
         alt="Blugenix Hero"
         priority
@@ -37,19 +39,21 @@ const HeroSection = ({ hero, children }: Props) => {
         variants={fadeInDown}
         initial="hidden"
         animate="visible"
-        className="absolute top-5 w-full text-center capitalize md:top-10 md:text-right lg:top-20 xl:top-32"
+        className="absolute top-5 mx-auto w-full text-center md:top-10 md:text-right lg:top-20 xl:top-32"
       >
-        <header className="ml-auto max-w-3xl px-5 text-2xl sm:px-16 sm:text-4xl md:px-0 md:pr-5 md:text-5xl">
-          <h1>{hero.slogan}</h1>
-          {hero.bannerTitle && <h2>{hero.bannerTitle}</h2>}
-        </header>
-        <header className="mx-auto mt-20 max-w-lg px-2 sm:mt-16 sm:px-10 sm:text-lg md:mx-0 md:ml-auto md:pr-5 md:text-xl">
-          {hero.about}
-        </header>
-        <header className="mx-auto mt-2 max-w-lg px-2 sm:mt-4 sm:px-10 sm:text-lg md:mx-0 md:ml-auto md:px-0 md:pr-5 md:text-xl">
-          {hero.info}
-        </header>
-        {children}
+        <div className='mx-auto max-w-8xl'>
+          <header className="ml-auto max-w-3xl px-5 text-2xl sm:px-16 sm:text-4xl md:px-0 md:pr-5 md:text-5xl">
+            <h1>{hero.slogan}</h1>
+            {hero.bannerTitle && <h2>{hero.bannerTitle}</h2>}
+          </header>
+          <header className="mx-auto mt-20 max-w-lg px-2 sm:mt-16 sm:px-10 sm:text-lg md:mx-0 md:ml-auto md:pr-5 md:text-xl">
+            {hero.about}
+          </header>
+          <header className="mx-auto mt-2 max-w-lg px-2 sm:mt-4 sm:px-10 sm:text-lg md:mx-0 md:ml-auto md:px-0 md:pr-5 md:text-xl">
+            {hero.info}
+          </header>
+          {children}
+        </div>
       </motion.div>
     </section>
   )

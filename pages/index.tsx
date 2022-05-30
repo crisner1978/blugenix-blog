@@ -27,7 +27,7 @@ const Home = ({ hero, homeSections }: Props) => {
   const { theme } = useTheme()
 
   return (
-    <div className="overflow-hidden min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-slate-900">
+    <div className="overflow-hidden min-h-screen">
       <HeroSection hero={hero}>
         <FreeButton
           text="Speak with the team today"
