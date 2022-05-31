@@ -73,6 +73,36 @@ export const getPostDetails = async (slug) => {
   return results.post;
 }
 
+export const getTherapyDetails = async (slug) => {
+  const query = gql`
+  query GetTherapyDetails($slug: String!) {
+    therapySection(where: {slug: $slug}) {
+      createdAt
+      buttonText
+      heading
+      id
+      modal
+      slug
+      subheading
+      text
+      text2
+      text3
+      sectionImage {
+        url
+      }
+      therapy {
+        name
+        slug
+      }
+    }
+  }
+  `
+  const results = await request(graphqlAPI, query, { slug })
+
+  return results.therapySection;
+}
+
+
 export const getRecentPosts = async () => {
   const query = gql`
     query GetPostDetails() {
@@ -259,9 +289,9 @@ export const getHero = async () => {
     }
     `
 
-    const result = await request(graphqlAPI, query)
+  const result = await request(graphqlAPI, query)
 
-    return result.homeHeroes
+  return result.homeHeroes
 }
 
 export const getFormHero = async () => {
@@ -285,9 +315,9 @@ export const getFormHero = async () => {
       }
     }
     `
-    const result = await request(graphqlAPI, query)
+  const result = await request(graphqlAPI, query)
 
-    return result.formHeroes
+  return result.formHeroes
 }
 
 export const getTherapyHero = async () => {
@@ -311,9 +341,9 @@ export const getTherapyHero = async () => {
       }
     }
     `
-    const result = await request(graphqlAPI, query)
+  const result = await request(graphqlAPI, query)
 
-    return result.therapyHeroes
+  return result.therapyHeroes
 }
 
 export const getBenefitIcons = async () => {

@@ -1,22 +1,27 @@
 import { modalState } from 'atoms/modalAtom'
-import { Banner, FreeButton, PageDivider, Section, Wave } from 'components'
+import { Banner, FreeButton, PageDivider, Section } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
-import { GetStaticProps } from 'next'
-import { useTheme } from 'next-themes'
-import React from 'react'
+import React, { useRef } from 'react'
+import { useQuery } from 'react-query'
 import { useRecoilState } from 'recoil'
-import { getTherapyHero } from 'services/queries'
-import { IHero } from 'typings'
+import { getTherapyDetails, getTherapyHero } from 'services/queries'
+import { useTherapyState } from '../atoms/therapyAtom'
 
-interface Props {
-  hero: IHero
-}
-
-const TherapiesPage = ({ hero }: Props) => {
+const TherapiesPage = ({ hero }) => {
   const [open, setOpen] = useRecoilState(modalState)
-  const { theme } = useTheme()
+  const [therapyValue, setTherapyValue] = useTherapyState()
+  const therapyRef = useRef(null)
 
+  const { data } = useQuery(['therapyDetails', therapyValue], () => {
+    return therapyValue && getTherapyDetails(therapyValue)
+  })
+
+  const handleClick = (slug) => {
+    therapyRef.current.scrollIntoView({ behavior: 'smooth' })
+    setTherapyValue(slug)
+  }
+  console.log('data', data)
   return (
     <div className="min-h-screen">
       <Banner
@@ -30,20 +35,22 @@ const TherapiesPage = ({ hero }: Props) => {
           />
         }
       />
-      <BlogHeader title="The Therapies" therapy={true} />
-      <main className='max-w-6xl mx-auto px-10 top-20'>
+      <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
+      <main className="top-20 mx-auto max-w-6xl px-10">
         <Section
           style_section={`md:flex-row pb-20 items-center flex flex-col-reverse max-w-6xl md:gap-12`}
-          heading="Bio-Identical Hormone Therapy"
-          subheading="Blugenix utilizes bio-identical hormones with restorative medicine to treat people with low or unbalanced hormones."
-          para_1="It's a tested and proven method of beating many issues associated with aging from low libido, to decreased energy levels, muscle loss, and increased fat deposits."
-          para_2="Bio-identical hormone therapy is also called natural hormone therapy. Why? Because it uses only naturally-occurring hormones already found in your body. Age and other factors can lead these natural hormones to decrease. This leads to the problems mentioned above."
-          para_3="But, you can turn back the clock to the way you felt in your 20's with Blugenix."
+          heading={data?.heading}
+          subheading={data?.subheading}
+          para_1={data?.text}
+          para_2={data?.text2}
+          para_3={data?.text3}
           component={
             <FreeButton
               tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
-              text="Let's get started"
-              onClick={() => setOpen(true)}
+              text={data?.buttonText}
+              onClick={() =>
+                data?.modal === true ? setOpen(true) : router.push('/forms')
+              }
             />
           }
         >
@@ -54,10 +61,9 @@ const TherapiesPage = ({ hero }: Props) => {
           />
         </Section>
         <PageDivider />
-        <div className='mt-8'>
-          <Categories therapy={true} />
+        <div className="mt-8">
+          <Categories therapy={true} handleClick={handleClick} />
         </div>
-        
       </main>
 
       {/* {homeSections.map((item, index) => (
@@ -85,7 +91,7 @@ const TherapiesPage = ({ hero }: Props) => {
 
 export default TherapiesPage
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps = async () => {
   const hero = (await getTherapyHero()) || []
 
   return {

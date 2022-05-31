@@ -23,6 +23,7 @@ export interface Post {
 export interface Category {
   name: string
   slug: string
+  id: string
 }
 
 export interface IPost {

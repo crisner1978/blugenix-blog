@@ -18,7 +18,7 @@ const CategoryPage = ({ posts }: Props) => {
 
     return (
       <div className='dark:text-gray-200 text-gray-700'>
-      <BlogHeader title="The Blog" therapy={undefined} />
+      <BlogHeader  />
       <div className="mx-auto max-w-5xl px-10 min-h-screen">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="col-span-1 lg:col-span-8">
@@ -28,7 +28,7 @@ const CategoryPage = ({ posts }: Props) => {
           </div>
           <div className="col-span-1 lg:col-span-4">
             <div className="relative lg:sticky lg:top-[70px] lg:mb-8">
-              <Categories therapy={undefined} />
+              <Categories therapy={undefined} handleClick={undefined} />
             </div>
           </div>
         </div>
