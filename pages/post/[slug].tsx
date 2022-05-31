@@ -26,7 +26,7 @@ const PostPage = ({ post }: Props) => {
 
   return (
     <div className='dark:text-gray-200 text-gray-700'>
-    <BlogHeader title="The Blog" therapy={false} />
+    <BlogHeader title="The Blog" therapy={undefined} />
     <div className="mx-auto max-w-5xl px-10 min-h-screen">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
         <div className="col-span-1 lg:col-span-8">
@@ -38,7 +38,7 @@ const PostPage = ({ post }: Props) => {
         <div className="col-span-1 lg:col-span-4">
           <div className="relative lg:sticky lg:top-[70px] lg:mb-8">
             <PostWidget categories={post.categories.map((category) => category.slug)} slug={post.slug} />
-            <Categories />
+            <Categories therapy={undefined} />
           </div>
         </div>
       </div>

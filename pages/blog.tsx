@@ -37,7 +37,7 @@ const BlogPage = ({ posts }: Props) => {
         <div className="col-span-1 lg:col-span-4">
           <div className="relative lg:sticky lg:top-[70px] lg:mb-8">
             <PostWidget categories={undefined} slug={undefined} />
-            <Categories />
+            <Categories therapy={undefined} />
           </div>
         </div>
       </main>

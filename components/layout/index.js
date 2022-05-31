@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {pathname === '/blog' && <BlogHeader title="The Blog" therapy={false} />}
+      {pathname === '/blog' && <BlogHeader title="The Blog" therapy={undefined} />}
       {children}
       <Footer />
       <Modal />

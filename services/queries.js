@@ -132,6 +132,21 @@ export const getCategories = async () => {
   return results.categories
 }
 
+export const getTherapies = async () => {
+  const query = gql`
+    query GetTherapies {
+      therapies {
+        name
+        slug
+        id
+      }
+    }
+  `
+  const results = await request(graphqlAPI, query)
+
+  return results.therapies
+}
+
 export const submitComment = async (obj) => {
   const result = await fetch('/api/comments', {
     method: "POST",
