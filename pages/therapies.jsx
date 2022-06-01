@@ -3,7 +3,7 @@ import { Banner, FreeButton, PageDivider, Section } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
 import Loader from 'components/Loader'
-import { BenefitSection } from "components/sections"
+import { BenefitSection } from 'components/sections'
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
 import { useQuery } from 'react-query'
@@ -25,7 +25,7 @@ const TherapiesPage = ({ hero }) => {
     therapyRef.current.scrollIntoView({ behavior: 'smooth' })
     setTherapyValue(slug)
   }
-
+  console.log('data', data)
   return (
     <div className="min-h-screen">
       <Banner
@@ -42,7 +42,7 @@ const TherapiesPage = ({ hero }) => {
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
       <main className="">
         {!data ? (
-          <div className='my-80'>
+          <div className="my-80">
             <Loader />
           </div>
         ) : (
@@ -73,15 +73,10 @@ const TherapiesPage = ({ hero }) => {
 
         <PageDivider />
         {isSuccess && <BenefitSection therapyValue={therapyValue} />}
-        <div className="pt-12 px-10 grid sm:grid-cols-2 sm:gap-12 max-w-6xl mx-auto">
-          <div className="w-auto">
-            <Categories therapy={true} handleClick={handleClick} />
-          </div>
-          <div className="w-full">
-            <Categories therapy={true} handleClick={handleClick} />
-          </div>
+        <div className="mx-auto grid max-w-6xl px-10 pt-12">
+          <Categories therapy={true} handleClick={handleClick} />
         </div>
-      </main>      
+      </main>
     </div>
   )
 }

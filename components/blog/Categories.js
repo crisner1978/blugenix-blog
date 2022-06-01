@@ -19,7 +19,7 @@ const Categories = ({ therapy, handleClick }) => {
       <ul className='list-style-none'>
         {data?.map(({ slug, name, id }) =>
           therapy ? (
-            <li onClick={() => handleClick(slug)} key={id} >
+            <li onClick={() => handleClick(slug)} key={id}>
               <span className="widgets">
                 {name}
               </span>
