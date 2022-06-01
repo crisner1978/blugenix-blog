@@ -13,9 +13,11 @@ const TherapiesPage = ({ hero }) => {
   const [therapyValue, setTherapyValue] = useTherapyState()
   const therapyRef = useRef(null)
 
-  const { data } = useQuery(['therapyDetails', therapyValue], () => {
+  const { data, isLoading } = useQuery(['therapyDetails', therapyValue], () => {
     return therapyValue && getTherapyDetails(therapyValue)
   })
+
+  
 
   const handleClick = (slug) => {
     therapyRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -55,8 +57,8 @@ const TherapiesPage = ({ hero }) => {
           }
         >
           <img
-            className="rounded-3xl"
-            src="https://res.cloudinary.com/dtram9qiy/image/upload/v1653755506/my-upload/njtqswdds7sxuddazjlu.jpg"
+            className="rounded-3xl shadow-lg"
+            src={data?.sectionImage.url}
             alt=""
           />
         </Section>
