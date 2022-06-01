@@ -2,13 +2,14 @@ import { modalState } from 'atoms/modalAtom'
 import { Banner, FreeButton, PageDivider, Section } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
+import Loader from 'components/Loader'
+import { BenefitSection } from "components/sections"
+import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
 import { useQuery } from 'react-query'
 import { useRecoilState } from 'recoil'
-import Loader from 'components/Loader'
 import { getTherapyDetails, getTherapyHero } from 'services/queries'
 import { useTherapyState } from '../atoms/therapyAtom'
-import { useRouter } from 'next/router'
 
 const TherapiesPage = ({ hero }) => {
   const [open, setOpen] = useRecoilState(modalState)
@@ -16,7 +17,7 @@ const TherapiesPage = ({ hero }) => {
   const therapyRef = useRef(null)
   const router = useRouter()
 
-  const { data } = useQuery(['therapyDetails', therapyValue], () => {
+  const { data, isSuccess } = useQuery(['therapyDetails', therapyValue], () => {
     return therapyValue && getTherapyDetails(therapyValue)
   })
 
@@ -24,7 +25,7 @@ const TherapiesPage = ({ hero }) => {
     therapyRef.current.scrollIntoView({ behavior: 'smooth' })
     setTherapyValue(slug)
   }
-  console.log('data', data)
+
   return (
     <div className="min-h-screen">
       <Banner
@@ -39,14 +40,14 @@ const TherapiesPage = ({ hero }) => {
         }
       />
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
-      <main className="mx-auto max-w-6xl px-10">
+      <main className="">
         {!data ? (
           <div className='my-80'>
             <Loader />
           </div>
         ) : (
           <Section
-            style_section={`md:flex-row pb-20 items-center flex flex-col-reverse max-w-6xl md:gap-12`}
+            style_section={`md:flex-row pb-12 px-10 items-center flex flex-col-reverse max-w-6xl mx-auto md:gap-12`}
             heading={data?.heading}
             subheading={data?.subheading}
             para_1={data?.text}
@@ -71,30 +72,16 @@ const TherapiesPage = ({ hero }) => {
         )}
 
         <PageDivider />
-        <div className="mt-8">
-          <Categories therapy={true} handleClick={handleClick} />
+        {isSuccess && <BenefitSection therapyValue={therapyValue} />}
+        <div className="pt-12 px-10 grid sm:grid-cols-2 sm:gap-12 max-w-6xl mx-auto">
+          <div className="w-auto">
+            <Categories therapy={true} handleClick={handleClick} />
+          </div>
+          <div className="w-full">
+            <Categories therapy={true} handleClick={handleClick} />
+          </div>
         </div>
-      </main>
-
-      {/* {homeSections.map((item, index) => (
-        <div key={item.id}>
-          
-        </div>
-      ))} */}
-
-      {/* <BenefitSection /> */}
-
-      {/* <MapSection
-        component={
-          <FreeButton
-            text="find out more"
-            tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
-            onClick={() => setOpen(true)}
-          />
-        }
-      /> */}
-      {/* <PageDivider /><Wave theme={theme} /> */}
-      {/* <StepsSection setOpen={setOpen} /> */}
+      </main>      
     </div>
   )
 }

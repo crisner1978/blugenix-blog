@@ -4,7 +4,7 @@ const StepsSection = ({ setOpen }) => {
   return (
     <>
       <Section
-        style_section="py-20 md:flex-row-reverse items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10"
+        style_section="py-12 md:flex-row-reverse items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10"
         heading="How it works"
         subheading="Three Step Process"
         para_1="Everything is Doctor monitored & Doctor prescribed."
@@ -27,7 +27,7 @@ const StepsSection = ({ setOpen }) => {
         </div>
       </Section>
 
-      <div className="mx-auto max-w-6xl pb-20">
+      <div className="mx-auto max-w-6xl pb-8">
         <div className="grid grid-cols-1 gap-5 px-10 md:grid-cols-3">
           <div className="group cursor-pointer overflow-hidden rounded-3xl shadow-xl">
             <img

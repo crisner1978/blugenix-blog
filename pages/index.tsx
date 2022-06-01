@@ -8,9 +8,7 @@ import {
   MapSection,
   StepsSection
 } from 'components/sections'
-import Wave from 'components/Wave'
 import type { GetStaticProps } from 'next'
-import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import { getHero, getHomeSections } from 'services/queries'
@@ -24,7 +22,6 @@ interface Props {
 const Home = ({ hero, homeSections }: Props) => {
   const [open, setOpen] = useRecoilState(modalState)
   const router = useRouter()
-  const { theme } = useTheme()
 
   return (
     <div className="overflow-hidden min-h-screen">
@@ -39,7 +36,7 @@ const Home = ({ hero, homeSections }: Props) => {
       {homeSections.map((item, index) => (
         <div key={item.id}>
           <Section
-            style_section={`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-20 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
+            style_section={`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-12 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
             heading={item.heading}
             subheading={item.subheading}
             para_1={item.text}
@@ -63,8 +60,7 @@ const Home = ({ hero, homeSections }: Props) => {
         </div>
       ))}
 
-      <BenefitSection />
-      <Wave theme={theme} />
+      <BenefitSection therapyValue={undefined} />
       <MapSection
         component={
           <FreeButton
