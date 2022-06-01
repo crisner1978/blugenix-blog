@@ -8,11 +8,13 @@ import { useRecoilState } from 'recoil'
 import Loader from 'components/Loader'
 import { getTherapyDetails, getTherapyHero } from 'services/queries'
 import { useTherapyState } from '../atoms/therapyAtom'
+import { useRouter } from 'next/router'
 
 const TherapiesPage = ({ hero }) => {
   const [open, setOpen] = useRecoilState(modalState)
   const [therapyValue, setTherapyValue] = useTherapyState()
   const therapyRef = useRef(null)
+  const router = useRouter()
 
   const { data, isLoading } = useQuery(['therapyDetails', therapyValue], () => {
     return therapyValue && getTherapyDetails(therapyValue)
@@ -38,9 +40,10 @@ const TherapiesPage = ({ hero }) => {
       />
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
       <main className="mx-auto max-w-6xl px-10">
-        {!data ? (
-          
-          <Loader />
+        {isLoading || !data ? (
+          <div className='my-80'>
+            <Loader />
+          </div>
         ) : (
           <Section
             style_section={`md:flex-row pb-20 items-center flex flex-col-reverse max-w-6xl md:gap-12`}
