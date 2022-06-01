@@ -16,7 +16,7 @@ const TherapiesPage = ({ hero }) => {
   const therapyRef = useRef(null)
   const router = useRouter()
 
-  const { data, isLoading } = useQuery(['therapyDetails', therapyValue], () => {
+  const { data } = useQuery(['therapyDetails', therapyValue], () => {
     return therapyValue && getTherapyDetails(therapyValue)
   })
 
@@ -40,7 +40,7 @@ const TherapiesPage = ({ hero }) => {
       />
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
       <main className="mx-auto max-w-6xl px-10">
-        {isLoading || !data ? (
+        {!data ? (
           <div className='my-80'>
             <Loader />
           </div>
