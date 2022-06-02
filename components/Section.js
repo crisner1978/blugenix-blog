@@ -10,13 +10,14 @@ const Section = ({
   para_3,
   children,
   component,
+  component_2
 }) => {
   const [setRefs, ctrls, fadeInDown] = useFadeInAnimation()
 
   return (
     <div>
       <section className={style_section}>
-        <motion.div initial="hidden" ref={setRefs} aria-hidden="true" animate={ctrls} variants={fadeInDown} className="md:max-w-md lg:max-w-xl xl:max-w-2xl">
+        <motion.div initial="hidden" ref={setRefs} aria-hidden="true" animate={ctrls} variants={fadeInDown} className={`${component_2 ? "lg:max-w-xl xl:max-w-2xl" : "md:max-w-md lg:max-w-xl xl:max-w-2xl"}`}>
           {heading && (
             <header className="inline-block uppercase font-medium xl:text-lg tracking-wide text-gray-500 dark:text-gray-300 w-full">
               {heading}
@@ -41,8 +42,9 @@ const Section = ({
             {component && component}
           </div>
         </motion.div>
-        <div className="rounded-3xl flex items-center justify-center mb-[50px] md:mb-0 md:max-w-md relative">
-          {children}
+        <div className={`${component_2 ? "lg:max-w-md w-full relative rounded-3xl" : "rounded-3xl flex items-center justify-center mb-[50px] md:mb-0 md:max-w-md relative"}`}>
+          {children && children}
+          {component_2 && component_2}
         </div>
       </section>
     </div>

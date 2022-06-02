@@ -1,5 +1,5 @@
 import { modalState } from 'atoms/modalAtom'
-import { Banner, FreeButton, PageDivider, Section, SymptomCard } from 'components'
+import { Banner, FreeButton, PageDivider, Section, Symptoms } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
 import Loader from 'components/Loader'
@@ -17,17 +17,18 @@ const TherapiesPage = ({ hero }) => {
   const therapyRef = useRef(null)
   const router = useRouter()
 
-  const { data, isSuccess, isLoading } = useQuery(['therapyDetails', therapyValue], () => {
-    return therapyValue && getTherapyDetails(therapyValue)
-  })
-
-  console.log("therapyValue", therapyValue)
+  const { data, isSuccess, isLoading } = useQuery(
+    ['therapyDetails', therapyValue],
+    () => {
+      return therapyValue && getTherapyDetails(therapyValue)
+    }
+  )
 
   const handleClick = (slug) => {
     therapyRef.current.scrollIntoView({ behavior: 'smooth' })
     setTherapyValue(slug)
   }
-  console.log('data', data)
+
   return (
     <div className="min-h-screen">
       <Banner
@@ -46,28 +47,24 @@ const TherapiesPage = ({ hero }) => {
       {`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-12 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
       */}
       <div>
-          <Section
-            style_section="md:flex-row pt-12 md:py-12 px-10 items-center flex flex-col max-w-6xl mx-auto md:gap-12"
-            heading="Why hormone therapy"
-            subheading="Many of the clients who are new to hormone therapy are unsure exactly how it helps their body combat aging while boosting overall health and performance."
-            para_1="What symptoms should you be looking for?"
-            para_2="Here's some of the symptoms our therapies dramatically improve when it comes to your health, wellness, and lifestyle."
-            // para_3={item.text3}
-            component={
-              <FreeButton
-                tw="hidden md:flex text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
-                text="Live your best"
-                onClick={() => setOpen(true)}
-              />
-            }
-          >
-            {/* Make Symptom Carousel Auto Play Symptom Cards */}
-            <SymptomCard setOpen={setOpen} />
-            
-          </Section>
-          <PageDivider />
-        </div>
-
+        <Section
+          style_section="lg:flex-row pt-12 lg:pb-6 px-10 flex flex-col max-w-6xl mx-auto lg:gap-12"
+          heading="Why hormone therapy"
+          subheading="Many of the clients who are new to hormone therapy are unsure exactly how it helps their body combat aging while boosting overall health and performance."
+          para_1="What symptoms should you be looking for?"
+          para_2="Here's some of the symptoms our therapies dramatically improve when it comes to your health, wellness, and lifestyle."
+          // para_3={item.text3}
+          component={
+            <FreeButton
+              tw="hidden lg:flex text-center lg:text-left lg:-ml-4 text-white dark:text-gray-200 mt-8"
+              text="Live your best"
+              onClick={() => setOpen(true)}
+            />
+          }
+          component_2={<Symptoms setOpen={setOpen} />}
+        />
+        <PageDivider />
+      </div>
 
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
       <main className="">
