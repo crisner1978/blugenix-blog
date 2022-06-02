@@ -38,7 +38,7 @@ const Section = ({
             {para_3 && (
               <p className="mt-8">{para_3}</p>
             )}
-            {component}
+            {component && component}
           </div>
         </motion.div>
         <div className="rounded-3xl flex items-center justify-center mb-[50px] md:mb-0 md:max-w-md relative">
