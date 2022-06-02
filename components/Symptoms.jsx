@@ -1,13 +1,12 @@
+import { Orbit } from '@uiball/loaders'
 import React from 'react'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import { useQuery } from 'react-query'
 import { getSymptoms } from 'services/queries'
-import FreeButton from './FreeButton'
-import { Orbit } from '@uiball/loaders'
-import SymptomCard from './SymptomCard'
-import Carousel from 'react-multi-carousel'
 import LeftArrow from './blog/LeftArrow'
 import RightArrow from './blog/RightArrow'
-import 'react-multi-carousel/lib/styles.css'
+import SymptomCard from './SymptomCard'
 
 const responsive = {
   superLarge: {
@@ -29,37 +28,34 @@ const responsive = {
 }
 
 const Symptoms = ({ setOpen }) => {
-  const { data: symptoms, isLoading, isSuccess } = useQuery('featured', () =>
-    getSymptoms().then((result) => result)
-  )
-  console.log('symptoms', symptoms)
+  const {
+    data: symptoms,
+    isLoading,
+    isSuccess,
+  } = useQuery('featured', () => getSymptoms().then((result) => result))
 
   return (
-    <div className=" lg:pt-0">
+    <div className=" lg:pt-0 h-full">
       {isLoading ? (
-        <div className="md:ml-28">
+        <div className="flex justify-center items-center h-full">
           <Orbit size={35} speed={1.5} color="black" />
         </div>
       ) : (
-          <Carousel
-            autoPlay={true}
-            autoPlaySpeed={3000}
-            infinite
-            customLeftArrow={<LeftArrow />}
-            customRightArrow={<RightArrow />}
-            responsive={responsive}
-            carouselstate
-            itemClass="px-6"
-          >
-            {isSuccess && symptoms?.map((symptom) => (
-              <SymptomCard
-                key={symptom.id}
-                item={symptom}
-                setOpen={setOpen}
-              />
+        <Carousel
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          infinite
+          customLeftArrow={<LeftArrow />}
+          customRightArrow={<RightArrow />}
+          responsive={responsive}
+          carouselstate
+          itemClass="px-6"
+        >
+          {isSuccess &&
+            symptoms?.map((symptom) => (
+              <SymptomCard key={symptom.id} item={symptom} setOpen={setOpen} />
             ))}
-          </Carousel>
-        
+        </Carousel>
       )}
     </div>
   )

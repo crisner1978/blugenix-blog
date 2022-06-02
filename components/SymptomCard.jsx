@@ -1,18 +1,7 @@
-import Link from 'next/link'
-import React from 'react'
 import FreeButton from './FreeButton'
-
-// description: "Looking to decrease your body fat percentage and tighten up your body?"
-// id: "cl3wmrzjsu8ea0binood6tmyp"
-// slug: "fat"
-// symptomImage: {url: 'https://media.graphassets.com/xOTLxsXQIqAfkGDwLelw'}
-// title: "high body fat"
 
 const SymptomCard = ({ setOpen, item }) => {
   return (
-
-    
-
     <div className='pt-10 pb-8 lg:pt-0 relative lg:h-[500px]'>
       <h1 className="navLogoActive mb-1 inline-block w-full text-center font-bold uppercase tracking-wide xl:text-lg">
         {item.title}
