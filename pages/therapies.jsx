@@ -1,5 +1,5 @@
 import { modalState } from 'atoms/modalAtom'
-import { Banner, FreeButton, PageDivider, Section } from 'components'
+import { Banner, FreeButton, PageDivider, Section, SymptomCard } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
 import Loader from 'components/Loader'
@@ -61,20 +61,8 @@ const TherapiesPage = ({ hero }) => {
               />
             }
           >
-            <div className='pt-10 md:pt-0'>
-              <h1 className='navLogoActive text-center mb-2 inline-block uppercase font-bold xl:text-lg tracking-wide w-full'>High Body Fat</h1>
-              <img
-              className="rounded-3xl"
-              src="https://res.cloudinary.com/dtram9qiy/image/upload/v1654128487/my-upload/z0dix7y1f6145upymozz.jpg"
-              alt=""
-            />
-            <p className='sm:text-lg dark:text-gray-300 text-gray-700 px-4 pt-2 align-middle'>Looking to decrease your body fat percentage and tighten up your body?</p>
-            <FreeButton
-                tw="md:hidden text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
-                text="Live your best"
-                onClick={() => setOpen(true)}
-              />
-            </div>
+            {/* Make Symptom Carousel Auto Play Symptom Cards */}
+            <SymptomCard setOpen={setOpen} />
             
           </Section>
           <PageDivider />

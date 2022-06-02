@@ -33,6 +33,8 @@ const FeaturedPosts = () => {
   return (
     <div className="mx-auto mb-8 max-w-6xl px-6">
       <Carousel
+        autoPlay={true}
+        autoPlaySpeed={3000}
         infinite
         customLeftArrow={<LeftArrow />}
         customRightArrow={<RightArrow />}

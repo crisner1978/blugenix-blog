@@ -125,6 +125,26 @@ export const getRecentPosts = async () => {
   return results.posts
 }
 
+
+export const getSymptoms = async () => {
+  const query = gql`
+  query GetSymptoms {
+    symptoms {
+      description
+      id
+      slug
+      title
+      symptomImage {
+        url
+      }
+    }
+  }
+  `
+  const results = await request(graphqlAPI, query)
+
+  return results.symptoms
+}
+
 export const getSimilarPosts = async (categories, slug) => {
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {
