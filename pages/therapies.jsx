@@ -48,7 +48,7 @@ const TherapiesPage = ({ hero }) => {
       */}
       <div>
         <Section
-          style_section="lg:flex-row pt-12 lg:pb-6 px-10 flex flex-col max-w-6xl mx-auto lg:gap-12"
+          style_section="lg:flex-row pt-12 lg:pb-12 px-10 flex flex-col max-w-6xl mx-auto lg:gap-12"
           heading="Why hormone therapy"
           subheading="Many of the clients who are new to hormone therapy are unsure exactly how it helps their body combat aging while boosting overall health and performance."
           para_1="What symptoms should you be looking for?"

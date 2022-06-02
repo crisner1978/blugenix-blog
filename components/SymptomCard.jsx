@@ -13,7 +13,7 @@ const SymptomCard = ({ setOpen, item }) => {
 
     
 
-    <div className='pt-10 lg:pt-0 relative lg:h-[500px]'>
+    <div className='pt-10 pb-8 lg:pt-0 relative lg:h-[500px]'>
       <h1 className="navLogoActive mb-1 inline-block w-full text-center font-bold uppercase tracking-wide xl:text-lg">
         {item.title}
       </h1>
