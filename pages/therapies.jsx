@@ -17,9 +17,11 @@ const TherapiesPage = ({ hero }) => {
   const therapyRef = useRef(null)
   const router = useRouter()
 
-  const { data, isSuccess } = useQuery(['therapyDetails', therapyValue], () => {
+  const { data, isSuccess, isLoading } = useQuery(['therapyDetails', therapyValue], () => {
     return therapyValue && getTherapyDetails(therapyValue)
   })
+
+  console.log("therapyValue", therapyValue)
 
   const handleClick = (slug) => {
     therapyRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -81,7 +83,7 @@ const TherapiesPage = ({ hero }) => {
 
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
       <main className="">
-        {!data ? (
+        {isLoading ? (
           <div className="my-80">
             <Loader />
           </div>
