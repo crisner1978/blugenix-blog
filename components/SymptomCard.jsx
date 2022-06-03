@@ -18,7 +18,7 @@ const SymptomCard = ({ setOpen, item }) => {
             {item.description}
           </p>
           <FreeButton
-            tw="md:hidden text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+            tw="md:hidden flex justify-center items-center text-center text-white dark:text-gray-200 mt-8"
             text="Live your best"
             onClick={() => setOpen(true)}
           />

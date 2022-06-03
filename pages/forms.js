@@ -160,7 +160,7 @@ const FormsPage = ({ data, formSections }) => {
           {formSections.map((item, index) => (
             <div key={item.id}>
               <Section
-                style_section={`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-20 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
+                style_section={`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-12 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
                 heading={item.heading}
                 subheading={item.subheading}
                 para_1={item.text}
