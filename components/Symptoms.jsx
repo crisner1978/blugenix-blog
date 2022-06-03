@@ -35,7 +35,7 @@ const Symptoms = ({ setOpen }) => {
   } = useQuery('featured', () => getSymptoms().then((result) => result))
 
   return (
-    <div className=" lg:pt-0 h-full">
+    <div className="lg:pt-0 h-full px-6">
       {isLoading ? (
         <div className="flex justify-center items-center h-full">
           <Orbit size={35} speed={1.5} color="black" />
@@ -49,7 +49,7 @@ const Symptoms = ({ setOpen }) => {
           customRightArrow={<RightArrow />}
           responsive={responsive}
           carouselstate
-          itemClass="px-6"
+          itemClass="px-4"
         >
           {isSuccess &&
             symptoms?.map((symptom) => (

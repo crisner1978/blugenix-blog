@@ -49,7 +49,7 @@ const Home = ({ hero, homeSections }: Props) => {
                 onClick={() => item.modal === true ?  setOpen(true) : router.push("/therapies")}
               />
             }
-            component_2
+            component_2={undefined}
           >
             <img
               className="rounded-3xl"
