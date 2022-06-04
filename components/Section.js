@@ -42,7 +42,7 @@ const Section = ({
             {component && component}
           </div>
         </motion.div>
-        <div className={`${component_2 !== undefined ? "lg:max-w-md w-full relative rounded-3xl mx-auto" : "rounded-3xl flex items-center justify-center mb-[50px] md:mb-0 md:max-w-md relative"}`}>
+        <div className={`${component_2 !== undefined ? "lg:max-w-md w-full relative rounded-3xl mx-auto" : "rounded-3xl flex items-center justify-center mb-12 md:mb-0 md:max-w-md relative"}`}>
           {children && children}
           {component_2 && component_2}
         </div>

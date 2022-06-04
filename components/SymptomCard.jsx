@@ -19,7 +19,7 @@ const SymptomCard = ({ setOpen, item }) => {
           </p>
           <FreeButton
             tw="lg:hidden flex justify-center items-center text-center text-white dark:text-gray-200 mt-8"
-            text="Live your best"
+            text={item.buttonText}
             onClick={() => setOpen(true)}
           />
         </div>

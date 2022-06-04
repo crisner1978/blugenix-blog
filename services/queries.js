@@ -134,6 +134,7 @@ export const getSymptoms = async () => {
       id
       slug
       title
+      buttonText
       symptomImage {
         url
       }
