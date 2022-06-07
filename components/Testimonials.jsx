@@ -1,11 +1,11 @@
-import useToRightAnimation from 'hooks/useToRightAnimation'
+import useRightOrLeftAnimation from 'hooks/useRightOrLeftAnimation'
 import { motion } from 'framer-motion'
 import FreeButton from './FreeButton'
 import { useRouter } from 'next/router'
 import TestimonialCard from './TestimonialCard'
 
 const Testimonials = () => {
-  const [setRefs, ctrls, fadeLeftToRight] = useToRightAnimation()
+  const [setRefs, ctrls, fadeLeftToRight] = useRightOrLeftAnimation()
   const router = useRouter()
 
   return (

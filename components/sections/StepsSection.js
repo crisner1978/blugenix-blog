@@ -1,9 +1,6 @@
 import { Section, FreeButton } from "../../components"
-import { motion } from 'framer-motion';
-import useToRightAnimation from "hooks/useToRightAnimation";
 
 const StepsSection = ({ setOpen }) => {
-  const [setRefs, ctrls, fadeLeftToRight] = useToRightAnimation()
   return (
     <>
       <Section
@@ -30,7 +27,7 @@ const StepsSection = ({ setOpen }) => {
         </div>
       </Section>
 
-      <motion.div initial="hidden" ref={setRefs} aria-hidden="true" animate={ctrls} variants={fadeLeftToRight} className="mx-auto max-w-6xl pb-8">
+      <div className="mx-auto max-w-6xl pb-8">
         <div className="grid grid-cols-1 gap-5 px-10 md:grid-cols-3">
           <div className="group cursor-pointer overflow-hidden rounded-3xl shadow-xl">
             <img
@@ -54,7 +51,7 @@ const StepsSection = ({ setOpen }) => {
             />
           </div>
         </div>
-      </motion.div>
+      </div>
     </>
   )
 }

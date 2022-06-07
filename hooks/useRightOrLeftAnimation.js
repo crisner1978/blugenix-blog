@@ -1,9 +1,9 @@
 import { useAnimation } from 'framer-motion';
-import { fadeLeftToRight } from 'lib/animationVariants';
+import { fadeLeftToRight, fadeRightToLeft } from 'lib/animationVariants';
 import { useCallback, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-const useRightAnimation = () => {
+const useRightOrLeftAnimation = () => {
   const ctrls = useAnimation()
   const ref = useRef()
   const [inViewRef, inView] = useInView({ threshold: 0.5, triggerOnce: true, })
@@ -18,7 +18,7 @@ const useRightAnimation = () => {
     if (!inView) ctrls.start("hidden")
   }, [ctrls, inView])
 
-  return [setRefs, ctrls, fadeLeftToRight]
+  return [setRefs, ctrls, fadeLeftToRight, fadeRightToLeft]
 }
 
-export default useRightAnimation
+export default useRightOrLeftAnimation
