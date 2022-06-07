@@ -17,7 +17,7 @@ const TestimonialCard = ({ date, image, info, name, index }) => {
         index % 2 === 0
           ? 'items-center md:flex'
           : 'flex-row-reverse items-center md:flex'
-      } gap-12 px-5`}
+      } gap-12`}
     >
       {/* Image */}
       <div className="rounded-3xl md:max-w-sm">
