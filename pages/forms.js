@@ -1,7 +1,5 @@
-import { modalState } from 'atoms/modalAtom'
-import useToRightAnimation from 'hooks/useToRightAnimation'
-import { motion } from 'framer-motion';
-import { Banner, FreeButton, PageDivider, Section } from 'components'
+import { modalState } from 'atoms/modalAtom';
+import { Banner, FreeButton, PageDivider, Section } from 'components';
 import {
   AgreementInfo,
   DetailedInfo,
@@ -13,19 +11,21 @@ import {
   MedReleaseInfo,
   PatientInfo,
   SymptomsInfo
-} from 'components/medicalForm'
-import Head from 'next/head'
-import React, { useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { getFormHero, getFormSections } from 'services/queries'
-import { useFormStart, useFormValueState } from '../atoms/formAtom'
+} from 'components/medicalForm';
+import { motion } from 'framer-motion';
+import useRightOrLeftAnimation from 'hooks/useRightOrLeftAnimation';
+import Head from 'next/head';
+import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { getFormHero, getFormSections } from 'services/queries';
+import { useFormStart, useFormValueState } from '../atoms/formAtom';
 
 const FormsPage = ({ data, formSections }) => {
   const [open, setOpen] = useRecoilState(modalState)
   const [formStep, setFormStep] = useState(0)
   const [formStart, setFormStart] = useFormStart()
   const [formValues, setFormValues] = useFormValueState()
-  const [setRefs, ctrls, fadeLeftToRight] = useToRightAnimation()
+  const [setRefs, ctrls, fadeLeftToRight] = useRightOrLeftAnimation()
 
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
