@@ -4,7 +4,7 @@ import {
   PhoneNumber,
   RequiredPhoneNumber,
   SelectField
-} from 'components/shared'
+} from 'components/formFields'
 import { category, sex } from 'lib/helpers'
 import moment from 'moment'
 import React from 'react'

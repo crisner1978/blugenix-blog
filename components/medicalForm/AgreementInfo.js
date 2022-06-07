@@ -1,4 +1,4 @@
-import { DateInput, HistoryCheckBox } from 'components/shared'
+import { DateInput, HistoryCheckBox } from 'components/formFields'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useForm } from 'react-hook-form'

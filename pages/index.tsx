@@ -44,7 +44,7 @@ const Home = ({ hero, homeSections }: Props) => {
             para_3={item.text3}
             component={
               <FreeButton
-                tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+                tw="text-center md:text-left text-white dark:text-gray-200 mt-8"
                 text={item.buttonText}
                 onClick={() => item.modal === true ?  setOpen(true) : router.push("/therapies")}
               />
@@ -66,7 +66,7 @@ const Home = ({ hero, homeSections }: Props) => {
         component={
           <FreeButton
             text="find out more"
-            tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+            tw="text-center md:text-left text-white dark:text-gray-200 mt-8"
             onClick={() => setOpen(true)}
           />
         }

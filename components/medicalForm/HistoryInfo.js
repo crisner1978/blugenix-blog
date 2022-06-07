@@ -1,4 +1,4 @@
-import { DateInput, HistoryCheckBox, QuestionCheckBox, SmallInput, TextArea } from 'components/shared'
+import { DateInput, HistoryCheckBox, QuestionCheckBox, SmallInput, TextArea } from 'components/formFields'
 import { useForm } from 'react-hook-form'
 
 const HistoryInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {

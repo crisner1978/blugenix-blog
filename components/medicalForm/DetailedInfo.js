@@ -1,6 +1,6 @@
-import DateInput from "../shared/DateInput"
+import DateInput from "../formFields/DateInput"
 import { useForm } from "react-hook-form"
-import { TextArea } from "components/shared"
+import { TextArea } from "components/formFields"
 
 
 const DetailedInfo = ({ setFormValues, formValues, nextFormStep, formStep }) => {

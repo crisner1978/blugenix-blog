@@ -113,7 +113,7 @@
 
   .page__btn {
     @apply sm:text-xl py-3 capitalize from-blue-600 to-blue-900 bg-gradient-to-tl hover:scale-105 
-    transition-all transform duration-150 ease-out hover:brightness-110 ml-5 px-4 rounded-xl cursor-pointer shadow-xl
+    transition-all transform duration-150 ease-out hover:brightness-110 px-4 rounded-xl cursor-pointer shadow-xl
   }
 
   .steps {

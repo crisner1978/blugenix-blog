@@ -1,4 +1,4 @@
-import { DateInput, HistoryCheckBox, Input, QuestionCheckBox, SelectField, SmallInput, TextArea } from 'components/shared'
+import { DateInput, HistoryCheckBox, Input, QuestionCheckBox, SelectField, SmallInput, TextArea } from 'components/formFields'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 

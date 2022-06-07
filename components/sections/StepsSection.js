@@ -1,6 +1,9 @@
 import { Section, FreeButton } from "../../components"
+import { motion } from 'framer-motion';
+import useToRightAnimation from "hooks/useToRightAnimation";
 
 const StepsSection = ({ setOpen }) => {
+  const [setRefs, ctrls, fadeLeftToRight] = useToRightAnimation()
   return (
     <>
       <Section
@@ -12,7 +15,7 @@ const StepsSection = ({ setOpen }) => {
         para_3="In partnership with Telemedicine, everything gets shipped right to your door."
         component={
           <FreeButton
-            tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+            tw="text-center md:text-left text-white dark:text-gray-200 mt-8"
             text="take your first step"
             onClick={() => setOpen(true)}
           />
@@ -27,7 +30,7 @@ const StepsSection = ({ setOpen }) => {
         </div>
       </Section>
 
-      <div className="mx-auto max-w-6xl pb-8">
+      <motion.div initial="hidden" ref={setRefs} aria-hidden="true" animate={ctrls} variants={fadeLeftToRight} className="mx-auto max-w-6xl pb-8">
         <div className="grid grid-cols-1 gap-5 px-10 md:grid-cols-3">
           <div className="group cursor-pointer overflow-hidden rounded-3xl shadow-xl">
             <img
@@ -51,7 +54,7 @@ const StepsSection = ({ setOpen }) => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }

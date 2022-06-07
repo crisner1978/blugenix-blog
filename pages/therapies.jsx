@@ -1,5 +1,5 @@
 import { modalState } from 'atoms/modalAtom'
-import { Banner, FreeButton, PageDivider, Section, Symptoms } from 'components'
+import { Banner, FreeButton, PageDivider, Section, Symptoms, Testimonials } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
 import Loader from 'components/Loader'
@@ -46,7 +46,7 @@ const TherapiesPage = ({ hero }) => {
       {/* Symptoms will grab with SSR or SSG 
       {`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-12 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
       */}
-      <div>
+      
         <Section
           style_section="lg:flex-row pt-12 lg:pb-12 flex flex-col max-w-6xl mx-auto lg:gap-12"
           heading="Why hormone therapy"
@@ -56,7 +56,7 @@ const TherapiesPage = ({ hero }) => {
           // para_3={item.text3}
           component={
             <FreeButton
-              tw="hidden lg:flex text-center lg:text-left lg:-ml-4 text-white dark:text-gray-200 mt-8"
+              tw="hidden lg:flex text-center lg:text-left text-white dark:text-gray-200 mt-8"
               text="Live your best"
               onClick={() => setOpen(true)}
             />
@@ -64,7 +64,7 @@ const TherapiesPage = ({ hero }) => {
           component_2={<Symptoms setOpen={setOpen} />}
         />
         <PageDivider />
-      </div>
+      
 
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
       <main className="">
@@ -74,7 +74,7 @@ const TherapiesPage = ({ hero }) => {
           </div>
         ) : (
           <Section
-            style_section="md:flex-row-reverse pb-12 px-10 items-center flex flex-col-reverse max-w-6xl mx-auto md:gap-12"
+            style_section="md:flex-row-reverse pt-4 pb-12 px-10 items-center flex flex-col-reverse max-w-6xl mx-auto md:gap-12"
             heading={data?.heading}
             subheading={data?.subheading}
             para_1={data?.text}
@@ -82,7 +82,7 @@ const TherapiesPage = ({ hero }) => {
             para_3={data?.text3}
             component={
               <FreeButton
-                tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+                tw="text-center md:text-left text-white dark:text-gray-200 mt-8"
                 text={data?.buttonText}
                 onClick={() =>
                   data?.modal === true ? setOpen(true) : router.push('/forms')
@@ -93,16 +93,23 @@ const TherapiesPage = ({ hero }) => {
             <img
               className="rounded-3xl shadow-lg"
               src={data?.sectionImage.url}
-              alt=""
+              alt={data?.slug}
             />
           </Section>
         )}
 
         <PageDivider />
         {isSuccess && <BenefitSection therapyValue={therapyValue} />}
-        <div className="mx-auto grid max-w-6xl px-10 pt-12">
+        <div className="mx-auto grid max-w-6xl px-10 pt-12 pb-6">
           <Categories therapy={true} handleClick={handleClick} />
         </div>
+        <PageDivider />
+        {/* Testimonial Section */}
+        <Testimonials />
+        {/* SSR or ISR this section with GraphCMS */}
+        {/* Add button to post a Testimonial */}
+        {/* Add Page with Testimonial Form */}
+        
       </main>
     </div>
   )

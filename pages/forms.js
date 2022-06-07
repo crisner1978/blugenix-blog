@@ -1,4 +1,6 @@
 import { modalState } from 'atoms/modalAtom'
+import useToRightAnimation from 'hooks/useToRightAnimation'
+import { motion } from 'framer-motion';
 import { Banner, FreeButton, PageDivider, Section } from 'components'
 import {
   AgreementInfo,
@@ -23,6 +25,7 @@ const FormsPage = ({ data, formSections }) => {
   const [formStep, setFormStep] = useState(0)
   const [formStart, setFormStart] = useFormStart()
   const [formValues, setFormValues] = useFormValueState()
+  const [setRefs, ctrls, fadeLeftToRight] = useToRightAnimation()
 
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
@@ -181,7 +184,7 @@ const FormsPage = ({ data, formSections }) => {
                 }
                 component={
                   <FreeButton
-                    tw="text-center md:text-left md:-ml-4 text-white dark:text-gray-200 mt-8"
+                    tw="text-center md:text-left text-white dark:text-gray-200 mt-8"
                     text={item.buttonText}
                     onClick={() => item.modal === true ? setOpen(true) : router.push("/therapies")}
                   />
@@ -196,7 +199,7 @@ const FormsPage = ({ data, formSections }) => {
               <PageDivider />
             </div>
           ))}
-          <section
+          <motion.section initial="hidden" ref={setRefs} aria-hidden="true" animate={ctrls} variants={fadeLeftToRight}
             className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 px-3 sm:px-10 lg:grid-cols-3 lg:gap-12 ${!formStart && '!max-w-3xl !grid-cols-1'
               }`}
           >
@@ -213,7 +216,7 @@ const FormsPage = ({ data, formSections }) => {
                 </button>
               </div>
             </div>
-          </section>
+          </motion.section>
         </>
       )}
     </div>
