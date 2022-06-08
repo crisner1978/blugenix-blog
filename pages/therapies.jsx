@@ -48,7 +48,6 @@ const TherapiesPage = ({ hero }) => {
           subheading="Many of the clients who are new to hormone therapy are unsure exactly how it helps their body combat aging while boosting overall health and performance."
           para_1="What symptoms should you be looking for?"
           para_2="Here's some of the symptoms our therapies dramatically improve when it comes to your health, wellness, and lifestyle."
-          // para_3={item.text3}
           component={
             <FreeButton
               tw="hidden lg:flex text-center lg:text-left text-white dark:text-gray-200 mt-8"
