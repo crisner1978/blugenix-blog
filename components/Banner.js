@@ -44,7 +44,7 @@ const Banner = ({ component, formStart, data }) => {
         animate="visible"
         className="absolute top-7 sm:top-10 w-full mx-auto text-center capitalize md:top-16 md:text-right lg:top-28"
       >
-        <div className='mx-auto max-w-8xl'>
+        <div className='mx-auto max-w-screen-2xl'>
           <header className="ml-auto max-w-3xl px-5 text-2xl sm:px-16 sm:text-4xl md:px-0 md:pr-5 md:text-5xl">
           <h1>{data.slogan}</h1>
           <h2>{data.bannerTitle}</h2>

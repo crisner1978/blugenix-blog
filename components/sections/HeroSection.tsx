@@ -13,10 +13,11 @@ const HeroSection = ({ hero, children }: Props) => {
   if(!hero) return null
   
   return (
-    <section className="relative h-[400px] text-white dark:text-gray-100 sm:h-[450px] md:h-[500px] lg:h-[575px] xl:h-[650px]">
+    <section className="relative h-[400px] text-white dark:text-gray-100 sm:h-[450px] md:h-[500px] lg:h-[600px] xl:h-[725px] 2xl:h-[950px]">
       <Image
         layout="fill"
         objectFit="cover"
+        objectPosition="center"
         src={hero.heroImage.url}
         className="hero__image"
         placeholder="blur"
@@ -39,9 +40,9 @@ const HeroSection = ({ hero, children }: Props) => {
         variants={fadeInDown}
         initial="hidden"
         animate="visible"
-        className="absolute top-5 mx-auto w-full text-center md:top-10 md:text-right lg:top-20 xl:top-32"
+        className="absolute top-5 mx-auto w-full text-center md:top-10 md:text-right lg:top-20 xl:top-32 2xl:top-52"
       >
-        <div className='mx-auto max-w-8xl'>
+        <div className='mx-auto max-w-screen-2xl'>
           <header className="ml-auto max-w-3xl px-5 text-2xl sm:px-16 sm:text-4xl md:px-0 md:pr-5 md:text-5xl">
             <h1>{hero.slogan}</h1>
             {hero.bannerTitle && <h2>{hero.bannerTitle}</h2>}
