@@ -7,7 +7,7 @@ const BenefitSection = ({ therapyValue }) => {
   const { data: benefits } = useQuery("benefits", () => getBenefitIcons().then((result) => result))
 
   return (
-    <section className="pt-10 pb-2 bg-cyan-100 dark:bg-cyan-900 bg-opacity-50 ">
+    <section className="pt-10 pb-2 bg-cyan-100 dark:bg-cyan-900 bg-opacity-50">
       <div className="max-w-6xl mx-auto px-10">
         <h2
           className="text-center md:text-left inline-flex text-3xl sm:text-4xl font-fancy mb-10

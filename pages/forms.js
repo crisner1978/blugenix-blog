@@ -1,5 +1,5 @@
 import { modalState } from 'atoms/modalAtom';
-import { Banner, FreeButton, PageDivider, Section } from 'components';
+import { Banner, FreeButton, PageDivider, Section, StartFormBox } from 'components';
 import {
   AgreementInfo,
   DetailedInfo,
@@ -12,7 +12,7 @@ import {
   PatientInfo,
   SymptomsInfo
 } from 'components/medicalForm';
-import { motion } from 'framer-motion';
+
 import useRightOrLeftAnimation from 'hooks/useRightOrLeftAnimation';
 import Head from 'next/head';
 import React, { useState } from 'react';
@@ -25,7 +25,7 @@ const FormsPage = ({ data, formSections }) => {
   const [formStep, setFormStep] = useState(0)
   const [formStart, setFormStart] = useFormStart()
   const [formValues, setFormValues] = useFormValueState()
-  const [setRefs, ctrls, fadeLeftToRight] = useRightOrLeftAnimation()
+  
 
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
@@ -199,24 +199,7 @@ const FormsPage = ({ data, formSections }) => {
               <PageDivider />
             </div>
           ))}
-          <motion.section initial="hidden" ref={setRefs} aria-hidden="true" animate={ctrls} variants={fadeLeftToRight}
-            className={`mx-auto mt-8 grid max-w-6xl grid-cols-1 px-3 sm:px-10 lg:grid-cols-3 lg:gap-12 ${!formStart && '!max-w-3xl !grid-cols-1'
-              }`}
-          >
-            <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg dark:bg-stone-800">
-              <h3 className="text-center text-lg sm:text-xl md:text-2xl">
-                Ready to complete the Medical History Forms?
-              </h3>
-              <div className="mt-8 flex justify-center">
-                <button
-                  className="page__btn text-white"
-                  onClick={handleStartForm}
-                >
-                  Click To Begin
-                </button>
-              </div>
-            </div>
-          </motion.section>
+          <StartFormBox formStart={formStart} handleStartForm={handleStartForm} />
         </>
       )}
     </div>

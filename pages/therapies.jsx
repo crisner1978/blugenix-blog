@@ -30,7 +30,7 @@ const TherapiesPage = ({ hero }) => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Banner
         data={hero}
         formStart={null}

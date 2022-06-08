@@ -24,7 +24,7 @@ const TestimonialCard = ({ date, image, info, name, index }) => {
         <img className="rounded-3xl shadow-lg" src={image} alt="" />
       </div>
       {/* Name and Message */}
-      <div className="mt-4 space-y-4">
+      <div className="mt-4 md:mt-0 space-y-4">
         <p className="text-gray-700 dark:text-gray-300 sm:text-lg">{info}</p>
         <p className="inline-block w-full font-medium uppercase tracking-wide text-gray-500 dark:text-gray-300 sm:text-lg">
           {name}

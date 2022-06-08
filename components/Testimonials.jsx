@@ -9,14 +9,14 @@ const Testimonials = () => {
   const router = useRouter()
 
   return (
-    <>
-      <motion.section
+    <section className='max-w-6xl mx-auto mt-10 px-10 pb-8'>
+      <motion.div
         initial="hidden"
         ref={setRefs}
         aria-hidden="true"
         animate={ctrls}
         variants={fadeLeftToRight}
-        className="mx-auto mt-8 mb-12 md:mb-4 flex max-w-6xl flex-col-reverse px-10 pt-2 md:flex-row md:gap-12 md:pb-12"
+        className="mb-10 md:mb-2 flex flex-col-reverse md:flex-row justify-center md:gap-12 md:pb-10"
       >
         <div>
           <header>
@@ -51,8 +51,8 @@ const Testimonials = () => {
             alt
           />
         </div>
-      </motion.section>
-      <div className="mx-auto grid max-w-6xl grid-cols-1 px-10 gap-y-12 pb-8">
+      </motion.div>
+      <div className="grid grid-cols-1 gap-y-12 ">
         <TestimonialCard
         index={0}
           name="Dave C."
@@ -71,7 +71,7 @@ const Testimonials = () => {
         />
         {/* https://res.cloudinary.com/dtram9qiy/image/upload/v1654562776/my-upload/z15jveydfn5utr41hj3a.jpg */}
       </div>
-    </>
+    </section>
   )
 }
 

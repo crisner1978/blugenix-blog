@@ -105,10 +105,10 @@
   }
 
   .hero__image {
-    @apply absolute h-[400px] sm:h-[450px] md:h-[500px] lg:h-[575px] xl:h-[650px] object-cover object-top w-screen
+    @apply absolute h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px] xl:h-[725px] 2xl:h-[950px] object-cover object-top w-screen
   }
   .hero__center {
-    @apply absolute h-[400px] sm:h-[450px] md:h-[500px] lg:h-[575px] xl:h-[650px] object-cover object-top w-screen
+    @apply absolute h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px] xl:h-[725px] 2xl:h-[950px] object-cover object-top w-screen
   }
 
   .page__btn {
