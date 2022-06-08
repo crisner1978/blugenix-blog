@@ -41,12 +41,7 @@ const TherapiesPage = ({ hero }) => {
             onClick={() => setOpen(true)}
           />
         }
-      />
-
-      {/* Symptoms will grab with SSR or SSG 
-      {`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-12 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
-      */}
-      
+      />      
         <Section
           style_section="lg:flex-row pt-12 lg:pb-12 flex flex-col max-w-6xl mx-auto lg:gap-12"
           heading="Why hormone therapy"
