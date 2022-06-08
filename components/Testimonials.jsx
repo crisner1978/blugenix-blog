@@ -9,7 +9,7 @@ const Testimonials = () => {
   const router = useRouter()
 
   return (
-    <section className='max-w-6xl mx-auto mt-10 px-10 pb-8'>
+    <section className='max-w-6xl mx-auto mt-10 px-10'>
       <motion.div
         initial="hidden"
         ref={setRefs}

@@ -12,8 +12,6 @@ import {
   PatientInfo,
   SymptomsInfo
 } from 'components/medicalForm';
-
-import useRightOrLeftAnimation from 'hooks/useRightOrLeftAnimation';
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -26,7 +24,6 @@ const FormsPage = ({ data, formSections }) => {
   const [formStart, setFormStart] = useFormStart()
   const [formValues, setFormValues] = useFormValueState()
   
-
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
 
@@ -37,7 +34,6 @@ const FormsPage = ({ data, formSections }) => {
       behavior: "smooth",
     })
   }
-
 
   return (
     <div className="min-h-screen">
@@ -199,7 +195,7 @@ const FormsPage = ({ data, formSections }) => {
               <PageDivider />
             </div>
           ))}
-          <StartFormBox formStart={formStart} handleStartForm={handleStartForm} />
+          <StartFormBox title="Ready to complete the Medical History Forms?" button="Click To Begin" formStart={formStart} handleStartForm={handleStartForm} />
         </>
       )}
     </div>

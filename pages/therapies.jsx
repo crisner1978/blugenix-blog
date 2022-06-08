@@ -1,5 +1,13 @@
 import { modalState } from 'atoms/modalAtom'
-import { Banner, FreeButton, PageDivider, Section, Symptoms, Testimonials } from 'components'
+import {
+  Banner,
+  FreeButton,
+  PageDivider,
+  Section,
+  StartFormBox,
+  Symptoms,
+  Testimonials,
+} from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
 import Loader from 'components/Loader'
@@ -41,24 +49,23 @@ const TherapiesPage = ({ hero }) => {
             onClick={() => setOpen(true)}
           />
         }
-      />      
-        <Section
-          style_section="lg:flex-row pt-12 lg:pb-12 flex flex-col max-w-6xl mx-auto lg:gap-12"
-          heading="Why hormone therapy"
-          subheading="Many of the clients who are new to hormone therapy are unsure exactly how it helps their body combat aging while boosting overall health and performance."
-          para_1="What symptoms should you be looking for?"
-          para_2="Here's some of the symptoms our therapies dramatically improve when it comes to your health, wellness, and lifestyle."
-          component={
-            <FreeButton
-              tw="hidden lg:flex text-center lg:text-left text-white dark:text-gray-200 mt-8"
-              text="Live your best"
-              onClick={() => setOpen(true)}
-            />
-          }
-          component_2={<Symptoms setOpen={setOpen} />}
-        />
-        <PageDivider />
-      
+      />
+      <Section
+        style_section="lg:flex-row pt-12 lg:pb-12 flex flex-col max-w-6xl mx-auto lg:gap-12"
+        heading="Why hormone therapy"
+        subheading="Many of the clients who are new to hormone therapy are unsure exactly how it helps their body combat aging while boosting overall health and performance."
+        para_1="What symptoms should you be looking for?"
+        para_2="Here's some of the symptoms our therapies dramatically improve when it comes to your health, wellness, and lifestyle."
+        component={
+          <FreeButton
+            tw="hidden lg:flex text-center lg:text-left text-white dark:text-gray-200 mt-8"
+            text="Live your best"
+            onClick={() => setOpen(true)}
+          />
+        }
+        component_2={<Symptoms setOpen={setOpen} />}
+      />
+      <PageDivider />
 
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
       <main className="">
@@ -103,7 +110,12 @@ const TherapiesPage = ({ hero }) => {
         {/* SSR or ISR this section with GraphCMS */}
         {/* Add button to post a Testimonial */}
         {/* Add Page with Testimonial Form */}
-        
+
+        <StartFormBox
+          title="Ready to share your story with Blugenix?"
+          button="Drop your testimonial"
+          route="/drop-testimonial"
+        />
       </main>
     </div>
   )
