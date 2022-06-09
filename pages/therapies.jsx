@@ -16,10 +16,10 @@ import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import { useQuery } from 'react-query'
 import { useRecoilState } from 'recoil'
-import { getTherapyDetails, getTherapyHero } from 'services/queries'
+import { getTherapyDetails, getTherapyHero, getSymptomSection } from 'services/queries'
 import { useTherapyState } from '../atoms/therapyAtom'
 
-const TherapiesPage = ({ hero }) => {
+const TherapiesPage = ({ hero, symptomSection }) => {
   const [open, setOpen] = useRecoilState(modalState)
   const [therapyValue, setTherapyValue] = useTherapyState()
   const therapyRef = useRef(null)
@@ -37,6 +37,9 @@ const TherapiesPage = ({ hero }) => {
     setTherapyValue(slug)
   }
 
+  console.log("symptomSection", symptomSection)
+  console.log("data", data)
+
   return (
     <div className="min-h-screen overflow-hidden">
       <Banner
@@ -44,7 +47,7 @@ const TherapiesPage = ({ hero }) => {
         formStart={null}
         component={
           <FreeButton
-            text="Start your therapy today"
+            text={hero?.buttonText}
             tw="md:ml-auto md:pr-5 mt-2 sm:mt-4 align mr-3 md:mr-0"
             onClick={() => setOpen(true)}
           />
@@ -52,14 +55,15 @@ const TherapiesPage = ({ hero }) => {
       />
       <Section
         style_section="lg:flex-row pt-12 lg:pb-12 flex flex-col max-w-6xl mx-auto lg:gap-12"
-        heading="Why hormone therapy"
-        subheading="Many of the clients who are new to hormone therapy are unsure exactly how it helps their body combat aging while boosting overall health and performance."
-        para_1="What symptoms should you be looking for?"
-        para_2="Here's some of the symptoms our therapies dramatically improve when it comes to your health, wellness, and lifestyle."
+        heading={symptomSection?.heading}
+        subheading={symptomSection?.subheading}
+        para_1={symptomSection?.text1}
+        para_2={symptomSection?.text2}
+        para_3={symptomSection?.text3}
         component={
           <FreeButton
             tw="hidden lg:flex text-center lg:text-left text-white dark:text-gray-200 mt-8"
-            text="Live your best"
+            text={symptomSection?.buttonText}
             onClick={() => setOpen(true)}
           />
         }
@@ -68,7 +72,8 @@ const TherapiesPage = ({ hero }) => {
       <PageDivider />
 
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
-      <main className="">
+      {/* Therapy Details */}
+      <div className="">
         {isLoading ? (
           <div className="my-80">
             <Loader />
@@ -116,7 +121,7 @@ const TherapiesPage = ({ hero }) => {
           button="Drop your testimonial"
           route="/drop-testimonial"
         />
-      </main>
+      </div>
     </div>
   )
 }
@@ -125,10 +130,12 @@ export default TherapiesPage
 
 export const getStaticProps = async () => {
   const hero = (await getTherapyHero()) || []
+  const symptomSection = await getSymptomSection("symptom-section")
 
   return {
     props: {
       hero: hero[0],
+      symptomSection
     },
   }
 }

@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInDown } from 'lib/animationVariants'
 
@@ -19,7 +18,7 @@ const Banner = ({ component, formStart, data }) => {
         className="hero__image"
         placeholder='blur'
         blurDataURL={data.heroImage.url}
-        alt="Blugenix Hero"
+        alt="Blugenix Hormone Replacement Therapy Hero Image"
         priority
       />
       <Image
@@ -55,7 +54,6 @@ const Banner = ({ component, formStart, data }) => {
         </header>
         {component ? component : null}
         </div>
-        
       </motion.div>
     </section>
   )

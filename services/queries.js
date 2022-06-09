@@ -102,6 +102,24 @@ export const getTherapyDetails = async (slug) => {
   return results.therapySection;
 }
 
+export const getSymptomSection = async (slug) => {
+  const query = gql`
+  query GetSymptomSection($slug: String!) {
+    symptomSection(where: {slug: $slug}) {
+      buttonText
+      heading
+      id
+      subheading
+      text1
+      text2
+      text3
+    }
+  }
+  `
+  const results = await request(graphqlAPI, query, { slug })
+
+  return results.symptomSection;
+}
 
 export const getRecentPosts = async () => {
   const query = gql`
@@ -359,6 +377,7 @@ export const getTherapyHero = async () => {
         info
         slogan
         bannerTitle
+        buttonText
       }
     }
     `

@@ -1,9 +1,9 @@
 import useRightOrLeftAnimation from 'hooks/useRightOrLeftAnimation'
 import { motion } from 'framer-motion'
-import { fadeRightToLeft } from 'lib/animationVariants'
+// import { fadeRightToLeft } from 'lib/animationVariants'
 
 const TestimonialCard = ({ date, image, info, name, index }) => {
-  const [setRefs, ctrls, fadeLeftToRight] = useRightOrLeftAnimation()
+  const [setRefs, ctrls, fadeLeftToRight, fadeRightToLeft] = useRightOrLeftAnimation()
   console.log('index', index)
   return (
     // {`${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} py-12 items-center md:flex flex flex-col-reverse max-w-6xl mx-auto md:gap-12 px-10`}
