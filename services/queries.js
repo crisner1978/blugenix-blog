@@ -121,6 +121,49 @@ export const getSymptomSection = async (slug) => {
   return results.symptomSection;
 }
 
+export const getTestimonialSection = async (slug) => {
+  const query = gql`
+  query getTestimonialSection($slug: String!) {
+    testimonialSection(where: {slug: $slug}) {
+      id
+      buttonText
+      heading
+      slug
+      subheading
+      text
+      text2
+      boxTitle
+      boxButtonText
+      sectionImage {
+        url
+      }
+    }
+  }
+  `
+  const results = await request(graphqlAPI, query, { slug })
+
+  return results.testimonialSection;
+}
+
+export const getTestimonialCards = async () => {
+  const query = gql`
+    query GetTestimonialCards() {
+      testimonialCards {
+        createdAt
+        id
+        image {
+          url
+        }
+        message
+        name
+      }
+    }
+  `
+  const results = await request(graphqlAPI, query)
+
+  return results.testimonialCards
+}
+
 export const getRecentPosts = async () => {
   const query = gql`
     query GetPostDetails() {

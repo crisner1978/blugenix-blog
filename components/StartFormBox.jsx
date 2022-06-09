@@ -2,8 +2,7 @@ import { motion } from 'framer-motion'
 import useRightOrLeftAnimation from 'hooks/useRightOrLeftAnimation'
 import { useRouter } from 'next/router'
 
-
-const StartFormBox = ({ formStart, handleStartForm, title, button, route }) => {
+const StartFormBox = ({ formStart, handleStartForm, title, button }) => {
   const [setRefs, ctrls, fadeLeftToRight] = useRightOrLeftAnimation()
   const router = useRouter()
   return (
@@ -20,7 +19,14 @@ const StartFormBox = ({ formStart, handleStartForm, title, button, route }) => {
       <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg dark:bg-stone-800">
         <h3 className="text-center text-lg sm:text-xl md:text-2xl">{title}</h3>
         <div className="mt-8 flex justify-center">
-          <button className="page__btn text-white" onClick={handleStartForm ? handleStartForm : () => router.push(route) }>
+          <button
+            className="page__btn text-white"
+            onClick={
+              handleStartForm
+                ? handleStartForm
+                : () => router.push('/drop-testimonial')
+            }
+          >
             {button}
           </button>
         </div>

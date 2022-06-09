@@ -1,5 +1,4 @@
 import { Orbit } from '@uiball/loaders'
-import React from 'react'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { useQuery } from 'react-query'
@@ -32,12 +31,12 @@ const Symptoms = ({ setOpen }) => {
     data: symptoms,
     isLoading,
     isSuccess,
-  } = useQuery('featured', () => getSymptoms().then((result) => result))
+  } = useQuery('symptoms', () => getSymptoms().then((result) => result))
 
   return (
-    <div className="lg:pt-0 h-full px-6">
+    <div className="h-full px-6 lg:pt-0">
       {isLoading ? (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex h-full items-center justify-center">
           <Orbit size={35} speed={1.5} color="black" />
         </div>
       ) : (

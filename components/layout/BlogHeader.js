@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { getCategories, getTherapies } from 'services/queries'
 
 const BlogHeader = forwardRef(({ therapy, handleClick }, ref) => {
-  const { data } = useQuery(['categories', therapy], () => {
+  const { data } = useQuery(['categoriesOrTherapies', therapy], () => {
     return therapy
       ? getTherapies().then((result) => result)
       : getCategories().then((result) => result)

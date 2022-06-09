@@ -6,7 +6,7 @@ import {
   Section,
   StartFormBox,
   Symptoms,
-  Testimonials,
+  Testimonials
 } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
@@ -16,10 +16,15 @@ import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import { useQuery } from 'react-query'
 import { useRecoilState } from 'recoil'
-import { getTherapyDetails, getTherapyHero, getSymptomSection } from 'services/queries'
+import {
+  getSymptomSection,
+  getTestimonialSection,
+  getTherapyDetails,
+  getTherapyHero
+} from 'services/queries'
 import { useTherapyState } from '../atoms/therapyAtom'
 
-const TherapiesPage = ({ hero, symptomSection }) => {
+const TherapiesPage = ({ hero, symptomSec, testimonialSec }) => {
   const [open, setOpen] = useRecoilState(modalState)
   const [therapyValue, setTherapyValue] = useTherapyState()
   const therapyRef = useRef(null)
@@ -37,9 +42,6 @@ const TherapiesPage = ({ hero, symptomSection }) => {
     setTherapyValue(slug)
   }
 
-  console.log("symptomSection", symptomSection)
-  console.log("data", data)
-
   return (
     <div className="min-h-screen overflow-hidden">
       <Banner
@@ -53,17 +55,18 @@ const TherapiesPage = ({ hero, symptomSection }) => {
           />
         }
       />
+      {/* Symptom Section */}
       <Section
         style_section="lg:flex-row pt-12 lg:pb-12 flex flex-col max-w-6xl mx-auto lg:gap-12"
-        heading={symptomSection?.heading}
-        subheading={symptomSection?.subheading}
-        para_1={symptomSection?.text1}
-        para_2={symptomSection?.text2}
-        para_3={symptomSection?.text3}
+        heading={symptomSec?.heading}
+        subheading={symptomSec?.subheading}
+        para_1={symptomSec?.text1}
+        para_2={symptomSec?.text2}
+        para_3={symptomSec?.text3}
         component={
           <FreeButton
             tw="hidden lg:flex text-center lg:text-left text-white dark:text-gray-200 mt-8"
-            text={symptomSection?.buttonText}
+            text={symptomSec?.buttonText}
             onClick={() => setOpen(true)}
           />
         }
@@ -71,8 +74,8 @@ const TherapiesPage = ({ hero, symptomSection }) => {
       />
       <PageDivider />
 
+       {/* Therapy Details */}
       <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
-      {/* Therapy Details */}
       <div className="">
         {isLoading ? (
           <div className="my-80">
@@ -110,16 +113,12 @@ const TherapiesPage = ({ hero, symptomSection }) => {
           <Categories therapy={true} handleClick={handleClick} />
         </div>
         <PageDivider />
-        {/* Testimonial Section */}
-        <Testimonials />
-        {/* SSR or ISR this section with GraphCMS */}
-        {/* Add button to post a Testimonial */}
-        {/* Add Page with Testimonial Form */}
 
+        {/* Testimonials */}
+        <Testimonials data={testimonialSec} />
         <StartFormBox
-          title="Ready to share your story with Blugenix?"
-          button="Drop your testimonial"
-          route="/drop-testimonial"
+          title={testimonialSec?.boxTitle}
+          button={testimonialSec?.boxButtonText}
         />
       </div>
     </div>
@@ -129,13 +128,22 @@ const TherapiesPage = ({ hero, symptomSection }) => {
 export default TherapiesPage
 
 export const getStaticProps = async () => {
+  const symptomSection = await getSymptomSection('symptom-section')
+  const testimonialSection = await getTestimonialSection('testimonial-section')
   const hero = (await getTherapyHero()) || []
-  const symptomSection = await getSymptomSection("symptom-section")
+
+  const responses = await Promise.all([
+    symptomSection,
+    testimonialSection,
+    hero[0],
+  ])
 
   return {
     props: {
-      hero: hero[0],
-      symptomSection
+      hero: responses[2],
+      symptomSec: responses[0],
+      testimonialSec: responses[1],
     },
+    revalidate: 60,
   }
 }
