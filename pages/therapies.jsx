@@ -12,6 +12,7 @@ import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
 import Loader from 'components/Loader'
 import { BenefitSection } from 'components/sections'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import { useQuery } from 'react-query'
@@ -44,6 +45,10 @@ const TherapiesPage = ({ hero, symptomSec, testimonialSec }) => {
 
   return (
     <div className="min-h-screen overflow-hidden">
+      <Head>
+        <title>Blugenix Hormone Therapies</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Banner
         data={hero}
         formStart={null}

@@ -77,12 +77,3 @@ export interface IHomeSection {
   }
 }
 
-// heading
-//         id
-//         subheading
-//         text
-//         text2
-//         text3
-//         sectionImage {
-//           url
-//         }

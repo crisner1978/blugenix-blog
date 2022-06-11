@@ -9,6 +9,7 @@ import {
   StepsSection
 } from 'components/sections'
 import type { GetStaticProps } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import { getHero, getHomeSections } from 'services/queries'
@@ -25,6 +26,10 @@ const Home = ({ hero, homeSections }: Props) => {
 
   return (
     <div className="overflow-hidden min-h-screen">
+      <Head>
+        <title>Blugenix HRT Home Page</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <HeroSection hero={hero}>
         <FreeButton
           text="Speak with the team today"
