@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import { useState } from 'react';
-import { useDropzone } from "react-dropzone";
+// import { useDropzone } from "react-dropzone";
 import { useForm } from 'react-hook-form';
 
 const TestimonialPage = () => {
   const [submitted, setSubmitted] = useState(false)
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: "image/*",
-    onDrop
-  });
+  // const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  //   accept: "image/*",
+  //   onDrop
+  // });
 
 
   const {
@@ -29,7 +29,7 @@ const TestimonialPage = () => {
       })
       .catch((err) => {
         console.log(err),
-        
+
         setSubmitted(false)
       })
   }
