@@ -94,6 +94,11 @@
            hover:bg-gradient-to-tl rounded-xl max-w-full shadow-lg active:scale-95 transition-all
            transform duration-150 ease-out border-blue-700/70 border-2;
   }
+  .formResetBtn {
+    @apply text-xl font-deca py-2 text-red-700/70 hover:text-white from-red-600 to-red-900 
+           hover:bg-gradient-to-tl rounded-xl max-w-full shadow-lg active:scale-95 transition-all
+           transform duration-150 ease-out border-red-700/70 border-2;
+  }
   .formErrorMsg {
     @apply absolute right-0 text-red-600 font-deca font-black text-[12px] tracking-tight cursor-default uppercase
   }

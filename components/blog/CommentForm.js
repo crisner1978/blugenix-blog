@@ -41,6 +41,7 @@ const CommentForm = ({ slug, id }) => {
     }
 
     submitComment(commentObj).then((res) => {
+      console.log(res)
       setSubmitted(true)
       setTimeout(() => {
         router.push("/blog")

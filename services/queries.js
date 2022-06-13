@@ -263,7 +263,16 @@ export const submitComment = async (obj) => {
   const result = await fetch('/api/comments', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(obj)
+    body: obj
+  })
+
+  return result.json();
+}
+
+export const submitTestimonial = async (obj) => {
+  const result = await fetch('/api/testimonial', {
+    method: "POST",
+    body: obj
   })
 
   return result.json();

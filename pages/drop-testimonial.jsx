@@ -1,38 +1,57 @@
-import Head from 'next/head';
-import { useState } from 'react';
-// import { useDropzone } from "react-dropzone";
-import { useForm } from 'react-hook-form';
+import { Orbit } from '@uiball/loaders'
+import FileInput from 'components/formFields/FileInput'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { submitTestimonial } from 'services/queries'
 
 const TestimonialPage = () => {
   const [submitted, setSubmitted] = useState(false)
-  // const { getRootProps, getInputProps, isDragActive } = useDropzone({
-  //   accept: "image/*",
-  //   onDrop
-  // });
-
-
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({ mode: 'onBlur' })
-
-  const onSubmit = (data) => {
-    fetch('/api/createComment', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then(() => {
-        console.log(data)
-        setSubmitted(true)
-      })
-      .catch((err) => {
-        console.log(err),
-
-        setSubmitted(false)
-      })
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+  const methods = useForm({ mode: 'onBlur' })
+  const accept = {
+    'image/png': ['.png'],
+    'image/jpeg': ['.jpg', '.jpeg'],
   }
+
+  const handleReset = () => {
+    methods.reset()
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+
+  const onSubmit = methods.handleSubmit((data) => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+    setLoading(true)
+    // destructure data object from form
+    const { name, message, images } = data
+
+    // create new formData object
+    const formData = new FormData()
+    // attach images to FormData Object
+    data.images.map((item, index) => formData.append(`file_${index + 1}`, item))
+    // attach data to FormData Object
+    formData.append('name', name)
+    formData.append('message', message)
+
+    // post FormData Object to api/testimonial
+    submitTestimonial(formData).then((res) => {
+      setLoading(false)
+      setSubmitted(true)
+
+      setTimeout(() => {
+        router.push('/')
+      }, 5000)
+    })
+    console.log('images', images)
+  })
 
   return (
     <div className="px-3 pt-10 sm:px-10">
@@ -60,79 +79,88 @@ const TestimonialPage = () => {
           </div>
         </div>
       ) : (
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto mb-8 flex max-w-2xl flex-col rounded-lg bg-white p-8 text-gray-700 shadow-lg dark:bg-stone-800 dark:text-gray-200"
-        >
-          <h3 className="text-sm text-pink-500">Loving Hormone Therapy?</h3>
-          <h4 className="text-3xl font-bold">Drop Your Testimonial Below!</h4>
-          <hr className="mt-2 py-3" />
-          {/* name, label, type, placeholder, component, onChange, onBlur, errors */}
-          {/* <input
+        <FormProvider {...methods}>
+          <form
+            onSubmit={onSubmit}
+            className="mx-auto mb-8 flex max-w-2xl flex-col rounded-lg bg-white p-8 text-gray-700 shadow-lg dark:bg-stone-800 dark:text-gray-200"
+          >
+            <h3 className="text-sm text-pink-500">Loving Hormone Therapy?</h3>
+            <h4 className="text-3xl font-bold">Drop Your Testimonial Below!</h4>
+            <hr className="mt-2 py-3" />
+            {/* name, label, type, placeholder, component, onChange, onBlur, errors */}
+            {/* <input
             {...register('_id')}
             type="hidden"
             name="_id"
             // value={post._id}
           /> */}
-          <div className="inputWrapper">
-            <label className="formLabel" htmlFor="name">
-              Name
-            </label>
-            <input
-              {...register('name', { required: true })}
-              name="name"
-              className="singleLineInput"
-              type="text"
-              placeholder="John Wayne"
-            />
-          </div>
+            <div className="inputWrapper">
+              <label className="formLabel" htmlFor="name">
+                Name
+              </label>
+              <input
+                {...methods.register('name', { required: true })}
+                name="name"
+                className="singleLineInput"
+                type="text"
+                placeholder="John Wayne"
+              />
+            </div>
 
-          <div className="inputWrapper">
-            <label className="formLabel" htmlFor="message">
-              Message
-            </label>
-            <textarea
-              {...register('message', { required: true })}
-              name="message"
-              className="singleLineInput"
-              placeholder="Share your experience with Hormone Replacement Therapy and Blugenix. We want to hear from you!"
-              rows={8}
-            />
-          </div>
+            <div className="inputWrapper">
+              <label className="formLabel" htmlFor="message">
+                Message
+              </label>
+              <div className="relative w-full">
+                <textarea
+                  {...methods.register('message', { required: true })}
+                  name="message"
+                  className="singleLineInput"
+                  placeholder="Share your experience with Hormone Replacement Therapy and Blugenix. We want to hear from you!"
+                  rows={8}
+                />
+                {loading && (
+                  <div className="absolute top-20 right-0 left-0 mx-auto max-w-max">
+                    <Orbit size={40} speed={1.5} color="#304ffe" />
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="inputWrapper">
+              <FileInput accept={accept} name="images" />
+            </div>
 
-
-
-          <div className="inputWrapper">
-            <label className="formLabel">Image</label>
-            <input
-              {...register('image', { required: true })}
-              type="file"
-              name=""
-              id=""
-              className="singleLineInput "
-            />
-          </div>
-
-          <div className="flex flex-col p-5">
-            {errors.name && (
-              <span className="text-red-500">- The Name Field is required</span>
-            )}
-            {errors.message && (
-              <span className="text-red-500">
-                - The Comment Field is required
-              </span>
-            )}
-            {errors.image && (
-              <span className="text-red-500">
-                - The Email Field is required
-              </span>
-            )}
-          </div>
-
-          <button type="submit" className="formSubmitBtn">
-            Submit
-          </button>
-        </form>
+            <div className="flex flex-col p-5">
+              {methods.errors?.name && (
+                <span className="text-red-500">
+                  - The Name Field is required
+                </span>
+              )}
+              {methods.errors?.message && (
+                <span className="text-red-500">
+                  - The Comment Field is required
+                </span>
+              )}
+              {methods.errors?.image && (
+                <span className="text-red-500">
+                  - The Email Field is required
+                </span>
+              )}
+            </div>
+            <div className="flex gap-4">
+              <button type="submit" className="formSubmitBtn w-full">
+                Submit
+              </button>
+              <button
+                onClick={handleReset}
+                type="button"
+                className="formResetBtn w-full"
+              >
+                Reset
+              </button>
+            </div>
+          </form>
+        </FormProvider>
       )}
     </div>
   )
