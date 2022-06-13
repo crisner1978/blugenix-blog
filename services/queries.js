@@ -265,7 +265,6 @@ export const submitComment = async (obj) => {
     headers: { "Content-Type": "application/json" },
     body: obj
   })
-
   return result.json();
 }
 
@@ -274,7 +273,6 @@ export const submitTestimonial = async (obj) => {
     method: "POST",
     body: obj
   })
-
   return result.json();
 }
 

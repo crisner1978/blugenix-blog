@@ -25,19 +25,19 @@ const TestimonialPage = () => {
   }
 
   const onSubmit = methods.handleSubmit((data) => {
+    // set Loading true and scroll to top
+    setLoading(true)
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     })
-    setLoading(true)
+    
     // destructure data object from form
     const { name, message, images } = data
-
     // create new formData object
     const formData = new FormData()
-    // attach images to FormData Object
-    data.images.map((item, index) => formData.append(`file_${index + 1}`, item))
     // attach data to FormData Object
+    formData.append("file_1", images[0])
     formData.append('name', name)
     formData.append('message', message)
 
@@ -45,12 +45,10 @@ const TestimonialPage = () => {
     submitTestimonial(formData).then((res) => {
       setLoading(false)
       setSubmitted(true)
-
       setTimeout(() => {
         router.push('/')
       }, 5000)
     })
-    console.log('images', images)
   })
 
   return (
@@ -87,13 +85,7 @@ const TestimonialPage = () => {
             <h3 className="text-sm text-pink-500">Loving Hormone Therapy?</h3>
             <h4 className="text-3xl font-bold">Drop Your Testimonial Below!</h4>
             <hr className="mt-2 py-3" />
-            {/* name, label, type, placeholder, component, onChange, onBlur, errors */}
-            {/* <input
-            {...register('_id')}
-            type="hidden"
-            name="_id"
-            // value={post._id}
-          /> */}
+            
             <div className="inputWrapper">
               <label className="formLabel" htmlFor="name">
                 Name

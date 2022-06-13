@@ -14,8 +14,7 @@ const FileInput = (props) => {
     [setValue, name]
   )
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    maxFiles: 2,
-    multiple: true,
+    maxFiles: 1,
     onDrop,
     accept: props.accept,
   })
