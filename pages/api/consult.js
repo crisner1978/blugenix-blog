@@ -42,9 +42,6 @@ export default async function handler(req, res) {
       html: thanks.replace(/\r\n/g, "<br>"),
     }]
 
-    
-
-
     try {
       await Consult.create(body)
       await sgMail.send(data).then(() => {

@@ -259,12 +259,28 @@ export const getTherapies = async () => {
   return results.therapies
 }
 
+export const getTeam = async () => {
+  const query = gql`
+  query GetTeam {
+    teamMembers {
+      id
+      slug
+      name
+    }
+  }
+  `
+  const results = await request(graphqlAPI, query)
+
+  return results.teamMembers
+}
+
 export const submitComment = async (obj) => {
   const result = await fetch('/api/comments', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: obj
+    body: JSON.stringify(obj)
   })
+
   return result.json();
 }
 
@@ -273,6 +289,7 @@ export const submitTestimonial = async (obj) => {
     method: "POST",
     body: obj
   })
+
   return result.json();
 }
 

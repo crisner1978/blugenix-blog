@@ -1,13 +1,15 @@
+import { getRouteMatcher } from 'next/dist/shared/lib/router/utils'
 import Link from 'next/link'
 import { forwardRef } from 'react'
 import { useQuery } from 'react-query'
-import { getCategories, getTherapies } from 'services/queries'
+import { getCategories, getTeam, getTherapies } from 'services/queries'
 
-const BlogHeader = forwardRef(({ therapy, handleClick }, ref) => {
-  const { data } = useQuery(['categoriesOrTherapies', therapy], () => {
-    return therapy
-      ? getTherapies().then((result) => result)
-      : getCategories().then((result) => result)
+const BlogHeader = forwardRef(({ title, therapy, team, handleClick }, ref) => {
+  
+  const { data } = useQuery(['Thera-Team-Cat', therapy], () => {
+    return therapy ? getTherapies().then((result) => result) :
+      team ? getTeam().then((result) => result) :
+        getCategories().then((result) => result)
   })
 
   return (
@@ -15,9 +17,9 @@ const BlogHeader = forwardRef(({ therapy, handleClick }, ref) => {
       <div className="mx-auto my-3 flex max-w-6xl items-end justify-between px-10">
         <div className="w-full border-b border-blue-400 py-6 dark:border-blue-600 flex justify-between">
           <div className="block md:float-left" >
-            <Link href={therapy ? '/therapies' : '/blog'}>
+            <Link href={therapy ? '/therapies' : title ? `/${title.toLowerCase()}` : '/blog'}>
               <span className="navLogo cursor-pointer text-3xl font-semibold italic dark:text-white">
-                {therapy ? "The Therapies" : "The Blog"}
+                {therapy ? "The Therapies" : title ? `The ${title}` : "The Blog"}
               </span>
             </Link>
           </div>

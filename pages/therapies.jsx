@@ -80,7 +80,7 @@ const TherapiesPage = ({ hero, symptomSec, testimonialSec }) => {
       <PageDivider />
 
        {/* Therapy Details */}
-      <BlogHeader therapy={true} ref={therapyRef} handleClick={handleClick} />
+      <BlogHeader title="Therapies" therapy={true} ref={therapyRef} handleClick={handleClick} />
       <div className="">
         {isLoading ? (
           <div className="my-80">
@@ -145,9 +145,9 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      hero: responses[2],
       symptomSec: responses[0],
       testimonialSec: responses[1],
+      hero: responses[2],
     },
     revalidate: 60,
   }

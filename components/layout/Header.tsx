@@ -6,10 +6,10 @@ import { useRecoilState } from 'recoil'
 import { modalState } from '../../atoms/modalAtom'
 import Dropdown from './Dropdown'
 
-const categories = [
-  { name: 'Keto-verse', slug: 'ketoverse' },
-  { name: 'Testosterone Therapy', slug: 'trt' },
-]
+// const categories = [
+//   { name: 'Keto-verse', slug: 'ketoverse' },
+//   { name: 'Testosterone Therapy', slug: 'trt' },
+// ]
 
 const Header = () => {
   const { theme, setTheme } = useTheme()

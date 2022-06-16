@@ -2,7 +2,6 @@ import { arrayToObject } from "../../lib/helpers"
 import sgMail from "@sendgrid/mail"
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const body = arrayToObject(JSON.parse(req.body))
@@ -261,14 +260,14 @@ export default async function handler(req, res) {
       }).catch((error) => {
         console.log(error);
       })
-      res.status(200).json({ status: "Ok" })
+      res.status(200).json({ message: "Medical History Forms submitted", status: "Ok" })
     } else {
       await sgMail.send(femaleData).then(() => {
         console.log("emails sent successfully");
       }).catch((error) => {
         console.log(error)
       })
-      res.status(200).json({ status: "Ok" })
+      res.status(200).json({ message: "Medical History Forms submitted", status: "Ok" })
     }
   }
 }

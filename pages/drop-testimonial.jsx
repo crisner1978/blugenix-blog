@@ -33,13 +33,14 @@ const TestimonialPage = () => {
     })
     
     // destructure data object from form
-    const { name, message, images } = data
+    const { name, email, message, images } = data
     // create new formData object
     const formData = new FormData()
     // attach data to FormData Object
     formData.append("file_1", images[0])
     formData.append('name', name)
     formData.append('message', message)
+    formData.append('email', email)
 
     // post FormData Object to api/testimonial
     submitTestimonial(formData).then((res) => {
@@ -95,7 +96,20 @@ const TestimonialPage = () => {
                 name="name"
                 className="singleLineInput"
                 type="text"
-                placeholder="John Wayne"
+                placeholder="John W."
+              />
+            </div>
+
+            <div className="inputWrapper">
+              <label className="formLabel" htmlFor="name">
+                Email
+              </label>
+              <input
+                {...methods.register('email', { required: true })}
+                name="email"
+                className="singleLineInput"
+                type="text"
+                placeholder="youremail@example.com"
               />
             </div>
 
@@ -126,6 +140,11 @@ const TestimonialPage = () => {
               {methods.errors?.name && (
                 <span className="text-red-500">
                   - The Name Field is required
+                </span>
+              )}
+              {methods.errors?.email && (
+                <span className="text-red-500">
+                  - The Email Field is required
                 </span>
               )}
               {methods.errors?.message && (

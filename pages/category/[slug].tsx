@@ -18,7 +18,7 @@ const CategoryPage = ({ posts }: Props) => {
 
     return (
       <div className='dark:text-gray-200 text-gray-700'>
-      <BlogHeader  />
+      <BlogHeader />
       <div className="mx-auto max-w-5xl px-10 min-h-screen">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="col-span-1 lg:col-span-8">

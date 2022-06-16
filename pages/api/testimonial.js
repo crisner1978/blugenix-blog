@@ -3,6 +3,8 @@ import fs from "fs";
 import { gql, GraphQLClient } from "graphql-request";
 import initMiddleware from "../../lib/init-middleware";
 import parseMultipartForm from "../../lib/multipartParser";
+import sgMail from "@sendgrid/mail"
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 // Turn bodyParser OFF
 export const config = {
@@ -39,9 +41,49 @@ export default async function handler(req, res) {
   }).then((response) => response.json())
 
   // create object for mutation
-  const { name, message } = req.body
+  const { name, message, email } = req.body
   let id = upload.id
   const testimonialObject = { name, message, id }
+
+  const emailMessage = `
+  <h3>BLUGENIX HAS RECEIVED A NEW TESTIMONIAL!\r\n
+  \r\n
+  Go to <a href="https://graphcms.com/" target="_blank">GraphCMS</a> to login and review NEWLY POSTED CONTENT.\r\n
+  \r\n
+  Testimonial submitted by: \r\n
+    Name: ${name}\r\n
+    Email: ${email}\r\n
+    Message: ${message}\r\n
+  \r\n
+  New testimonials will show in the Content Section as a DRAFT under Testimonial Card.\r\n
+  \r\n
+  </h3>
+  `
+  const thanks = `<h3>Hi ${name},\r\n
+    \r\n
+     Thank you for sharing your story with Blugenix!\r\n
+     \r\n
+     Once approved, your testimonial will appear at the bottom of the Therapies Page in the Testimonial Section.\r\n
+     \r\n
+     Thanks again,\r\n
+     \r\n
+     Blugenix\r\n</h3>
+     `;
+
+  const data = [{
+    to: "jesseblue4242@gmail.com",
+    from: "chris.blugenix@gmail.com",
+    subject: "NEW BLUGENIX TESTIMONIAL",
+    text: emailMessage,
+    html: emailMessage.replace(/\r\n/g, '<br>')
+  },
+  {
+    to: email,
+    from: "chris.blugenix@gmail.com",
+    subject: "BLUGENIX TESTIMONIAL RECEIVED",
+    text: thanks,
+    html: thanks.replace(/\r\n/g, "<br>"),
+  }]
 
   const query = gql`
     mutation createTestimonialCard($name: String!, $message: String!, $id: ID!) {
@@ -50,6 +92,12 @@ export default async function handler(req, res) {
   `
   try {
     await graphQLClient.request(query, testimonialObject)
+    await sgMail.send(data).then(() => {
+      console.log("emails sent successfully");
+    }).catch((error) => {
+      console.log(error);
+    })
+
     return res.status(200).send({ message: "Testimonial Submitted" })
   } catch (error) {
     console.log(error)
