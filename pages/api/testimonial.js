@@ -30,6 +30,9 @@ export default async function handler(req, res) {
 
   // file upload to GraphCMS
   const { file_1 } = req.files
+  if (file_1 === undefined) {
+    
+  }
   const form = new FormData()
   form.append("fileUpload", fs.createReadStream(file_1.filepath))
   const upload = await fetch(`${graphqlAPI}/upload`, {
@@ -69,7 +72,6 @@ export default async function handler(req, res) {
      \r\n
      Blugenix\r\n</h3>
      `;
-
   const data = [{
     to: "jesseblue4242@gmail.com",
     from: "chris.blugenix@gmail.com",

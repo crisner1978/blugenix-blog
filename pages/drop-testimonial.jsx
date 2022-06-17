@@ -17,17 +17,17 @@ const TestimonialPage = () => {
     'image/jpeg': ['.jpg', '.jpeg'],
   }
 
-  const handleReset = () => {
-    methods.reset()
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
+  // const handleReset = () => {
+  //   methods.reset()
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth',
+  //   })
+  // }
 
   const onSubmit = methods.handleSubmit((data) => {
     // set Loading true and scroll to top
-    if (!data) {
+    if (!data || data.images === undefined) {
       return
     } else {
       setLoading(true)
@@ -38,6 +38,7 @@ const TestimonialPage = () => {
 
       // destructure data object from form
       const { name, email, message, images } = data
+      
       // create new formData object
       const formData = new FormData()
       // attach data to FormData Object
@@ -164,15 +165,8 @@ const TestimonialPage = () => {
               )}
             </div>
             <div className="flex gap-4">
-              <button disabled={newErrors} type="submit" className="formSubmitBtn w-full">
-                Submit
-              </button>
-              <button
-                onClick={handleReset}
-                type="button"
-                className="formResetBtn w-full"
-              >
-                Reset
+              <button disabled={newErrors} type="submit" className={newErrors ? "formResetBtn w-full" : "formSubmitBtn w-full"}>
+                {newErrors ? "Errors" : "Submit"}
               </button>
             </div>
           </form>

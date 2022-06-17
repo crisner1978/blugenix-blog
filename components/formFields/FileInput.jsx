@@ -20,7 +20,7 @@ const FileInput = (props) => {
   })
   
   useEffect(() => {
-    register(name)
+    register(name, {required: true})
     return () => {
       unregister(name)
     }
