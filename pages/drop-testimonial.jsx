@@ -132,7 +132,7 @@ const TestimonialPage = () => {
                   rows={8}
                 />
                 {loading && (
-                  <div className="absolute top-20 right-0 left-0 mx-auto max-w-max">
+                  <div className="absolute top-5 right-0 left-0 mx-auto max-w-max">
                     <Orbit size={40} speed={1.5} color="#304ffe" />
                   </div>
                 )}
