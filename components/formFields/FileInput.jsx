@@ -28,7 +28,7 @@ const FileInput = (props) => {
   return (
     <>
       <label
-        className="mb-2 block text-sm font-bold capitalize text-gray-700"
+        className="formLabel"
         htmlFor={name}
       >
         {label}
@@ -43,11 +43,11 @@ const FileInput = (props) => {
         />
         <div
           className={'w-full border border-dashed border-gray-900 p-2 ' +
-            (isDragActive ? 'bg-gray-400' : 'bg-gray-200')}>
+            (isDragActive ? 'bg-blue-600 dark:bg-blue-800/50' : 'bg-gray-200 dark:bg-black/20')}>
           {isDragActive ? (
-            <p className="my-2 text-center">Drop the files here ...</p>
+            <p className="my-2 text-center text-white dark:text-gray-100">Drop the files here ...</p>
           ) : (
-            <p className="my-2 text-center">
+            <p className="my-2 text-center dark:text-gray-300">
               Drag 'n' drop some files here, or click to select files
             </p>
           )}

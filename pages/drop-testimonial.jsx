@@ -26,10 +26,11 @@ const TestimonialPage = () => {
   // }
 
   const onSubmit = methods.handleSubmit((data) => {
-    // set Loading true and scroll to top
+    //if !data or image return
     if (!data || data.images === undefined) {
       return
     } else {
+      // set Loading true and scroll to top
       setLoading(true)
       window.scrollTo({
         top: 0,
