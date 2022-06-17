@@ -36,16 +36,14 @@ const FileInput = (props) => {
       <div {...getRootProps()}>
         <input
           {...props}
-          className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+          className="focus:shadow-outline w-full appearance-none rounded border 
+          py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
           id={name}
           {...getInputProps()}
         />
         <div
-          className={
-            'w-full border border-dashed border-gray-900 p-2 ' +
-            (isDragActive ? 'bg-gray-400' : 'bg-gray-200')
-          }
-        >
+          className={'w-full border border-dashed border-gray-900 p-2 ' +
+            (isDragActive ? 'bg-gray-400' : 'bg-gray-200')}>
           {isDragActive ? (
             <p className="my-2 text-center">Drop the files here ...</p>
           ) : (

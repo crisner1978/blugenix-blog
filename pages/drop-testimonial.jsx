@@ -11,6 +11,7 @@ const TestimonialPage = () => {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const methods = useForm({ mode: 'onBlur' })
+  let newErrors = methods.formState.errors.name || methods.formState.errors.email || methods.formState.errors.message || methods.formState.errors.images
   const accept = {
     'image/png': ['.png'],
     'image/jpeg': ['.jpg', '.jpeg'],
@@ -26,30 +27,34 @@ const TestimonialPage = () => {
 
   const onSubmit = methods.handleSubmit((data) => {
     // set Loading true and scroll to top
-    setLoading(true)
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-    
-    // destructure data object from form
-    const { name, email, message, images } = data
-    // create new formData object
-    const formData = new FormData()
-    // attach data to FormData Object
-    formData.append("file_1", images[0])
-    formData.append('name', name)
-    formData.append('message', message)
-    formData.append('email', email)
+    if (!data) {
+      return
+    } else {
+      setLoading(true)
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
 
-    // post FormData Object to api/testimonial
-    submitTestimonial(formData).then((res) => {
-      setLoading(false)
-      setSubmitted(true)
-      setTimeout(() => {
-        router.push('/')
-      }, 5000)
-    })
+      // destructure data object from form
+      const { name, email, message, images } = data
+      // create new formData object
+      const formData = new FormData()
+      // attach data to FormData Object
+      formData.append('file_1', images[0])
+      formData.append('name', name)
+      formData.append('message', message)
+      formData.append('email', email)
+
+      // post FormData Object to api/testimonial
+      submitTestimonial(formData).then((res) => {
+        setLoading(false)
+        setSubmitted(true)
+        setTimeout(() => {
+          router.push('/')
+        }, 5000)
+      })
+    }
   })
 
   return (
@@ -86,7 +91,7 @@ const TestimonialPage = () => {
             <h3 className="text-sm text-pink-500">Loving Hormone Therapy?</h3>
             <h4 className="text-3xl font-bold">Drop Your Testimonial Below!</h4>
             <hr className="mt-2 py-3" />
-            
+
             <div className="inputWrapper">
               <label className="formLabel" htmlFor="name">
                 Name
@@ -137,29 +142,29 @@ const TestimonialPage = () => {
             </div>
 
             <div className="flex flex-col p-5">
-              {methods.errors?.name && (
+              {methods.formState.errors?.name && (
                 <span className="text-red-500">
                   - The Name Field is required
                 </span>
               )}
-              {methods.errors?.email && (
+              {methods.formState.errors?.email && (
                 <span className="text-red-500">
                   - The Email Field is required
                 </span>
               )}
-              {methods.errors?.message && (
+              {methods.formState.errors?.message && (
                 <span className="text-red-500">
                   - The Comment Field is required
                 </span>
               )}
-              {methods.errors?.image && (
+              {methods.formState.errors?.images && (
                 <span className="text-red-500">
-                  - The Email Field is required
+                  - The Image Field is required
                 </span>
               )}
             </div>
             <div className="flex gap-4">
-              <button type="submit" className="formSubmitBtn w-full">
+              <button disabled={newErrors} type="submit" className="formSubmitBtn w-full">
                 Submit
               </button>
               <button
