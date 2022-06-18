@@ -23,7 +23,6 @@ const StepsSection = ({ setOpen }) => {
             className="scale-[1.009] rounded-3xl sm:max-w-sm"
             src="https://res.cloudinary.com/dtram9qiy/image/upload/v1651073011/my-upload/vyh4v0uwmwuhpgvtmi0q.jpg"
             alt="Blugenix Steps to HRT"
-            loading="lazy"
           />
         </div>
       </Section>
@@ -35,7 +34,6 @@ const StepsSection = ({ setOpen }) => {
               className="steps"
               src="https://res.cloudinary.com/dtram9qiy/image/upload/v1651075090/my-upload/a9wksql2kb2pzvnqpxda.jpg"
               alt="Step 1"
-              loading="lazy"
             />
           </div>
           <div className="group cursor-pointer overflow-hidden rounded-3xl shadow-xl">
@@ -43,7 +41,6 @@ const StepsSection = ({ setOpen }) => {
               className="steps"
               src="https://res.cloudinary.com/dtram9qiy/image/upload/v1651075125/my-upload/au38suzmsu1mzgrczvm6.jpg"
               alt="Step 2"
-              loading="lazy"
             />
           </div>
           <div className="group cursor-pointer overflow-hidden rounded-3xl shadow-xl">
@@ -51,7 +48,6 @@ const StepsSection = ({ setOpen }) => {
               className="steps"
               src="https://res.cloudinary.com/dtram9qiy/image/upload/v1651075148/my-upload/gonhzeluwpd0okuuyrnb.jpg"
               alt="Step 3"
-              loading="lazy"
             />
           </div>
         </div>
