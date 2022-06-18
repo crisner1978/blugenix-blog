@@ -11,8 +11,6 @@ const Categories = ({ therapy, handleClick, team }) => {
   const [teamValue, setTeamValue] = useTeamState()
   const { asPath } = useRouter()
 
-  console.log("pathname", asPath)
-
   const { data } = useQuery('categories', () => {
     return therapy
       ? getTherapies().then((result) => result)

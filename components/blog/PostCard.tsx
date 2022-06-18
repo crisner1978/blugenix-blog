@@ -33,7 +33,8 @@ const PostCard = ({ post }: Props) => {
           <img
             className="h-10 w-10 rounded-full"
             src={newpost.author.photo.url}
-            alt=""
+            alt={newpost.author.name}
+            loading="lazy"
           />
           <p className="text-sm font-extralight">
             Blog post by{' '}

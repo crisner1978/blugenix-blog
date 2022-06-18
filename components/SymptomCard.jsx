@@ -11,6 +11,7 @@ const SymptomCard = ({ setOpen, item }) => {
           className="lg:h-[300px] object-cover transition-transform duration-200 ease-in-out hover:scale-105"
           src={item.symptomImage.url}
           alt={item.slug}
+          loading="lazy"
         />
 
         <div className="bg-white p-5 pb-8">

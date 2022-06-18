@@ -38,7 +38,7 @@ const PostDetail = ({ post }) => {
   return (
     <div className='mb-8 lg:p-8 pb-12 rounded-lg shadow-lg dark:bg-stone-800 bg-white'>
       <div className='relative overflow-hidden shadow-md mb-6'>
-        <img className='object-top h-full w-full rounded-t-lg' src={post.featuredImage.url} alt={post.title} />
+        <img className='object-top h-full w-full rounded-t-lg' src={post.featuredImage.url} alt={post.title} loading="lazy" />
       </div>
       <div className='px-4 lg:px-0'>
         <div className='flex items-center mb-8 w-full'>
@@ -46,7 +46,8 @@ const PostDetail = ({ post }) => {
             <img
               className="h-10 w-10 rounded-full"
               src={post.author.photo.url}
-              alt=""
+              alt={post.author.name}
+              loading="lazy"              
             />
             <p className="text-sm font-extralight">
               Blog post by{' '}

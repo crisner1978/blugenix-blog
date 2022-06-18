@@ -15,7 +15,7 @@ const MapSection = ({ component }) => {
           {component}
         </motion.div>
         <div className="md:w-1/2">
-          <img src="images/map.svg" alt="" />
+          <img src="images/map.svg" alt="Map of US" loading="lazy" />
         </div>
       </div>
     </section>

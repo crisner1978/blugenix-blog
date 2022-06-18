@@ -25,6 +25,7 @@ const TestimonialCard = ({ createdAt, image, message, name, index }) => {
         <img
           className="rounded-3xl shadow-lg"
           src={image}
+          loading="lazy"
           alt={`${name} image`}
         />
       </div>

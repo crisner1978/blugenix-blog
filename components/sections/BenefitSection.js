@@ -21,7 +21,7 @@ const BenefitSection = ({ therapyValue }) => {
             {benefits?.map(({ id, title, text, iconImage: { url } }) => (
               <li key={id} className="flex flex-col items-start mb-5">
                 <figure className="benefit_icon">
-                  <img src={url} alt="" className="h-10 w-10" />
+                  <img src={url} alt={title} className="h-10 w-10" loading="lazy" />
                 </figure>
                 <h3 className="mb-3 text-xl dark:text-white">{title}</h3>
                 <div>
