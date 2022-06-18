@@ -60,6 +60,7 @@ const Home = ({ hero, homeSections }: Props) => {
               className="rounded-3xl"
               src={item.sectionImage.url}
               alt={item.heading}
+              loading="lazy"
             />
           </Section>
           <PageDivider />
