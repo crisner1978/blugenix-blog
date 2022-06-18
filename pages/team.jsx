@@ -1,5 +1,5 @@
 import { modalState } from 'atoms/modalAtom'
-import { FreeButton, Loader, Section } from 'components'
+import { FreeButton, Loader, PageDivider, Section } from 'components'
 import { Categories } from 'components/blog'
 import BlogHeader from 'components/layout/BlogHeader'
 import VideoHero from 'components/VideoHero'
@@ -79,6 +79,7 @@ const TeamPage = () => {
             />
           </Section>
         )}
+        <PageDivider />
         <div className="mx-auto grid max-w-6xl px-10 pt-12">
           <Categories handleClick={handleClick} team={true} />
         </div>
