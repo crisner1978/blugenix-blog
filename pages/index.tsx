@@ -93,5 +93,6 @@ export const getStaticProps: GetStaticProps = async () => {
       hero: hero[0],
       homeSections,
     },
+    revalidate: 60,
   }
 }

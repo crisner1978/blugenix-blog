@@ -212,6 +212,7 @@ export const getStaticProps = async () => {
     props: {
       data: hero[0],
       formSections
-    }
+    }, 
+    revalidate: 60,
   }
 }
