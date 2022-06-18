@@ -73,6 +73,30 @@ export const getPostDetails = async (slug) => {
   return results.post;
 }
 
+export const getTeamDetails = async(slug) => {
+  const query = gql`
+  query GetTeamDetails($slug: String!) {
+    teamSection(where: {slug: $slug}) {
+      id
+      buttonText
+      name
+      position
+      slug
+      text
+      text2
+      text3
+      modal
+      profileImage {
+        url
+      }
+    }
+  }
+  `
+  const result = await request(graphqlAPI, query, { slug })
+
+  return result.teamSection
+}
+
 export const getTherapyDetails = async (slug) => {
   const query = gql`
   query GetTherapyDetails($slug: String!) {

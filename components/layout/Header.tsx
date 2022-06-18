@@ -19,8 +19,8 @@ const Header = () => {
   const name =
     pathname === '/team/chris'
       ? 'chris'
-      : pathname === '/team/jessee'
-      ? 'jessee'
+      : pathname === '/team/jesse'
+      ? 'jesse'
       : pathname === '/team/george'
       ? 'george'
       : null
@@ -82,9 +82,7 @@ const Header = () => {
             </li>
             <li
               className={`navLink ${
-                pathname === '/team' ||
-                (pathname === `/team/${name}` &&
-                  'text-blue-600 dark:text-blue-600')
+                pathname === '/team' && 'text-blue-600 dark:text-blue-600'
               }`}
             >
               <Link href="/team">team</Link>
