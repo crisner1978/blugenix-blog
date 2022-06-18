@@ -25,15 +25,27 @@ const HeroSection = ({ hero, children }: Props) => {
         alt="Blugenix Hero"
         priority
       />
-      <img
+      <Image
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
         src={hero.bgGradient1.url}
         className="hero__center"
+        placeholder="blur"
+        blurDataURL={hero.bgGradient1.url}
         alt="background gradiant"
+        priority
       />
-      <img
+      <Image
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
         src={hero.bgGradient2.url}
         className="hero__center"
+        placeholder="blur"
+        blurDataURL={hero.bgGradient2.url}
         alt="background gradiant"
+        priority
       />
       <motion.div
         aria-hidden="true"
@@ -61,3 +73,15 @@ const HeroSection = ({ hero, children }: Props) => {
 }
 
 export default HeroSection
+
+
+      /* <img
+        src={hero.bgGradient1.url}
+        className="hero__center"
+        alt="background gradiant"
+      /> */
+      /* <img
+        src={hero.bgGradient2.url}
+        className="hero__center"
+        alt="background gradiant"
+      /> */
