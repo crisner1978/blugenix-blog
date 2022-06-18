@@ -38,7 +38,7 @@ const PostPage = ({ post }: Props) => {
         <div className="col-span-1 lg:col-span-4">
           <div className="relative lg:sticky lg:top-[70px] lg:mb-8">
             <PostWidget categories={post.categories.map((category) => category.slug)} slug={post.slug} />
-            <Categories therapy={undefined} handleClick={undefined} />
+            <Categories therapy={undefined} team={undefined} handleClick={undefined} />
           </div>
         </div>
       </div>
