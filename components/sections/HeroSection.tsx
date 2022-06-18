@@ -29,13 +29,11 @@ const HeroSection = ({ hero, children }: Props) => {
         src={hero.bgGradient1.url}
         className="hero__center"
         alt="background gradiant"
-        loading="lazy"
       />
       <img
         src={hero.bgGradient2.url}
         className="hero__center"
         alt="background gradiant"
-        loading="lazy"
       />
       <motion.div
         aria-hidden="true"
