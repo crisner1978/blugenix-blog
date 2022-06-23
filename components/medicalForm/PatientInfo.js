@@ -18,7 +18,9 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({ defaultValues: formValues, mode: 'onBlur' })
+  } = useForm({ mode: 'onBlur' })
+
+  console.log("formValues", formValues)
 
   const PersonalInfo = () => (
     <section className="mb-4">

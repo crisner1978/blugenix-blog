@@ -24,7 +24,6 @@ const AgreementInfo = ({
         setFormValues(null)
         setTimeout(() => {
           router.push("/").then(() => setFormStart(false))
-
         }, 5000)
       }
     })
