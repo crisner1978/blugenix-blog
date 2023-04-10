@@ -44,12 +44,12 @@ const PostDetail = ({ post }) => {
       <div className='px-4 lg:px-0'>
         <div className='flex items-center mb-8 w-full'>
           <div className="flex items-center justify-center space-x-2">
-            <img
+            {post.author.photo?.url && <img
               className="h-10 w-10 rounded-full"
               src={post.author.photo.url}
               alt={post.author.name}
               loading="lazy"              
-            />
+            />}
             <p className="text-sm font-extralight">
               Blog post by{' '}
               <span className="font-semibold text-blue-600">
