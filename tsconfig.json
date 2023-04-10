@@ -16,6 +16,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/forms.js", "components/MyLink.js", "components/Dropdown.js", "services/queries.js", "pages/drop-testimonial.jsx", "components/medicalForm/index.js", "pages/team.jsx", "components/VideoHero.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/forms.js", "components/MyLink.js", "components/Dropdown.js", "services/queries.js", "pages/drop-testimonial.jsx", "components/medicalForm/index.js", "pages/team.jsx", "components/VideoHero.jsx", "pages/_app.jsx"],
   "exclude": ["node_modules"]
 }
