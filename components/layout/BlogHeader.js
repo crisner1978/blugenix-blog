@@ -1,6 +1,5 @@
 import { useTeamState } from 'atoms/teamAtom'
 import { useTherapyState } from 'atoms/therapyAtom'
-import { getRouteMatcher } from 'next/dist/shared/lib/router/utils'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { forwardRef } from 'react'

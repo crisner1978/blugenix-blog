@@ -17,14 +17,6 @@ const TestimonialPage = () => {
     'image/jpeg': ['.jpg', '.jpeg'],
   }
 
-  // const handleReset = () => {
-  //   methods.reset()
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth',
-  //   })
-  // }
-
   const onSubmit = methods.handleSubmit((data) => {
     //if !data or image return
     if (!data || data.images === undefined) {

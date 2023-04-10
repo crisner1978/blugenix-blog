@@ -30,12 +30,12 @@ const Modal = () => {
       }),
     {
       onSuccess: () => {
-        console.log("Consult Requested")
+        // console.log("Consult Requested")
         setOpen(false);
         reset();
       },
       onError: (error) => {
-        console.log(error);
+        console.error(error);
       },
     }
   );

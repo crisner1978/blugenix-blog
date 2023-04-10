@@ -7,7 +7,7 @@ const FormWidget = ({
   currStep,
 }) => {
 
-  console.log("formValues", formValues)
+  // console.log("formValues", formValues)
   const handleReset = () => {
     setFormStart(false)
     setFormStep(0)

@@ -258,14 +258,14 @@ export default async function handler(req, res) {
       await sgMail.send(maleData).then(() => {
         console.log("emails sent successfully");
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
       })
       res.status(200).json({ message: "Medical History Forms submitted", status: "Ok" })
     } else {
       await sgMail.send(femaleData).then(() => {
         console.log("emails sent successfully");
       }).catch((error) => {
-        console.log(error)
+        console.error(error)
       })
       res.status(200).json({ message: "Medical History Forms submitted", status: "Ok" })
     }

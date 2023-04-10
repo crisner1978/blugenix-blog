@@ -95,11 +95,11 @@ export default async function handler(req, res) {
     await sgMail.send(data).then(() => {
       console.log("emails sent successfully");
     }).catch((error) => {
-      console.log(error);
+      console.error(error);
     })
 
     return res.status(200).send({ message: "Testimonial Submitted" })
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }

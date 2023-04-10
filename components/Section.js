@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import useFadeInAnimation from '../hooks/useFadeInAnimation';
+import { motion } from 'framer-motion'
+import useFadeInAnimation from '../hooks/useFadeInAnimation'
 
 const Section = ({
   style_section,
@@ -10,43 +10,54 @@ const Section = ({
   para_3,
   children,
   component,
-  component_2
+  component_2,
 }) => {
   const [setRefs, ctrls, fadeInDown] = useFadeInAnimation()
 
   return (
-      <section className={style_section}>
-        <motion.div initial="hidden" ref={setRefs} aria-hidden="true" animate={ctrls} variants={fadeInDown} className={`${component_2 ? "lg:max-w-xl xl:max-w-2xl px-10" : "md:max-w-md lg:max-w-xl xl:max-w-2xl "}`}>
-          {heading && (
-            <header className="inline-block uppercase font-medium xl:text-lg tracking-wide text-gray-500 dark:text-gray-300 w-full">
-              <h1>{heading}</h1>
-            </header>
-          )}
-          {subheading && (
-            <h2 className="inline-flex text-2xl lg:text-3xl xl:text-4xl mt-[10px] font-fancy font-medium leading-normal md:leading-normal lg:leading-snug xl:leading-snug">
-              {subheading}
-            </h2>
-          )}
+    <section className={style_section}>
+      <motion.div
+        initial="hidden"
+        ref={setRefs}
+        aria-hidden="true"
+        animate={ctrls}
+        variants={fadeInDown}
+        className={`${
+          component_2
+            ? 'px-10 lg:max-w-xl xl:max-w-2xl'
+            : 'md:max-w-md lg:max-w-xl xl:max-w-2xl '
+        }`}
+      >
+        {heading && (
+          <header className="inline-block w-full font-medium uppercase tracking-wide text-gray-500 dark:text-gray-300 xl:text-lg">
+            <h1>{heading}</h1>
+          </header>
+        )}
+        {subheading && (
+          <h2 className="mt-[10px] inline-flex font-fancy text-2xl font-medium leading-normal md:leading-normal lg:text-3xl lg:leading-snug xl:text-4xl xl:leading-snug">
+            {subheading}
+          </h2>
+        )}
 
-          <div className="sm:text-lg dark:text-gray-300 text-gray-700">
-            <p className="mt-8">
-              {para_1}
-            </p>
-            {para_2 && (
-              <p className="mt-8">{para_2}</p>
-            )}
-            {para_3 && (
-              <p className="mt-8">{para_3}</p>
-            )}
-            {component && component}
-          </div>
-        </motion.div>
-        <div className={`${component_2 !== undefined ? "lg:max-w-md w-full relative rounded-3xl mx-auto" : "rounded-3xl flex items-center justify-center mb-10 md:mb-0 md:max-w-md relative"}`}>
-          {children && children}
-          {component_2 && component_2}
+        <div className="text-gray-700 dark:text-gray-300 sm:text-lg">
+          <p className="mt-8">{para_1}</p>
+          {para_2 && <p className="mt-8">{para_2}</p>}
+          {para_3 && <p className="mt-8">{para_3}</p>}
+          {component && component}
         </div>
-      </section>
-  );
-};
+      </motion.div>
+      <div
+        className={`${
+          component_2 !== undefined
+            ? 'relative mx-auto w-full rounded-3xl lg:max-w-md'
+            : 'relative mb-10 flex items-center justify-center rounded-3xl md:mb-0 md:max-w-md'
+        }`}
+      >
+        {children && children}
+        {component_2 && component_2}
+      </div>
+    </section>
+  )
+}
 
-export default Section;
+export default Section

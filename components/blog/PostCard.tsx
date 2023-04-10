@@ -21,8 +21,8 @@ const PostCard = ({ post }: Props) => {
       </div>
 
       <h1
-        className="mx-auto mb-8 max-w-fit cursor-pointer text-center text-2xl sm:text-3xl font-semibold
-      transition duration-300 hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-500"
+        className="mx-auto mb-8 max-w-fit cursor-pointer text-center text-2xl font-semibold transition
+      duration-300 hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-500 sm:text-3xl"
       >
         <Link href={`/post/${newpost.slug}`}>{newpost.title}</Link>
       </h1>
@@ -30,12 +30,14 @@ const PostCard = ({ post }: Props) => {
       {/* Author block */}
       <div className="mb-8 block w-full items-center justify-center text-center lg:flex">
         <div className="flex items-center justify-center space-x-2 px-3">
-          <img
-            className="h-10 w-10 rounded-full"
-            src={newpost.author.photo.url}
-            alt={newpost.author.name}
-            loading="lazy"
-          />
+          {newpost.author.photo?.url && (
+            <img
+              className="h-10 w-10 rounded-full"
+              src={newpost.author.photo.url}
+              alt={newpost.author.name}
+              loading="lazy"
+            />
+          )}
           <p className="text-sm font-extralight">
             Blog post by{' '}
             <span className="font-semibold text-blue-600">
@@ -46,7 +48,7 @@ const PostCard = ({ post }: Props) => {
         </div>
       </div>
 
-      <p className="mb-8 px-4 text-center font-deca text-lg text-gray-700 dark:text-gray-100 max-w-xl mx-auto">
+      <p className="mx-auto mb-8 max-w-xl px-4 text-center font-deca text-lg text-gray-700 dark:text-gray-100">
         {newpost.excerpt}
       </p>
       <div className="text-center">

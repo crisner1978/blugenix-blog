@@ -4,6 +4,7 @@ import React from 'react'
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
+    // console.log(modifiedText)
 
     if(obj) {
       if(obj.bold) {

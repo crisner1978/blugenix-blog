@@ -20,7 +20,7 @@ const PatientInfo = ({ formValues, setFormValues, nextFormStep, formStep }) => {
     formState: { errors },
   } = useForm({ mode: 'onBlur' })
 
-  console.log("formValues", formValues)
+  // console.log("formValues", formValues)
 
   const PersonalInfo = () => (
     <section className="mb-4">

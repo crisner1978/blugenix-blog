@@ -27,6 +27,8 @@ const FormsPage = ({ data, formSections }) => {
   const nextFormStep = () => setFormStep((currStep) => currStep + 1)
   const prevFormStep = () => setFormStep((currStep) => currStep - 1)
 
+  console.log(formValues)
+
   const handleStartForm = () => {
     setFormStart(true)
     window.scrollTo({

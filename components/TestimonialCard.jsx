@@ -6,7 +6,7 @@ const TestimonialCard = ({ createdAt, image, message, name, index }) => {
   const [setRefs, ctrls, fadeLeftToRight, fadeRightToLeft] =
     useRightOrLeftAnimation()
 
-  console.log('index', index)
+  // console.log('index', index)
   return (
     <motion.div
       initial="hidden"
